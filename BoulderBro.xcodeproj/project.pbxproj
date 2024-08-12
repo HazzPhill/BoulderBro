@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60B92C6A6FD1000F29E2 /* BoulderBroApp.swift */; };
+		EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */; };
+		EF1C60BE2C6A6FD2000F29E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */; };
+		EF1C60C12C6A6FD2000F29E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1C60C02C6A6FD2000F29E2 /* Preview Assets.xcassets */; };
+		EF1C60CB2C6A6FD2000F29E2 /* BoulderBroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60CA2C6A6FD2000F29E2 /* BoulderBroTests.swift */; };
+		EF1C60D52C6A6FD2000F29E2 /* BoulderBroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60D42C6A6FD2000F29E2 /* BoulderBroUITests.swift */; };
+		EF1C60D72C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60D62C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF1C60C72C6A6FD2000F29E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF1C60AE2C6A6FD1000F29E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF1C60B52C6A6FD1000F29E2;
+			remoteInfo = BoulderBro;
+		};
+		EF1C60D12C6A6FD2000F29E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF1C60AE2C6A6FD1000F29E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF1C60B52C6A6FD1000F29E2;
+			remoteInfo = BoulderBro;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoulderBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF1C60B92C6A6FD1000F29E2 /* BoulderBroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderBroApp.swift; sourceTree = "<group>"; };
+		EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF1C60C02C6A6FD2000F29E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EF1C60C62C6A6FD2000F29E2 /* BoulderBroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoulderBroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF1C60CA2C6A6FD2000F29E2 /* BoulderBroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderBroTests.swift; sourceTree = "<group>"; };
+		EF1C60D02C6A6FD2000F29E2 /* BoulderBroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoulderBroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF1C60D42C6A6FD2000F29E2 /* BoulderBroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderBroUITests.swift; sourceTree = "<group>"; };
+		EF1C60D62C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderBroUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF1C60B32C6A6FD1000F29E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1C60C32C6A6FD2000F29E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1C60CD2C6A6FD2000F29E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF1C60AD2C6A6FD1000F29E2 = {
+			isa = PBXGroup;
+			children = (
+				EF1C60B82C6A6FD1000F29E2 /* BoulderBro */,
+				EF1C60C92C6A6FD2000F29E2 /* BoulderBroTests */,
+				EF1C60D32C6A6FD2000F29E2 /* BoulderBroUITests */,
+				EF1C60B72C6A6FD1000F29E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF1C60B72C6A6FD1000F29E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */,
+				EF1C60C62C6A6FD2000F29E2 /* BoulderBroTests.xctest */,
+				EF1C60D02C6A6FD2000F29E2 /* BoulderBroUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF1C60B82C6A6FD1000F29E2 /* BoulderBro */ = {
+			isa = PBXGroup;
+			children = (
+				EF1C60B92C6A6FD1000F29E2 /* BoulderBroApp.swift */,
+				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
+				EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */,
+				EF1C60BF2C6A6FD2000F29E2 /* Preview Content */,
+			);
+			path = BoulderBro;
+			sourceTree = "<group>";
+		};
+		EF1C60BF2C6A6FD2000F29E2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EF1C60C02C6A6FD2000F29E2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EF1C60C92C6A6FD2000F29E2 /* BoulderBroTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF1C60CA2C6A6FD2000F29E2 /* BoulderBroTests.swift */,
+			);
+			path = BoulderBroTests;
+			sourceTree = "<group>";
+		};
+		EF1C60D32C6A6FD2000F29E2 /* BoulderBroUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF1C60D42C6A6FD2000F29E2 /* BoulderBroUITests.swift */,
+				EF1C60D62C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift */,
+			);
+			path = BoulderBroUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF1C60B52C6A6FD1000F29E2 /* BoulderBro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF1C60DA2C6A6FD2000F29E2 /* Build configuration list for PBXNativeTarget "BoulderBro" */;
+			buildPhases = (
+				EF1C60B22C6A6FD1000F29E2 /* Sources */,
+				EF1C60B32C6A6FD1000F29E2 /* Frameworks */,
+				EF1C60B42C6A6FD1000F29E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoulderBro;
+			productName = BoulderBro;
+			productReference = EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF1C60C52C6A6FD2000F29E2 /* BoulderBroTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF1C60DD2C6A6FD2000F29E2 /* Build configuration list for PBXNativeTarget "BoulderBroTests" */;
+			buildPhases = (
+				EF1C60C22C6A6FD2000F29E2 /* Sources */,
+				EF1C60C32C6A6FD2000F29E2 /* Frameworks */,
+				EF1C60C42C6A6FD2000F29E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF1C60C82C6A6FD2000F29E2 /* PBXTargetDependency */,
+			);
+			name = BoulderBroTests;
+			productName = BoulderBroTests;
+			productReference = EF1C60C62C6A6FD2000F29E2 /* BoulderBroTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF1C60CF2C6A6FD2000F29E2 /* BoulderBroUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF1C60E02C6A6FD2000F29E2 /* Build configuration list for PBXNativeTarget "BoulderBroUITests" */;
+			buildPhases = (
+				EF1C60CC2C6A6FD2000F29E2 /* Sources */,
+				EF1C60CD2C6A6FD2000F29E2 /* Frameworks */,
+				EF1C60CE2C6A6FD2000F29E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF1C60D22C6A6FD2000F29E2 /* PBXTargetDependency */,
+			);
+			name = BoulderBroUITests;
+			productName = BoulderBroUITests;
+			productReference = EF1C60D02C6A6FD2000F29E2 /* BoulderBroUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF1C60AE2C6A6FD1000F29E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					EF1C60B52C6A6FD1000F29E2 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					EF1C60C52C6A6FD2000F29E2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = EF1C60B52C6A6FD1000F29E2;
+					};
+					EF1C60CF2C6A6FD2000F29E2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = EF1C60B52C6A6FD1000F29E2;
+					};
+				};
+			};
+			buildConfigurationList = EF1C60B12C6A6FD1000F29E2 /* Build configuration list for PBXProject "BoulderBro" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF1C60AD2C6A6FD1000F29E2;
+			productRefGroup = EF1C60B72C6A6FD1000F29E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF1C60B52C6A6FD1000F29E2 /* BoulderBro */,
+				EF1C60C52C6A6FD2000F29E2 /* BoulderBroTests */,
+				EF1C60CF2C6A6FD2000F29E2 /* BoulderBroUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF1C60B42C6A6FD1000F29E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF1C60C12C6A6FD2000F29E2 /* Preview Assets.xcassets in Resources */,
+				EF1C60BE2C6A6FD2000F29E2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1C60C42C6A6FD2000F29E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1C60CE2C6A6FD2000F29E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF1C60B22C6A6FD1000F29E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
+				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1C60C22C6A6FD2000F29E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF1C60CB2C6A6FD2000F29E2 /* BoulderBroTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF1C60CC2C6A6FD2000F29E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF1C60D72C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift in Sources */,
+				EF1C60D52C6A6FD2000F29E2 /* BoulderBroUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF1C60C82C6A6FD2000F29E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF1C60B52C6A6FD1000F29E2 /* BoulderBro */;
+			targetProxy = EF1C60C72C6A6FD2000F29E2 /* PBXContainerItemProxy */;
+		};
+		EF1C60D22C6A6FD2000F29E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF1C60B52C6A6FD1000F29E2 /* BoulderBro */;
+			targetProxy = EF1C60D12C6A6FD2000F29E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EF1C60D82C6A6FD2000F29E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF1C60D92C6A6FD2000F29E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF1C60DB2C6A6FD2000F29E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BoulderBro/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF1C60DC2C6A6FD2000F29E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BoulderBro/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EF1C60DE2C6A6FD2000F29E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoulderBro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoulderBro";
+			};
+			name = Debug;
+		};
+		EF1C60DF2C6A6FD2000F29E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoulderBro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoulderBro";
+			};
+			name = Release;
+		};
+		EF1C60E12C6A6FD2000F29E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BoulderBro;
+			};
+			name = Debug;
+		};
+		EF1C60E22C6A6FD2000F29E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BoulderBro;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF1C60B12C6A6FD1000F29E2 /* Build configuration list for PBXProject "BoulderBro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF1C60D82C6A6FD2000F29E2 /* Debug */,
+				EF1C60D92C6A6FD2000F29E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF1C60DA2C6A6FD2000F29E2 /* Build configuration list for PBXNativeTarget "BoulderBro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF1C60DB2C6A6FD2000F29E2 /* Debug */,
+				EF1C60DC2C6A6FD2000F29E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF1C60DD2C6A6FD2000F29E2 /* Build configuration list for PBXNativeTarget "BoulderBroTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF1C60DE2C6A6FD2000F29E2 /* Debug */,
+				EF1C60DF2C6A6FD2000F29E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF1C60E02C6A6FD2000F29E2 /* Build configuration list for PBXNativeTarget "BoulderBroUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF1C60E12C6A6FD2000F29E2 /* Debug */,
+				EF1C60E22C6A6FD2000F29E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EF1C60AE2C6A6FD1000F29E2 /* Project object */;
+}
