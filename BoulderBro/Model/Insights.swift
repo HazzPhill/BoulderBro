@@ -7,6 +7,7 @@ struct WorkoutData: Identifiable {
     let id = UUID()
     let date: Date
     let caloriesBurnt: Double
+    let duration: TimeInterval // New property to store session duration
 }
 
 struct Insights: View {
@@ -66,15 +67,12 @@ struct Insights: View {
                                     PointMark(
                                         x: .value("Date", data.date, unit: .day),
                                         y: .value("Calories", data.caloriesBurnt)
-                                        
                                     )
-                                    
                                     .symbol(by: .value("Calories", data.caloriesBurnt))
                                     .symbolSize(30)
                                     .foregroundStyle(Color.red)
                                 }
                             }
-                            
                             .padding()
                         )
                         .onAppear {
@@ -86,12 +84,45 @@ struct Insights: View {
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .foregroundStyle(Color(.white))
+                            .overlay(
+                                VStack (alignment: .leading) {
+                                    Text("Avg. Session Duration")
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                        .padding(.top)
+                                    Spacer()
+                                    
+                                    Text(avgSessionDuration.formattedDurationWithMilliseconds())
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color(hex: "#FF5733"))
+                                        .padding(.bottom)
+    
+                                }
+                                .padding()
+                            )
                             .zIndex(1)
 
                         Rectangle()
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .foregroundStyle(Color(.white))
+                            .overlay(
+                                VStack (alignment: .leading) {
+                                    Text("Current Level")
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                        .padding(.top)
+                                    Spacer()
+                                    
+                                    Text("V6")
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color(hex: "#FF5733"))
+                                        .padding(.bottom)
+    
+                                }
+                            )
                             .zIndex(1)
                     }
                     .shadow(radius: 20)
@@ -233,21 +264,26 @@ struct Insights: View {
 
     private func fetchWorkoutData() {
         // Mock data for demonstration
-        // Replace this with actual HealthKit data fetching logic
         workoutData = [
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 11), caloriesBurnt: 300),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 10), caloriesBurnt: 320),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 9), caloriesBurnt: 310),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 8), caloriesBurnt: 290),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 7), caloriesBurnt: 330),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 6), caloriesBurnt: 340),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 5), caloriesBurnt: 300),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 4), caloriesBurnt: 350),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 3), caloriesBurnt: 360),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 2), caloriesBurnt: 330),
-            WorkoutData(date: Date().addingTimeInterval(-86400 * 1), caloriesBurnt: 310),
-            WorkoutData(date: Date(), caloriesBurnt: 320),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 11), caloriesBurnt: 300, duration: 3600),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 10), caloriesBurnt: 320, duration: 4000),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 9), caloriesBurnt: 310, duration: 3500),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 8), caloriesBurnt: 290, duration: 3700),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 7), caloriesBurnt: 330, duration: 3800),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 6), caloriesBurnt: 340, duration: 3900),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 5), caloriesBurnt: 300, duration: 3600),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 4), caloriesBurnt: 350, duration: 4100),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 3), caloriesBurnt: 360, duration: 4200),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 2), caloriesBurnt: 330, duration: 4300),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 1), caloriesBurnt: 310, duration: 4400),
+            WorkoutData(date: Date(), caloriesBurnt: 320, duration: 4500),
         ]
+        
+        // Calculate average session duration
+        if !workoutData.isEmpty {
+            let totalDuration = workoutData.reduce(0) { $0 + $1.duration }
+            avgSessionDuration = totalDuration / Double(workoutData.count)
+        }
     }
 }
 
