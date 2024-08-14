@@ -113,7 +113,6 @@
 				EF1C60F22C6A8F0C000F29E2 /* Model */,
 				EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */,
 				EF1C60BF2C6A6FD2000F29E2 /* Preview Content */,
-				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
 				EF1C61252C6A9076000F29E2 /* GoogleService-Info.plist */,
 			);
 			path = BoulderBro;
@@ -155,6 +154,7 @@
 		EF1C60F22C6A8F0C000F29E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
 				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
 			);

@@ -3,6 +3,8 @@ import HealthKit
 import HealthKitUI
 import Charts
 
+// MARK: - Data Model
+
 struct WorkoutData: Identifiable {
     let id = UUID()
     let date: Date
@@ -10,7 +12,11 @@ struct WorkoutData: Identifiable {
     let duration: TimeInterval // New property to store session duration
 }
 
+// MARK: - Main Insights View
+
 struct Insights: View {
+    // MARK: - State Variables
+
     @State private var activeCalories: Double = 0
     @State private var totalCalories: Double = 0
     @State private var avgSessionDuration: TimeInterval = 0
@@ -25,9 +31,11 @@ struct Insights: View {
     @State private var lastScore: TimeInterval = 0
     @State private var personalBest: TimeInterval = 0
 
+    // MARK: - Body
+
     var body: some View {
         ZStack {
-            // Sticky Gradient Background
+            // MARK: - Sticky Gradient Background
             GeometryReader { geometry in
                 LinearGradient(
                     gradient: Gradient(colors: [Color(hex: "#FF5733"), .white]),
@@ -42,6 +50,7 @@ struct Insights: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
+                    // MARK: - Summary Section
                     Text("Summary")
                         .padding(.top, 12)
                         .padding(.bottom, 15)
@@ -49,7 +58,7 @@ struct Insights: View {
                         .fontWeight(.bold)
                         .foregroundStyle(Color(.black))
 
-                    // Line Chart Rectangle
+                    // MARK: - Line Chart Rectangle
                     Rectangle()
                         .frame(height: 163)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -63,7 +72,7 @@ struct Insights: View {
                                         y: .value("Calories", data.caloriesBurnt)
                                     )
                                     .foregroundStyle(Color(hex: "#FF5733"))
-                                    
+
                                     PointMark(
                                         x: .value("Date", data.date, unit: .day),
                                         y: .value("Calories", data.caloriesBurnt)
@@ -79,48 +88,47 @@ struct Insights: View {
                             fetchWorkoutData() // Fetch data when view appears
                         }
 
+                    // MARK: - Metrics Section
                     HStack {
+                        // MARK: Avg. Session Duration
                         Rectangle()
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .foregroundStyle(Color(.white))
                             .overlay(
-                                VStack (alignment: .leading) {
+                                VStack(alignment: .leading) {
                                     Text("Avg. Session Duration")
                                         .font(.headline)
                                         .foregroundColor(.black)
                                         .padding(.top)
                                     Spacer()
-                                    
                                     Text(avgSessionDuration.formattedDurationWithMilliseconds())
                                         .font(.title)
                                         .fontWeight(.bold)
                                         .foregroundStyle(Color(hex: "#FF5733"))
                                         .padding(.bottom)
-    
                                 }
                                 .padding()
                             )
                             .zIndex(1)
 
+                        // MARK: Current Level
                         Rectangle()
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .foregroundStyle(Color(.white))
                             .overlay(
-                                VStack (alignment: .leading) {
+                                VStack(alignment: .leading) {
                                     Text("Current Level")
                                         .font(.headline)
                                         .foregroundColor(.black)
                                         .padding(.top)
                                     Spacer()
-                                    
                                     Text("V6")
                                         .font(.largeTitle)
                                         .fontWeight(.bold)
                                         .foregroundStyle(Color(hex: "#FF5733"))
                                         .padding(.bottom)
-    
                                 }
                             )
                             .zIndex(1)
@@ -132,6 +140,7 @@ struct Insights: View {
                     .padding(.top, 15)
                     .padding(.bottom)
 
+                    // MARK: - Hang Timer Section
                     Text("Hang Timer")
                         .font(.title)
                         .fontWeight(.bold)
@@ -149,14 +158,13 @@ struct Insights: View {
                                 HStack {
                                     ZStack(alignment: .leading) {
                                         // Fixed width background to hold the timer text
-                                        Color.clear.frame(width: 150) // Use a clear color to set fixed width without affecting appearance
-                                        
+                                        Color.clear.frame(width: 150)
                                         Text(elapsedTime.formattedDurationWithMilliseconds())
                                             .font(.title)
                                             .fontWeight(.bold)
                                             .foregroundStyle(Color(hex: "#FF5733"))
                                     }
-                                    
+
                                     // Static Play/Pause Button
                                     Button(action: {
                                         isTimerRunning.toggle()
@@ -171,10 +179,10 @@ struct Insights: View {
                                         Image(systemName: isTimerRunning ? "pause.circle.fill" : "play.circle.fill")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 30, height: 30) // Fixed size for the button
+                                            .frame(width: 30, height: 30)
                                             .foregroundStyle((isTimerRunning ? Color.red : Color(hex: "#FF5733")))
                                     }
-                                    
+
                                     Spacer() // Spacer to push content to the right
 
                                     // Last/PB Section
@@ -200,6 +208,7 @@ struct Insights: View {
                             .padding()
                         )
 
+                    // MARK: - Previous Workouts Section
                     Text("Previous 5 climb workouts")
                         .font(.title)
                         .fontWeight(.bold)
@@ -262,6 +271,8 @@ struct Insights: View {
         }
     }
 
+    // MARK: - Data Fetching
+
     private func fetchWorkoutData() {
         // Mock data for demonstration
         workoutData = [
@@ -278,7 +289,7 @@ struct Insights: View {
             WorkoutData(date: Date().addingTimeInterval(-86400 * 1), caloriesBurnt: 310, duration: 4400),
             WorkoutData(date: Date(), caloriesBurnt: 320, duration: 4500),
         ]
-        
+
         // Calculate average session duration
         if !workoutData.isEmpty {
             let totalDuration = workoutData.reduce(0) { $0 + $1.duration }
@@ -286,6 +297,8 @@ struct Insights: View {
         }
     }
 }
+
+// MARK: - Metric View Component
 
 struct MetricView: View {
     var title: String
@@ -318,6 +331,8 @@ struct MetricView: View {
     }
 }
 
+// MARK: - TimeInterval Extension
+
 extension TimeInterval {
     func formattedDurationWithMilliseconds() -> String {
         let formatter = DateComponentsFormatter()
@@ -330,6 +345,8 @@ extension TimeInterval {
         return "\(formattedString).\(String(format: "%02d", milliseconds))"
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     Insights()
