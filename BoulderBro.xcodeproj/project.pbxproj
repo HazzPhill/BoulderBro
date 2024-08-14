@@ -111,9 +111,6 @@
 				EF1C61312C6B539E000F29E2 /* Info.plist */,
 				EF1C60ED2C6A8AB9000F29E2 /* App */,
 				EF1C60F22C6A8F0C000F29E2 /* Model */,
-				EF1C60E52C6A7071000F29E2 /* Component */,
-				EF1C60EC2C6A8AAE000F29E2 /* Profile */,
-				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
 				EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */,
 				EF1C60BF2C6A6FD2000F29E2 /* Preview Content */,
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
@@ -147,20 +144,6 @@
 			path = BoulderBroUITests;
 			sourceTree = "<group>";
 		};
-		EF1C60E52C6A7071000F29E2 /* Component */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
-		EF1C60EC2C6A8AAE000F29E2 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		EF1C60ED2C6A8AB9000F29E2 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
+				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,10 +472,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BoulderBro/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "BoulderBro/Preview\\ Content BoulderBro/Model/ContentView.swift";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoulderBro/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -517,10 +502,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BoulderBro/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "BoulderBro/Preview\\ Content BoulderBro/Model/ContentView.swift";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoulderBro/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

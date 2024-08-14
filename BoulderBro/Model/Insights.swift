@@ -1,12 +1,20 @@
 import SwiftUI
 import HealthKit
 import HealthKitUI
+import Charts
+
+struct WorkoutData: Identifiable {
+    let id = UUID()
+    let date: Date
+    let caloriesBurnt: Double
+}
 
 struct Insights: View {
     @State private var activeCalories: Double = 0
     @State private var totalCalories: Double = 0
     @State private var avgSessionDuration: TimeInterval = 0
     @State private var avgHeartRate: Double = 0
+    @State private var workoutData: [WorkoutData] = []
 
     private let healthStore = HKHealthStore()
 
@@ -40,11 +48,38 @@ struct Insights: View {
                         .fontWeight(.bold)
                         .foregroundStyle(Color(.black))
 
+                    // Line Chart Rectangle
                     Rectangle()
                         .frame(height: 163)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(Color(.white))
                         .shadow(radius: 20)
+                        .overlay(
+                            Chart {
+                                ForEach(workoutData) { data in
+                                    LineMark(
+                                        x: .value("Date", data.date, unit: .day),
+                                        y: .value("Calories", data.caloriesBurnt)
+                                    )
+                                    .foregroundStyle(Color(hex: "#FF5733"))
+                                    
+                                    PointMark(
+                                        x: .value("Date", data.date, unit: .day),
+                                        y: .value("Calories", data.caloriesBurnt)
+                                        
+                                    )
+                                    
+                                    .symbol(by: .value("Calories", data.caloriesBurnt))
+                                    .symbolSize(30)
+                                    .foregroundStyle(Color.red)
+                                }
+                            }
+                            
+                            .padding()
+                        )
+                        .onAppear {
+                            fetchWorkoutData() // Fetch data when view appears
+                        }
 
                     HStack {
                         Rectangle()
@@ -81,11 +116,17 @@ struct Insights: View {
                         .overlay(
                             VStack {
                                 HStack {
-                                    Text(elapsedTime.formattedDurationWithMilliseconds())
-                                        .font(.largeTitle)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(Color(hex: "#FF5733"))
+                                    ZStack(alignment: .leading) {
+                                        // Fixed width background to hold the timer text
+                                        Color.clear.frame(width: 150) // Use a clear color to set fixed width without affecting appearance
+                                        
+                                        Text(elapsedTime.formattedDurationWithMilliseconds())
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(Color(hex: "#FF5733"))
+                                    }
                                     
+                                    // Static Play/Pause Button
                                     Button(action: {
                                         isTimerRunning.toggle()
                                         if !isTimerRunning {
@@ -97,16 +138,16 @@ struct Insights: View {
                                         }
                                     }) {
                                         Image(systemName: isTimerRunning ? "pause.circle.fill" : "play.circle.fill")
-                                            .resizable()         // Make the image resizable
-                                                .scaledToFit()       // Scale the image to fit the frame while maintaining aspect ratio
-                                                .frame(width: 30, height: 30) // Set a large frame size
-                                            .foregroundStyle(((isTimerRunning ? Color.red : Color(hex: "#FF5733"))))
-                                        
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 30, height: 30) // Fixed size for the button
+                                            .foregroundStyle((isTimerRunning ? Color.red : Color(hex: "#FF5733")))
                                     }
                                     
-                                    Spacer()
-                                    
-                                    VStack {
+                                    Spacer() // Spacer to push content to the right
+
+                                    // Last/PB Section
+                                    VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
                                             Text("Last:")
                                                 .font(.subheadline)
@@ -122,8 +163,6 @@ struct Insights: View {
                                         }
                                     }
                                 }
-
-                                
                                 .font(.headline)
                                 .padding(.horizontal)
                             }
@@ -187,13 +226,28 @@ struct Insights: View {
         }
         .onReceive(timer) { _ in
             if isTimerRunning {
-                elapsedTime += 0.01
+                elapsedTime += 0.01 // Update the time increment to match the timer frequency
             }
         }
     }
 
     private func fetchWorkoutData() {
-        // ... (Your existing fetchWorkoutData function)
+        // Mock data for demonstration
+        // Replace this with actual HealthKit data fetching logic
+        workoutData = [
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 11), caloriesBurnt: 300),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 10), caloriesBurnt: 320),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 9), caloriesBurnt: 310),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 8), caloriesBurnt: 290),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 7), caloriesBurnt: 330),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 6), caloriesBurnt: 340),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 5), caloriesBurnt: 300),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 4), caloriesBurnt: 350),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 3), caloriesBurnt: 360),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 2), caloriesBurnt: 330),
+            WorkoutData(date: Date().addingTimeInterval(-86400 * 1), caloriesBurnt: 310),
+            WorkoutData(date: Date(), caloriesBurnt: 320),
+        ]
     }
 }
 
@@ -208,7 +262,6 @@ struct MetricView: View {
                 .font(.headline)
                 .foregroundColor(.black)
 
-            
             if unit == "" {
                 Text(value.formattedDurationWithMilliseconds())
                     .font(.title)

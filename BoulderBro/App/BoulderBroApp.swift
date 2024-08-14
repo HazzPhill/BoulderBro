@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+@main
+struct BoulderBroApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -31,15 +40,6 @@ extension Color {
             blue: Double(b) / 255,
             opacity: Double(a) / 255
         )
-    }
-}
-
-@main
-struct BoulderBroApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
     }
 }
 
