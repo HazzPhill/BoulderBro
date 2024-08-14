@@ -1,5 +1,6 @@
 import SwiftUI
 import HealthKit
+import HealthKitUI
 
 struct Insights: View {
     @State private var activeCalories: Double = 0
@@ -8,6 +9,12 @@ struct Insights: View {
     @State private var avgHeartRate: Double = 0
 
     private let healthStore = HKHealthStore()
+
+    @State private var isTimerRunning = false
+    @State private var elapsedTime: TimeInterval = 0
+    @State private var timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    @State private var lastScore: TimeInterval = 0
+    @State private var personalBest: TimeInterval = 0
 
     var body: some View {
         ZStack {
@@ -71,6 +78,57 @@ struct Insights: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(Color(.white))
                         .shadow(radius: 20)
+                        .overlay(
+                            VStack {
+                                HStack {
+                                    Text(elapsedTime.formattedDurationWithMilliseconds())
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color(hex: "#FF5733"))
+                                    
+                                    Button(action: {
+                                        isTimerRunning.toggle()
+                                        if !isTimerRunning {
+                                            lastScore = elapsedTime
+                                            if lastScore > personalBest {
+                                                personalBest = lastScore
+                                            }
+                                            elapsedTime = 0
+                                        }
+                                    }) {
+                                        Image(systemName: isTimerRunning ? "pause.circle.fill" : "play.circle.fill")
+                                            .resizable()         // Make the image resizable
+                                                .scaledToFit()       // Scale the image to fit the frame while maintaining aspect ratio
+                                                .frame(width: 30, height: 30) // Set a large frame size
+                                            .foregroundStyle(((isTimerRunning ? Color.red : Color(hex: "#FF5733"))))
+                                        
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack {
+                                        VStack(alignment: .leading) {
+                                            Text("Last:")
+                                                .font(.subheadline)
+                                            Text(lastScore.formattedDurationWithMilliseconds())
+                                                .font(.footnote)
+                                        }
+                                        Spacer()
+                                        VStack(alignment: .leading) {
+                                            Text("PB:")
+                                                .font(.subheadline)
+                                            Text(personalBest.formattedDurationWithMilliseconds())
+                                                .font(.footnote)
+                                        }
+                                    }
+                                }
+
+                                
+                                .font(.headline)
+                                .padding(.horizontal)
+                            }
+                            .padding()
+                        )
 
                     Text("Previous 5 climb workouts")
                         .font(.title)
@@ -108,7 +166,7 @@ struct Insights: View {
                             MetricView(
                                 title: "Avg. Session",
                                 value: avgSessionDuration,
-                                unit: "" // Indicate that it's a duration
+                                unit: ""
                             )
 
                             MetricView(
@@ -125,6 +183,11 @@ struct Insights: View {
                 }
                 .padding(.horizontal)
                 .padding(.top, 12)
+            }
+        }
+        .onReceive(timer) { _ in
+            if isTimerRunning {
+                elapsedTime += 0.01
             }
         }
     }
@@ -145,9 +208,9 @@ struct MetricView: View {
                 .font(.headline)
                 .foregroundColor(.black)
 
-            // Handle formatting based on the unit
-            if unit == "" { // Assuming empty unit means duration
-                Text(value.formattedDuration())
+            
+            if unit == "" {
+                Text(value.formattedDurationWithMilliseconds())
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(Color(hex: "#FF5733"))
@@ -167,11 +230,15 @@ struct MetricView: View {
 }
 
 extension TimeInterval {
-    func formattedDuration() -> String {
+    func formattedDurationWithMilliseconds() -> String {
         let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.unitsStyle = .abbreviated
-        return formatter.string(from: self) ?? ""
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        formatter.unitsStyle = .positional
+
+        let formattedString = formatter.string(from: self) ?? ""
+        let milliseconds = Int((self.truncatingRemainder(dividingBy: 1)) * 100)
+        return "\(formattedString).\(String(format: "%02d", milliseconds))"
     }
 }
 
