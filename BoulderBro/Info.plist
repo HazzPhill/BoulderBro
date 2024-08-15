@@ -2,17 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>Your data will be used to provide climbing insights.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Your data will be used to provide climbing insights.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Your data will be used to provide climbing insights.</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Kurdis-ExtraWideBold.otf</string>
 		<string>Kurdis-ExtraWideBlack.otf</string>
 		<string>Kurdis-Regular.otf</string>
 	</array>
-	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>Your data will be used to supply insightful climbing insights.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Your data will be used to supply insightful climbing insights.</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Your data will be used to supply insightful climbing insights.</string>
 </dict>
 </plist>

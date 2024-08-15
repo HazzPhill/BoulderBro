@@ -9,7 +9,7 @@ struct WorkoutData: Identifiable {
     let id = UUID()
     let date: Date
     let caloriesBurnt: Double
-    let duration: TimeInterval // New property to store session duration
+    let duration: TimeInterval
 }
 
 // MARK: - Main Insights View
@@ -35,7 +35,6 @@ struct Insights: View {
 
     var body: some View {
         ZStack {
-            // MARK: - Sticky Gradient Background
             GeometryReader { geometry in
                 LinearGradient(
                     gradient: Gradient(colors: [Color(hex: "#FF5733"), Color(hex: "#f2f1f6")]),
@@ -50,7 +49,6 @@ struct Insights: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    // MARK: - Summary Section
                     Text("Summary")
                         .padding(.top, 12)
                         .padding(.bottom, 15)
@@ -59,7 +57,6 @@ struct Insights: View {
                         .foregroundStyle(Color(.black))
                         .opacity(0.7)
 
-                    // MARK: - Line Chart Rectangle
                     Rectangle()
                         .frame(height: 163)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -85,12 +82,10 @@ struct Insights: View {
                             .padding()
                         )
                         .onAppear {
-                            fetchWorkoutData() // Fetch data when view appears
+                            requestHealthKitAuthorization()
                         }
 
-                    // MARK: - Metrics Section
                     HStack {
-                        // MARK: Avg. Session Duration
                         Rectangle()
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -112,7 +107,6 @@ struct Insights: View {
                             )
                             .zIndex(1)
 
-                        // MARK: Current Level
                         Rectangle()
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -138,7 +132,6 @@ struct Insights: View {
                     .padding(.top, 15)
                     .padding(.bottom)
 
-                    // MARK: - Hang Timer Section
                     Text("Hang Timer")
                         .font(.custom("Kurdis-ExtraWideBold", size: 20))
                         .fontWeight(.bold)
@@ -153,7 +146,6 @@ struct Insights: View {
                             VStack {
                                 HStack {
                                     ZStack(alignment: .leading) {
-                                        // Fixed width background to hold the timer text
                                         Color.clear.frame(width: 150)
                                         Text(elapsedTime.formattedDurationWithMilliseconds())
                                             .font(.custom("Kurdis-ExtraWideBold", size: 22))
@@ -161,7 +153,6 @@ struct Insights: View {
                                             .foregroundStyle(Color(hex: "#FF5733"))
                                     }
 
-                                    // Static Play/Pause Button
                                     Button(action: {
                                         isTimerRunning.toggle()
                                         if !isTimerRunning {
@@ -180,9 +171,8 @@ struct Insights: View {
                                             .padding()
                                     }
 
-                                    Spacer() // Spacer to push content to the right
+                                    Spacer()
 
-                                    // Last/PB Section
                                     VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
                                             Text("Last:")
@@ -205,7 +195,6 @@ struct Insights: View {
                             .padding()
                         )
 
-                    // MARK: - Previous Workouts Section
                     Text("Previous 5 climb workouts")
                         .font(.custom("Kurdis-ExtraWideBold", size: 20))
                         .fontWeight(.bold)
@@ -262,6 +251,24 @@ struct Insights: View {
         .onReceive(timer) { _ in
             if isTimerRunning {
                 elapsedTime += 0.01 // Update the time increment to match the timer frequency
+            }
+        }
+    }
+
+    // MARK: - HealthKit Authorization
+
+    private func requestHealthKitAuthorization() {
+        let readTypes: Set<HKObjectType> = [
+            HKObjectType.workoutType(),
+            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKObjectType.quantityType(forIdentifier: .heartRate)!
+        ]
+        
+        healthStore.requestAuthorization(toShare: nil, read: readTypes) { success, error in
+            if success {
+                fetchWorkoutData()
+            } else {
+                print("HealthKit authorization failed: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
     }
@@ -345,4 +352,3 @@ extension TimeInterval {
 #Preview {
     Insights()
 }
-

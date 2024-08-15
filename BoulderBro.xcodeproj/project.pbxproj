@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF05A7D42C6D774C001A80D3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF05A7D32C6D774C001A80D3 /* AuthenticationView.swift */; };
+		EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1775D32C6EABCC00EEAEF7 /* LogInView.swift */; };
 		EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60B92C6A6FD1000F29E2 /* BoulderBroApp.swift */; };
 		EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */; };
 		EF1C60BE2C6A6FD2000F29E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */; };
@@ -20,10 +20,6 @@
 		EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C612B2C6B3E6F000F29E2 /* Insights.swift */; };
 		EF1C612F2C6B4C74000F29E2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */; };
 		EF1C61302C6B4C74000F29E2 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */; };
-		EF1FE6F02C6D7DD8005F26F5 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */; };
-		EF1FE6F22C6D858F005F26F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1FE6F12C6D858F005F26F5 /* RootView.swift */; };
-		EF1FE6F42C6D8927005F26F5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */; };
-		EF881E362C6D79ED004E11E5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF881E352C6D79ED004E11E5 /* SignInView.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -47,6 +43,7 @@
 		EFA16F6B2C6D759A00D7301E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6A2C6D759A00D7301E /* FirebaseStorage */; };
 		EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6C2C6D759A00D7301E /* FirebaseStorageCombine-Community */; };
 		EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */; };
+		EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */; };
 		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
 		EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
 		EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
@@ -57,6 +54,8 @@
 		EFC7CFEB2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
 		EFC7CFEC2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
 		EFC7CFED2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
+		EFC7D01C2C6EA6EC002D5F78 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */; };
+		EFC7D01E2C6EA6EC002D5F78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EF05A7D32C6D774C001A80D3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		EF1775D32C6EABCC00EEAEF7 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoulderBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1C60B92C6A6FD1000F29E2 /* BoulderBroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderBroApp.swift; sourceTree = "<group>"; };
 		EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,10 +93,7 @@
 		EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
 		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
-		EF1FE6F12C6D858F005F26F5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		EF881E352C6D79ED004E11E5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
@@ -112,11 +108,13 @@
 				EFA16F4B2C6D759A00D7301E /* FirebaseAppDistribution-Beta in Frameworks */,
 				EFA16F572C6D759A00D7301E /* FirebaseFirestore in Frameworks */,
 				EFA16F4F2C6D759A00D7301E /* FirebaseAuthCombine-Community in Frameworks */,
+				EFC7D01C2C6EA6EC002D5F78 /* GoogleSignIn in Frameworks */,
 				EFA16F612C6D759A00D7301E /* FirebaseInstallations in Frameworks */,
 				EF1C61302C6B4C74000F29E2 /* HealthKitUI.framework in Frameworks */,
 				EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */,
 				EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				EFA16F5F2C6D759A00D7301E /* FirebaseInAppMessaging-Beta in Frameworks */,
+				EFC7D01E2C6EA6EC002D5F78 /* GoogleSignInSwift in Frameworks */,
 				EFA16F652C6D759A00D7301E /* FirebaseMLModelDownloader in Frameworks */,
 				EF1C612F2C6B4C74000F29E2 /* HealthKit.framework in Frameworks */,
 				EFA16F632C6D759A00D7301E /* FirebaseMessaging in Frameworks */,
@@ -157,13 +155,56 @@
 		EF05A7D22C6D772F001A80D3 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				EF1FE6F12C6D858F005F26F5 /* RootView.swift */,
-				EF05A7D32C6D774C001A80D3 /* AuthenticationView.swift */,
-				EF881E352C6D79ED004E11E5 /* SignInView.swift */,
-				EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */,
-				EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */,
+				EF1775D32C6EABCC00EEAEF7 /* LogInView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		EF1775CD2C6EAAF900EEAEF7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EF1775CF2C6EAB3C00EEAEF7 /* Core */,
+				EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EF1775CE2C6EAB2100EEAEF7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EF1775CF2C6EAB3C00EEAEF7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EF1775D02C6EAB6E00EEAEF7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EF05A7D22C6D772F001A80D3 /* Authentication */,
+				EF1775D22C6EABB500EEAEF7 /* Profile */,
+				EF1775D12C6EAB9E00EEAEF7 /* Root */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EF1775D12C6EAB9E00EEAEF7 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		EF1775D22C6EABB500EEAEF7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		EF1C60AD2C6A6FD1000F29E2 = {
@@ -190,9 +231,10 @@
 		EF1C60B82C6A6FD1000F29E2 /* BoulderBro */ = {
 			isa = PBXGroup;
 			children = (
+				EF1775CD2C6EAAF900EEAEF7 /* Components */,
+				EF1775D02C6EAB6E00EEAEF7 /* Core */,
 				EF1C61312C6B539E000F29E2 /* Info.plist */,
 				EF1C60ED2C6A8AB9000F29E2 /* App */,
-				EF05A7D22C6D772F001A80D3 /* Authentication */,
 				EF1C60F22C6A8F0C000F29E2 /* Model */,
 				EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */,
 				EF1C60BF2C6A6FD2000F29E2 /* Preview Content */,
@@ -238,9 +280,10 @@
 		EF1C60F22C6A8F0C000F29E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EF1775CE2C6EAB2100EEAEF7 /* ViewModels */,
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
-				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
+				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
 			);
 			path = Model;
@@ -313,6 +356,8 @@
 				EFA16F6A2C6D759A00D7301E /* FirebaseStorage */,
 				EFA16F6C2C6D759A00D7301E /* FirebaseStorageCombine-Community */,
 				EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */,
+				EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */,
+				EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */,
 			);
 			productName = BoulderBro;
 			productReference = EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */;
@@ -388,6 +433,7 @@
 			mainGroup = EF1C60AD2C6A6FD1000F29E2;
 			packageReferences = (
 				EF1C60F52C6A9011000F29E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = EF1C60B72C6A6FD1000F29E2 /* Products */;
 			projectDirPath = "";
@@ -441,15 +487,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF1FE6F22C6D858F005F26F5 /* RootView.swift in Sources */,
-				EF881E362C6D79ED004E11E5 /* SignInView.swift in Sources */,
+				EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */,
+				EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
-				EF1FE6F42C6D8927005F26F5 /* SettingsView.swift in Sources */,
-				EF1FE6F02C6D7DD8005F26F5 /* AuthenticationManager.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
 				EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */,
-				EF05A7D42C6D774C001A80D3 /* AuthenticationView.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,10 +657,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "BoulderBro/Preview\\ Content BoulderBro/Model/ContentView.swift";
+				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoulderBro/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your data will be used to supply insightful climbing insights.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -628,7 +675,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro.Climbing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -644,10 +691,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "BoulderBro/Preview\\ Content BoulderBro/Model/ContentView.swift";
+				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoulderBro/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your data will be used to supply insightful climbing insights.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -658,7 +709,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro;
+				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro.Climbing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -710,6 +761,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroUITests;
@@ -727,6 +779,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroUITests;
@@ -786,6 +839,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.0.0;
+			};
+		};
+		EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -905,6 +966,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF1C60F52C6A9011000F29E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseVertexAI-Preview";
+		};
+		EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

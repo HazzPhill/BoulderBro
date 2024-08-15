@@ -13,7 +13,7 @@ struct EditableBlock<Content: View>: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: 163, height: 163) // Original height
+                .frame(width: 163, height: 163)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .foregroundStyle(Color.white)
 
@@ -51,7 +51,6 @@ struct FixedHeightEditableBlock<Content: View>: View {
 }
 
 struct Home: View {
-    @Binding var showSignInView: Bool
 
     // Circle variables
     @State private var topCircleOffset = CGSize(width: 150, height: -300)
@@ -124,7 +123,6 @@ struct Home: View {
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                // Use the original EditableBlock for this section
                                 EditableBlock {
                                     VStack {
                                         Image(systemName: "star.fill")
@@ -135,8 +133,6 @@ struct Home: View {
                                 }
                                 .padding(.trailing, 5)
 
-                                // ... (Rest of your EditableBlock views for "My Climbs")
-
                                 EditableBlock {
                                     VStack {
                                         Image(systemName: "flame.fill")
@@ -145,7 +141,6 @@ struct Home: View {
                                         Text("Flame")
                                     }
                                 }
-
                                 .padding(.trailing, 5)
 
                                 EditableBlock {
@@ -156,7 +151,6 @@ struct Home: View {
                                         Text("Bolt")
                                     }
                                 }
-
                                 .padding(.trailing, 5)
 
                                 EditableBlock {
@@ -167,7 +161,6 @@ struct Home: View {
                                             .font(.subheadline)
                                     }
                                 }
-
                                 .padding(.trailing, 5)
 
                                 EditableBlock {
@@ -178,7 +171,6 @@ struct Home: View {
                                         Text("Heart")
                                     }
                                 }
-
                                 .padding(.trailing, 5)
 
                                 Spacer()
@@ -194,21 +186,15 @@ struct Home: View {
                             .foregroundStyle(Color(hex: "#3F3F3F"))
                             .padding(.top)
 
-
-                        // Optimized grid layout with fixed height for the bottom grid
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                            // Use FixedHeightEditableBlock for the bottom grid
                             FixedHeightEditableBlock {
-                                // Custom content for the first rectangle
                                 VStack {
                                     Text("First Rectangle")
                                         .font(.headline)
-                                    // Add more views as needed
                                 }
                             }
-
+                            
                             FixedHeightEditableBlock {
-                                // Custom content for the second rectangle
                                 HStack {
                                     Image(systemName: "heart.fill")
                                         .font(.largeTitle)
@@ -216,19 +202,15 @@ struct Home: View {
                                     Text("Second Rectangle")
                                 }
                             }
-
-                            // Add more FixedHeightEditableBlock views with custom content as needed
+                            
                             FixedHeightEditableBlock {
-                                // Custom content for the third rectangle
                                 VStack {
                                     Text("Third Rectangle")
                                         .font(.headline)
-                                    // Add more views as needed
                                 }
                             }
-
+                            
                             FixedHeightEditableBlock {
-                                // Custom content for the fourth rectangle
                                 HStack {
                                     Image(systemName: "staroflife.fill")
                                         .font(.largeTitle)
@@ -237,6 +219,29 @@ struct Home: View {
                                 }
                             }
                         }
+                        // NavigationLink to Insights
+                        NavigationLink(destination: Insights()
+                            .navigationBarBackButtonHidden()){
+                            Text("View all Insights")
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity, minHeight: 40)
+                                .background(Color(hex: "#FF5733"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        }
+                        .padding(.top,5)
+                        
+                        Text("Climb of the week")
+                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(hex: "#3F3F3F"))
+                            .padding(.top)
+
+                        Rectangle()
+                            .frame(height: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .foregroundStyle(Color.white)
                     }
                     .padding()
                 }
@@ -246,5 +251,5 @@ struct Home: View {
 }
 
 #Preview {
-    Home(showSignInView: .constant(false))
+    Home()
 }
