@@ -16,6 +16,28 @@ final class SettingsViewModel: ObservableObject {
        try AuthenticationManager.shared.signOut()
     }
     
+    func resetPassword() async throws {
+        
+        let authUser = try AuthenticationManager.shared.getAuthenticatedUser()
+        
+        guard let email = authUser.email else {
+            throw URLError(.fileDoesNotExist)
+        }
+        
+       try await AuthenticationManager.shared.resetPassword(email: email)
+    }
+    
+    func updatePassword() async throws {
+        let email = "EMAIL123"
+        try await AuthenticationManager.shared.updateEmail(email: <#T##String#>)
+    }
+    
+    func updateEmail() async throws{
+        let password = "PASSY123"
+        try await AuthenticationManager.shared.updatePassword(password: password)
+    }
+    
+    
 }
 
 struct SettingsView: View {
@@ -36,6 +58,44 @@ struct SettingsView: View {
                         }
                     }
                 }
+                
+                Button ("Reset Password"){
+                    Task {
+                        do {
+                            try await viewModel.resetPassword()
+                            showSignInView = true
+                            print("Password has been reset")
+                        } catch {
+                            print (error)
+                        }
+                    }
+                }
+                
+                Button ("Update Password"){
+                    Task {
+                        do {
+                            try await viewModel.updatePassword()
+                            showSignInView = true
+                            print("Update Password")
+                        } catch {
+                            print (error)
+                        }
+                    }
+                }
+                
+                Button ("Update Email"){
+                    Task {
+                        do {
+                            try await viewModel.updateEmail()
+                            showSignInView = true
+                            print("PUpdate Email")
+                        } catch {
+                            print (error)
+                        }
+                    }
+                }
+                
+                
             }
             .navigationTitle("Settings")
         }
