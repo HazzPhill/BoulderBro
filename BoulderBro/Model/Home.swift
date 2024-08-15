@@ -105,10 +105,11 @@ struct Home: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Overall Progress")
-                            .font(.custom("Kurdis-ExtraWideBold", size: 24))
+                        Text("Overview")
+                            .font(.custom("Kurdis-ExtraWideBlack", size: 30))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color(hex: "#FF5733"))
+                            .foregroundStyle(Color.black)
+                            .opacity(0.7)
 
                         Rectangle()
                             .frame(height: 163)
@@ -116,9 +117,10 @@ struct Home: View {
                             .foregroundStyle(Color.white)
 
                         Text("My Climbs")
-                            .font(.custom("Kurdis-ExtraWideBold", size: 24))
+                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color(hex: "#FF5733"))
+                            .foregroundStyle(Color(hex: "#3F3F3F"))
+                            .padding(.top)
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -187,9 +189,11 @@ struct Home: View {
                         }
 
                         Text("Stats")
-                          .font(.custom("Kurdis-ExtraWideBold", size: 24))
+                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color(hex: "#FF5733"))
+                            .foregroundStyle(Color(hex: "#3F3F3F"))
+                            .padding(.top)
+
 
                         // Optimized grid layout with fixed height for the bottom grid
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {

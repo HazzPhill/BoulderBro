@@ -140,11 +140,10 @@ struct Insights: View {
 
                     // MARK: - Hang Timer Section
                     Text("Hang Timer")
-                        .font(.custom("Kurdis-ExtraWideBold", size: 24))
+                        .font(.custom("Kurdis-ExtraWideBold", size: 20))
                         .fontWeight(.bold)
-                        .foregroundStyle(Color(.black))
-                        .padding(.top, 5)
-                        .padding(.bottom, 15)
+                        .foregroundStyle(Color(hex: "#3F3F3F"))
+                        .padding(.top)
 
                     Rectangle()
                         .frame(height: 125)
@@ -208,11 +207,10 @@ struct Insights: View {
 
                     // MARK: - Previous Workouts Section
                     Text("Previous 5 climb workouts")
-                        .font(.custom("Kurdis-ExtraWideBold", size: 24))
+                        .font(.custom("Kurdis-ExtraWideBold", size: 20))
                         .fontWeight(.bold)
-                        .foregroundStyle(Color(.black))
-                        .padding(.top, 15)
-                        .padding(.bottom, 15)
+                        .foregroundStyle(Color(hex: "#3F3F3F"))
+                        .padding(.top)
 
                     ZStack {
                         Rectangle()

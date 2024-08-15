@@ -64,7 +64,7 @@ struct SplashScreen: View {
                     Text("Hello, Harry!")
                         .foregroundStyle(Color.white)
                         .fontWeight(.bold)
-                        .font(.title)
+                        .font(.custom("Kurdis-ExtraWideBold", size: 32))
                     
                     // Customized NavigationLink
                     NavigationLink {
@@ -72,7 +72,7 @@ struct SplashScreen: View {
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         Text("View Insights")
-                            .fontWeight(.bold)
+                            .font(.custom("Kurdis-ExtraWideBold", size: 16))
                             .font(.system(size: 16))
                             .foregroundColor(Color(hex: "#FF5733"))
                             .frame(maxWidth: .infinity, minHeight: 50) // Full width, fixed height
