@@ -1,5 +1,5 @@
 {
-  "originHash" : "5d16104184d244a3e95ce0f4983fd82c029bc874840d686469a46ba32ca8d7f6",
+  "originHash" : "c63c63846d9c539229e96de38d6af51417e28c0ee9a0bc48bd0f0f19d923c329",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -107,15 +107,6 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
-      }
-    },
-    {
-      "identity" : "stream-chat-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/GetStream/stream-chat-swift.git",
-      "state" : {
-        "revision" : "5e71f8abcb238e385992b430c59c6e4fb415ad4a",
-        "version" : "4.61.0"
       }
     },
     {
