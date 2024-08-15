@@ -22,6 +22,7 @@
 		EF1C61302C6B4C74000F29E2 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */; };
 		EF1FE6F02C6D7DD8005F26F5 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */; };
 		EF1FE6F22C6D858F005F26F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1FE6F12C6D858F005F26F5 /* RootView.swift */; };
+		EF1FE6F42C6D8927005F26F5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */; };
 		EF881E362C6D79ED004E11E5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF881E352C6D79ED004E11E5 /* SignInView.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -85,6 +86,7 @@
 		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		EF1FE6F12C6D858F005F26F5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EF881E352C6D79ED004E11E5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 				EF05A7D32C6D774C001A80D3 /* AuthenticationView.swift */,
 				EF881E352C6D79ED004E11E5 /* SignInView.swift */,
 				EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */,
+				EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				EF1FE6F22C6D858F005F26F5 /* RootView.swift in Sources */,
 				EF881E362C6D79ED004E11E5 /* SignInView.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
+				EF1FE6F42C6D8927005F26F5 /* SettingsView.swift in Sources */,
 				EF1FE6F02C6D7DD8005F26F5 /* AuthenticationManager.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
 				EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */,
