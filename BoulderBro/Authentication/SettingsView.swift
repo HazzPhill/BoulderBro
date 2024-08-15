@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-@MainActor
-
 final class SettingsViewModel: ObservableObject {
     
     

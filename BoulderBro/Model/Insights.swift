@@ -54,9 +54,10 @@ struct Insights: View {
                     Text("Summary")
                         .padding(.top, 12)
                         .padding(.bottom, 15)
-                        .font(.title)
+                        .font(.custom("Kurdis-ExtraWideBlack", size: 30))
                         .fontWeight(.bold)
                         .foregroundStyle(Color(.black))
+                        .opacity(0.7)
 
                     // MARK: - Line Chart Rectangle
                     Rectangle()
@@ -97,12 +98,12 @@ struct Insights: View {
                             .overlay(
                                 VStack(alignment: .leading) {
                                     Text("Avg. Session Duration")
-                                        .font(.headline)
+                                        .font(.custom("Kurdis-ExtraWideBold", size: 15))
                                         .foregroundColor(.black)
                                         .padding(.top)
                                     Spacer()
                                     Text(avgSessionDuration.formattedDurationWithMilliseconds())
-                                        .font(.title)
+                                        .font(.custom("Kurdis-ExtraWideBold", size: 22))
                                         .fontWeight(.bold)
                                         .foregroundStyle(Color(hex: "#FF5733"))
                                         .padding(.bottom)
@@ -117,17 +118,16 @@ struct Insights: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .foregroundStyle(Color(.white))
                             .overlay(
-                                VStack(alignment: .leading) {
+                                VStack(alignment: .center) {
                                     Text("Current Level")
-                                        .font(.headline)
+                                        .font(.custom("Kurdis-ExtraWideBold", size: 15))
                                         .foregroundColor(.black)
                                         .padding(.top)
-                                    Spacer()
                                     Text("V6")
-                                        .font(.largeTitle)
+                                        .font(.custom("Kurdis-ExtraWideBlack", size: 40))
                                         .fontWeight(.bold)
                                         .foregroundStyle(Color(hex: "#FF5733"))
-                                        .padding(.bottom)
+                                        .padding()
                                 }
                             )
                             .zIndex(1)
@@ -140,7 +140,7 @@ struct Insights: View {
 
                     // MARK: - Hang Timer Section
                     Text("Hang Timer")
-                        .font(.title)
+                        .font(.custom("Kurdis-ExtraWideBold", size: 24))
                         .fontWeight(.bold)
                         .foregroundStyle(Color(.black))
                         .padding(.top, 5)
@@ -157,7 +157,7 @@ struct Insights: View {
                                         // Fixed width background to hold the timer text
                                         Color.clear.frame(width: 150)
                                         Text(elapsedTime.formattedDurationWithMilliseconds())
-                                            .font(.title)
+                                            .font(.custom("Kurdis-ExtraWideBold", size: 22))
                                             .fontWeight(.bold)
                                             .foregroundStyle(Color(hex: "#FF5733"))
                                     }
@@ -178,6 +178,7 @@ struct Insights: View {
                                             .scaledToFit()
                                             .frame(width: 30, height: 30)
                                             .foregroundStyle((isTimerRunning ? Color.red : Color(hex: "#FF5733")))
+                                            .padding()
                                     }
 
                                     Spacer() // Spacer to push content to the right
@@ -207,7 +208,7 @@ struct Insights: View {
 
                     // MARK: - Previous Workouts Section
                     Text("Previous 5 climb workouts")
-                        .font(.title)
+                        .font(.custom("Kurdis-ExtraWideBold", size: 24))
                         .fontWeight(.bold)
                         .foregroundStyle(Color(.black))
                         .padding(.top, 15)
@@ -304,17 +305,17 @@ struct MetricView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(title)
-                .font(.headline)
+                .font(.custom("Kurdis-ExtraWideBold", size: 11))
                 .foregroundColor(.black)
 
             if unit == "" {
                 Text(value.formattedDurationWithMilliseconds())
-                    .font(.title)
+                    .font(.custom("Kurdis-ExtraWideBold", size: 20))
                     .fontWeight(.bold)
                     .foregroundStyle(Color(hex: "#FF5733"))
             } else {
                 Text("\(value, specifier: "%.0f") \(unit)")
-                    .font(.title)
+                    .font(.custom("Kurdis-ExtraWideBold", size: 20))
                     .fontWeight(.bold)
                     .foregroundStyle(Color(hex: "#FF5733"))
             }

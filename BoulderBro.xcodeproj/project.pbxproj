@@ -48,6 +48,15 @@
 		EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6C2C6D759A00D7301E /* FirebaseStorageCombine-Community */; };
 		EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */; };
 		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
+		EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
+		EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
+		EFC7CFE52C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
+		EFC7CFE72C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */; };
+		EFC7CFE82C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */; };
+		EFC7CFE92C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */; };
+		EFC7CFEB2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
+		EFC7CFEC2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
+		EFC7CFED2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +99,9 @@
 		EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EF881E352C6D79ED004E11E5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
+		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
+		EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1C60B92C6A6FD1000F29E2 /* BoulderBroApp.swift */,
+				EFC7CFDD2C6E614B002D5F78 /* Font */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -248,6 +261,16 @@
 				EF1C61252C6A9076000F29E2 /* GoogleService-Info.plist */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		EFC7CFDD2C6E614B002D5F78 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */,
+				EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */,
+				EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,9 +405,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC7CFEB2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */,
+				EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */,
 				EF1C60C12C6A6FD2000F29E2 /* Preview Assets.xcassets in Resources */,
 				EF1C61262C6A9076000F29E2 /* GoogleService-Info.plist in Resources */,
 				EF1C60BE2C6A6FD2000F29E2 /* Assets.xcassets in Resources */,
+				EFC7CFE72C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +418,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC7CFEC2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */,
+				EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */,
+				EFC7CFE82C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +428,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC7CFED2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */,
+				EFC7CFE52C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */,
+				EFC7CFE92C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
