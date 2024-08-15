@@ -18,6 +18,8 @@ struct AuthenticationView: View {
 
     let easingFactor: CGFloat = 0.5 // Adjust this to control the smoothness
     
+    @Binding var showSigninView: Bool
+    
     var body: some View {
         NavigationStack{
             ZStack {
@@ -63,7 +65,7 @@ struct AuthenticationView: View {
                 VStack() {
                     Spacer()
                     NavigationLink{
-                        SignInView()
+                        SignInView(showSignIn: $showSigninView)
                     } label: {
                         Text ("Sign in with email")
                             .font(.headline)
@@ -83,5 +85,5 @@ struct AuthenticationView: View {
 }
 
 #Preview {
-    AuthenticationView()
+    AuthenticationView(showSigninView: .constant(false))
 }

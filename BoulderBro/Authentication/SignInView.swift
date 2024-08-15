@@ -13,21 +13,22 @@ final class SignInEmailViewModel: ObservableObject {
 @Published var email = ""
 @Published var password = ""
 
-    func signIn() {
+    func signUp() async throws {
         guard !email.isEmpty, !password.isEmpty else {
             print ("No email or password found")
             return
     }
+                let _returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
+
+    }
     
-        Task{
-            do {
-                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
-                print ("Success")
-                print (returnedUserData)
-            } catch {
-                print("Error: \(error)")
-            }
-        }
+    func signIn() async throws {
+        guard !email.isEmpty, !password.isEmpty else {
+            print ("No email or password found")
+            return
+    }
+                let _returnedUserData = try await AuthenticationManager.shared.signUserIn(email: email, password: password)
+
     }
     
 }
@@ -43,6 +44,7 @@ struct SignInView: View {
     let easingFactor: CGFloat = 0.5 // Adjust this to control the smoothness
     
     @StateObject private var viewModel = SignInEmailViewModel()
+    @Binding var showSignIn: Bool
     
     var body: some View {
         NavigationStack{
@@ -100,7 +102,26 @@ struct SignInView: View {
                         .clipShape(Capsule())
                     
                     Button {
-                        viewModel.signIn()
+                        Task{
+                            do{
+                                try await viewModel.signUp()
+                                showSignIn = false
+                                return
+                            } catch {
+                                print("Error")
+                                
+                            }
+                            
+                            do{
+                                try await viewModel.signIn()
+                                showSignIn = false
+                                return
+                            } catch {
+                                print("Error")
+                                
+                            }
+
+                        }
                     } label: {
                         
                         Text ("Sign in with email")
@@ -121,5 +142,5 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView()
+    SignInView(showSignIn: .constant(false))
 }

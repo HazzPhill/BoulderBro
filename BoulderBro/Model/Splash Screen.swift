@@ -68,7 +68,7 @@ struct SplashScreen: View {
                     
                     // Customized NavigationLink
                     NavigationLink {
-                        SignInView()
+                        Insights()
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         Text("View Insights")
