@@ -22,9 +22,7 @@ struct BoulderBroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            NavigationStack{
-                AuthenticationView()
-            }
+            RootView()
         }
     }
 }
