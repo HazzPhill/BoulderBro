@@ -87,3 +87,4 @@ struct AuthenticationView: View {
 #Preview {
     AuthenticationView(showSigninView: .constant(false))
 }
+

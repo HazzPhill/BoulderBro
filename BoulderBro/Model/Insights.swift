@@ -38,7 +38,7 @@ struct Insights: View {
             // MARK: - Sticky Gradient Background
             GeometryReader { geometry in
                 LinearGradient(
-                    gradient: Gradient(colors: [Color(hex: "#FF5733"), .white]),
+                    gradient: Gradient(colors: [Color(hex: "#FF5733"), Color(hex: "#f2f1f6")]),
                     startPoint: .top,
                     endPoint: UnitPoint(x: 0.5, y: 0.25)
                 )
@@ -63,7 +63,6 @@ struct Insights: View {
                         .frame(height: 163)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(Color(.white))
-                        .shadow(radius: 20)
                         .overlay(
                             Chart {
                                 ForEach(workoutData) { data in
@@ -133,7 +132,6 @@ struct Insights: View {
                             )
                             .zIndex(1)
                     }
-                    .shadow(radius: 20)
                     .font(.title)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(.black))
@@ -152,7 +150,6 @@ struct Insights: View {
                         .frame(height: 125)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(Color(.white))
-                        .shadow(radius: 20)
                         .overlay(
                             VStack {
                                 HStack {
@@ -221,7 +218,6 @@ struct Insights: View {
                             .frame(height: 208)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .foregroundStyle(Color(.white))
-                            .shadow(radius: 20)
 
                         LazyVGrid(
                             columns: [
@@ -327,7 +323,6 @@ struct MetricView: View {
         .frame(width: 165, height: 90)
         .background(Color(.white))
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(radius: 5)
     }
 }
 
@@ -351,3 +346,4 @@ extension TimeInterval {
 #Preview {
     Insights()
 }
+

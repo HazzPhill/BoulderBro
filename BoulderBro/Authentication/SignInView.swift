@@ -18,7 +18,7 @@ final class SignInEmailViewModel: ObservableObject {
             print ("No email or password found")
             return
     }
-                let _returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
 
     }
     
@@ -27,7 +27,7 @@ final class SignInEmailViewModel: ObservableObject {
             print ("No email or password found")
             return
     }
-                let _returnedUserData = try await AuthenticationManager.shared.signUserIn(email: email, password: password)
+                let returnedUserData = try await AuthenticationManager.shared.signUserIn(email: email, password: password)
 
     }
     
@@ -144,3 +144,4 @@ struct SignInView: View {
 #Preview {
     SignInView(showSignIn: .constant(false))
 }
+

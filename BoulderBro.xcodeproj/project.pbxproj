@@ -47,6 +47,7 @@
 		EFA16F6B2C6D759A00D7301E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6A2C6D759A00D7301E /* FirebaseStorage */; };
 		EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6C2C6D759A00D7301E /* FirebaseStorageCombine-Community */; };
 		EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */; };
+		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,11 +84,12 @@
 		EF1C612B2C6B3E6F000F29E2 /* Insights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insights.swift; sourceTree = "<group>"; };
 		EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
-		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF1FE6EF2C6D7DD8005F26F5 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		EF1FE6F12C6D858F005F26F5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		EF1FE6F32C6D8927005F26F5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EF881E352C6D79ED004E11E5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,12 +178,12 @@
 		EF1C60B82C6A6FD1000F29E2 /* BoulderBro */ = {
 			isa = PBXGroup;
 			children = (
-				EF05A7D22C6D772F001A80D3 /* Authentication */,
+				EF1C61312C6B539E000F29E2 /* Info.plist */,
 				EF1C60ED2C6A8AB9000F29E2 /* App */,
+				EF05A7D22C6D772F001A80D3 /* Authentication */,
 				EF1C60F22C6A8F0C000F29E2 /* Model */,
 				EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */,
 				EF1C60BF2C6A6FD2000F29E2 /* Preview Content */,
-				EF1C61312C6B539E000F29E2 /* Info.plist */,
 				EFA16F382C6D735E00D7301E /* Supporting */,
 			);
 			path = BoulderBro;
@@ -226,6 +228,7 @@
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
 				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
+				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			files = (
 				EF1FE6F22C6D858F005F26F5 /* RootView.swift in Sources */,
 				EF881E362C6D79ED004E11E5 /* SignInView.swift in Sources */,
+				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EF1FE6F42C6D8927005F26F5 /* SettingsView.swift in Sources */,
 				EF1FE6F02C6D7DD8005F26F5 /* AuthenticationManager.swift in Sources */,
