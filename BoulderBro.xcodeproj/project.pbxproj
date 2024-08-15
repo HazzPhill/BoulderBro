@@ -44,6 +44,10 @@
 		EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6C2C6D759A00D7301E /* FirebaseStorageCombine-Community */; };
 		EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */; };
 		EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */; };
+		EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */; };
+		EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */; };
+		EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */; };
+		EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D52C6EC13100CD85F6 /* User.swift */; };
 		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
 		EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
 		EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
@@ -94,6 +98,10 @@
 		EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
 		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		EFBA26D52C6EC13100CD85F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1775D32C6EABCC00EEAEF7 /* LogInView.swift */,
+				EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -165,6 +174,7 @@
 			children = (
 				EF1775CF2C6EAB3C00EEAEF7 /* Core */,
 				EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */,
+				EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -203,6 +213,7 @@
 		EF1775D22C6EABB500EEAEF7 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -285,6 +296,7 @@
 				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
 				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
+				EFBA26D52C6EC13100CD85F6 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,12 +500,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */,
+				EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */,
+				EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */,
 				EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
+				EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */,
 				EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
+				EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
