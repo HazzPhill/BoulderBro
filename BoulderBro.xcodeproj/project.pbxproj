@@ -48,6 +48,7 @@
 		EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */; };
 		EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */; };
 		EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D52C6EC13100CD85F6 /* User.swift */; };
+		EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D72C6F70F200CD85F6 /* AuthViewModel.swift */; };
 		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
 		EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
 		EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
@@ -102,6 +103,7 @@
 		EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		EFBA26D52C6EC13100CD85F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EFBA26D72C6F70F200CD85F6 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		EF1775CE2C6EAB2100EEAEF7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA26D72C6F70F200CD85F6 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -242,10 +245,10 @@
 		EF1C60B82C6A6FD1000F29E2 /* BoulderBro */ = {
 			isa = PBXGroup;
 			children = (
+				EF1C60ED2C6A8AB9000F29E2 /* App */,
 				EF1775CD2C6EAAF900EEAEF7 /* Components */,
 				EF1775D02C6EAB6E00EEAEF7 /* Core */,
 				EF1C61312C6B539E000F29E2 /* Info.plist */,
-				EF1C60ED2C6A8AB9000F29E2 /* App */,
 				EF1C60F22C6A8F0C000F29E2 /* Model */,
 				EF1C60BD2C6A6FD2000F29E2 /* Assets.xcassets */,
 				EF1C60BF2C6A6FD2000F29E2 /* Preview Content */,
@@ -507,6 +510,7 @@
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
 				EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */,
+				EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */,
 				EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
 				EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */,
