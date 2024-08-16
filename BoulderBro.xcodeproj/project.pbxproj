@@ -260,6 +260,7 @@
 		EF1C60BF2C6A6FD2000F29E2 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
 				EF1C60C02C6A6FD2000F29E2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -296,7 +297,6 @@
 			children = (
 				EF1775CE2C6EAB2100EEAEF7 /* ViewModels */,
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
-				EF1C60BB2C6A6FD1000F29E2 /* ContentView.swift */,
 				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
@@ -676,7 +676,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "BoulderBro/Preview\\ Content BoulderBro/Model/ContentView.swift";
+				DEVELOPMENT_ASSET_PATHS = /Users/hazz/Movies/BoulderBro/BoulderBro/;
 				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -710,7 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "BoulderBro/Preview\\ Content BoulderBro/Model/ContentView.swift";
+				DEVELOPMENT_ASSET_PATHS = /Users/hazz/Movies/BoulderBro/BoulderBro/;
 				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
