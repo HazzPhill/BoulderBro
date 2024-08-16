@@ -29,7 +29,24 @@ struct RegisterView: View {
                         
                         InputView(text: $password, title: "Password", placehodler: "Enter your password", isSecureField: true)
                         
-                        InputView(text: $confirmPassword, title: "Confirm Password", placehodler: "Enter your password again", isSecureField: true)
+                        ZStack(alignment:.trailing) {
+                            InputView(text: $confirmPassword, title: "Confirm Password", placehodler: "Enter your password again", isSecureField: true)
+                            
+                            if !password.isEmpty &&  !confirmPassword.isEmpty {
+                                
+                                if password == confirmPassword {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color(.systemGreen))
+                            } else {
+                                Image(systemName: "xmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color(.systemRed))
+                                }
+                            }
+                        }
                     }
                     .padding(.horizontal)
                     
@@ -48,6 +65,8 @@ struct RegisterView: View {
                     }
                     .background(Color(hex: "#FF5733"))
                     .clipShape(Capsule())
+                    .disabled(!formIsValid)
+                    .opacity(formIsValid ? 1.0 : 0.5)
                     
                     .padding(.top,24)
                     
@@ -67,6 +86,19 @@ struct RegisterView: View {
                 }
             }
         }
+    }
+}
+
+// MARK: - AuthenticationFormProtocol
+
+extension RegisterView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && confirmPassword == password
+        && !password.isEmpty
+        && !fullname.isEmpty
+        && password.count > 9
     }
 }
 

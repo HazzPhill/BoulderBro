@@ -1,7 +1,5 @@
 import SwiftUI
 
-@MainActor
-
 // EditableBlock with flexible height (for "My Climbs" section)
 struct EditableBlock<Content: View>: View {
     var content: Content
@@ -223,6 +221,18 @@ struct Home: View {
                         NavigationLink(destination: Insights()
                             .navigationBarBackButtonHidden()){
                             Text("View all Insights")
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity, minHeight: 40)
+                                .background(Color(hex: "#FF5733"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        }
+                        .padding(.top,5)
+                        
+                        NavigationLink(destination: ProfileView()
+                            .navigationBarBackButtonHidden()){
+                            Text("Profile")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 16))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity, minHeight: 40)

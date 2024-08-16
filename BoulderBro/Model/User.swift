@@ -21,6 +21,21 @@ struct User: Identifiable, Codable {
         
     return ""
 }
-}
+    var firstName: String {
+            let formatter = PersonNameComponentsFormatter()
+            if let components = formatter.personNameComponents(from: fullname),
+               let givenName = components.givenName {
+                return givenName
+            }
+            return "" // Or handle the case where first name can't be extracted
+        }
 
-
+        var lastName: String {
+            let formatter = PersonNameComponentsFormatter()
+            if let components = formatter.personNameComponents(from: fullname),
+               let familyName = components.familyName {
+                return familyName
+            }
+            return "" // Or handle the case where last name can't be extracted
+        }
+    }

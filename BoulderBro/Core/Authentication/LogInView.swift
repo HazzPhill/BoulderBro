@@ -39,7 +39,8 @@ struct LogInView: View {
                     }
                 .background(Color(hex: "#FF5733"))
                 .clipShape(Capsule())
-                
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.5)
                 .padding(.top,24)
                 
                 Spacer()
@@ -58,6 +59,17 @@ struct LogInView: View {
 
             }
         }
+    }
+}
+
+// MARK: - AuthenticationFormProtocol
+
+extension LogInView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 9
     }
 }
 
