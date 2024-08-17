@@ -49,6 +49,12 @@ struct FixedHeightEditableBlock<Content: View>: View {
 }
 
 struct Home: View {
+    
+    
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
 
     // Circle variables
     @State private var topCircleOffset = CGSize(width: 150, height: -300)
