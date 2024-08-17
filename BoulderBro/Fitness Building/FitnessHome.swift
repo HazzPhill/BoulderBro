@@ -48,7 +48,6 @@ struct FitnessHome: View {
                         }
                         
                     }
-                    .padding()
                     
                     Spacer()
                     
@@ -61,11 +60,30 @@ struct FitnessHome: View {
                         ProgressCircleView(progress: $stand, goal: 12, color: .blue)
                             .padding(.all,40)
                     }
-                    .padding(.horizontal)
-                    Spacer()
                 }
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                HStack{
+                    Text ("Fitness Activity")
+                        .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                    Spacer()
+                    
+                    Button {
+                        print("Show More")
+                    } label: {
+                        Text("Show More")
+                            .padding(.all,10)
+                            .foregroundStyle(Color.white)
+                            .background(Color(hex: "#FF5733"))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                }
+                .padding(.horizontal)
             
             }
+
         }
     }
 }
