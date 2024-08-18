@@ -28,11 +28,12 @@ struct ActivityCard: View {
                     Spacer()
                     
                     Image(systemName: activity.image)
-                        .foregroundStyle(activity.tintColor)
+                        .foregroundStyle(Color(hex: "#FF5733"))
                 }
                 
                 Text (activity.amount)
                     .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                    .foregroundStyle(Color(hex: "#FF5733"))
                     .padding()
             }
             .padding()
