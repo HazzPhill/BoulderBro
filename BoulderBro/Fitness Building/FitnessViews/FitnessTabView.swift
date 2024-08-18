@@ -20,7 +20,7 @@ struct FitnessTabView: View {
     var body: some View {
         TabView(selection:$selectedTab) {
             FitnessHome()
-                .tag("Home")
+                .tag("Fitness")
                 .tabItem {
             Image(systemName: "chart.xyaxis.line")
         }
@@ -30,6 +30,12 @@ struct FitnessTabView: View {
                 .tabItem {
             Image(systemName: "book.fill")
         }
+            
+            Home()
+                .tag("Home")
+                .tabItem {
+            Image(systemName: "hosue")
+            }
         }
     }
 }
@@ -37,3 +43,4 @@ struct FitnessTabView: View {
 #Preview {
     FitnessTabView()
 }
+

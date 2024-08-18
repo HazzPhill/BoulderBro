@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if viewModel.userSession != nil {
-                FitnessHome()
+                FitnessTabView()
             } else {
                 LogInView()
             }

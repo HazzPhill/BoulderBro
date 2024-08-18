@@ -2,6 +2,7 @@ import SwiftUI
 
 // EditableBlock with flexible height (for "My Climbs" section)
 struct EditableBlock<Content: View>: View {
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
     var content: Content
 
     init(@ViewBuilder content: () -> Content) {
@@ -13,7 +14,7 @@ struct EditableBlock<Content: View>: View {
             Rectangle()
                 .frame(width: 163, height: 163)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .foregroundStyle(Color.white)
+                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
 
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -26,6 +27,7 @@ struct EditableBlock<Content: View>: View {
 
 // EditableBlock with fixed height of 65 (for the bottom grid)
 struct FixedHeightEditableBlock<Content: View>: View {
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
     var content: Content
 
     init(@ViewBuilder content: () -> Content) {
@@ -37,7 +39,7 @@ struct FixedHeightEditableBlock<Content: View>: View {
             Rectangle()
                 .frame(height: 65)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .foregroundStyle(Color.white)
+                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
 
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -56,6 +58,8 @@ struct Home: View {
         UITabBar.appearance().isHidden = true
     }
 
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
+    
     // Circle variables
     @State private var topCircleOffset = CGSize(width: 150, height: -300)
     @State private var bottomCircleOffset = CGSize(width: -150, height: 250)
@@ -67,7 +71,7 @@ struct Home: View {
         NavigationStack {
             ZStack {
                 // Background color
-                Color(hex: "#f2f1f6")
+                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") :Color(hex: "#f1f0f5"))
                     .ignoresSafeArea()
                     .zIndex(-2)
 
@@ -111,18 +115,18 @@ struct Home: View {
                         Text("Overview")
                             .font(.custom("Kurdis-ExtraWideBlack", size: 30))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color.black)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
                             .opacity(0.7)
 
                         Rectangle()
                             .frame(height: 163)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
 
                         Text("My Climbs")
                             .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color(hex: "#3F3F3F"))
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
                             .padding(.top)
 
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -187,7 +191,8 @@ struct Home: View {
                         Text("Stats")
                             .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color(hex: "#3F3F3F"))
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                            .padding(.top)
                             .padding(.top)
 
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
@@ -248,16 +253,27 @@ struct Home: View {
                         }
                         .padding(.top,5)
                         
+                        Text("HangTimer")
+                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                            .padding(.top)
+                            .padding(.top)
+                        
+                        HangTimer()
+                        
+                        
                         Text("Climb of the week")
                             .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color(hex: "#3F3F3F"))
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                            .padding(.top)
                             .padding(.top)
 
                         Rectangle()
                             .frame(height: 200)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
                     }
                     .padding()
                 }

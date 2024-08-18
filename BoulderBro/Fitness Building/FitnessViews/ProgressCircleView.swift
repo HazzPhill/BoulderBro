@@ -17,7 +17,7 @@ struct ProgressCircleView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(color.opacity(0.3), lineWidth: 20) // Apply stroke directly to the first Circle
+                .stroke(color.opacity(0.1), lineWidth: 20) // Apply stroke directly to the first Circle
             
             Circle()
                 .trim(from: 0, to: CGFloat(progress)/CGFloat(goal))

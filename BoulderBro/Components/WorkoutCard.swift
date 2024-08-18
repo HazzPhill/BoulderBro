@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkoutCard: View {
     @State var workout: Workout
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
     var body: some View {
         HStack {
             Image(systemName:workout.image)
@@ -17,7 +18,7 @@ struct WorkoutCard: View {
                 .frame(width: 48, height:48)
                 .foregroundStyle(workout.tintColor)
                 .padding()
-                .background(.gray.opacity(0.1))
+                .background(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             VStack (alignment: .leading) {
