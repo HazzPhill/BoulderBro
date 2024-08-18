@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FitnessHome: View {
     @StateObject var viewModel = FitnessHomeViewModel()
-
+ 
     var body: some View {
         NavigationStack {
             ScrollView (showsIndicators: false) {
@@ -81,12 +81,16 @@ struct FitnessHome: View {
                     }
                     .padding(.horizontal)
                 
-                    LazyVGrid(columns: Array(repeating: GridItem(spacing: 20),count: 2)) {
-                        ForEach(viewModel.mockactivities, id: \.activity.id) { activityCard in // Use activityCard here
-                            ActivityCard(activity: activityCard.activity) // Access the activity property
+                    if !viewModel.activities.isEmpty {
+                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 20),count: 2)) {
+                            ForEach(viewModel.activities, id: \.title) { activity in // Use activityCard here
+                                ActivityCard(activity: activity) // Access the activity property
+                            }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                    
+                    
                     
                     HStack{
                         Text ("Recent Workouts")

@@ -16,12 +16,13 @@ class FitnessHomeViewModel: ObservableObject {
     @Published var calories: Int = 0
     @Published var exercise: Int = 0
     @Published var stand: Int = 0
+    @Published var activities = [Activity]()
     
     var mockactivities = [
-        ActivityCard(activity: Activity(id: 0, title: "Today's Steps", subtitle: "Goal 9,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "521")),
-        ActivityCard(activity: Activity(id: 1, title: "Today's Steps", subtitle: "Goal 19,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "532")),
-        ActivityCard(activity: Activity(id: 2, title: "Today's Steps", subtitle: "Goal 2,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "321")),
-        ActivityCard(activity: Activity(id: 3, title: "Today's Steps", subtitle: "Goal 12,931", image: "figure.run", tintColor:Color(hex: "#FF5733"), amount: "5321"))
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 9,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "521")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 19,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "532")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 2,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "321")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 12,931", image: "figure.run", tintColor:Color(hex: "#FF5733"), amount: "5321"))
     ]
     
     var mockWorkouts = [
@@ -34,13 +35,16 @@ class FitnessHomeViewModel: ObservableObject {
     init() {
         Task {
             do {
-               try await healthManager.requestHealthKitAccess()
- fetchTodayCalories()
+                try await healthManager.requestHealthKitAccess()
+                // Only fetch data if authorization is successful
+                fetchTodayCalories()
                 fetchTodayStandHours()
                 fetchTodayExerciseTime()
-                
+                fetchTodaysSteps()
+                fetchCurrentWeekActivities()
             } catch {
-                print (error.localizedDescription)
+                print("Error requesting HealthKit access: \(error.localizedDescription)")
+                // Consider displaying an error message to the user here
             }
         }
     }
@@ -50,7 +54,9 @@ class FitnessHomeViewModel: ObservableObject {
             switch result {
             case .success(let calories):
                 DispatchQueue.main.async {
-                    self.stand = Int(calories)
+                    self.calories = Int(calories)
+                    let activity = Activity(title: "Calories Burned", subtitle: "today", image: "flame", tintColor: .red, amount: calories.formattedNumberString())
+                    self.activities.append(activity)
                 }
             case .failure(let failure):
                 print (failure.localizedDescription)
@@ -77,6 +83,33 @@ class FitnessHomeViewModel: ObservableObject {
             case .success(let hours):
                 DispatchQueue.main.async {
                     self.stand = hours
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: Fitness Activity
+    func fetchTodaysSteps() {
+        healthManager.fetchTodaySteps { result in
+            switch result {
+            case .success(let activity):
+                DispatchQueue.main.async {
+                    self.activities.append(activity)
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchCurrentWeekActivities() {
+        healthManager.fetchCurrentWeekWorkoutStats { result in
+            switch result {
+            case .success(let activities):
+                DispatchQueue.main.async {
+                    self.activities.append(contentsOf: activities)
                 }
             case .failure(let failure):
                 print (failure.localizedDescription)

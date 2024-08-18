@@ -124,6 +124,7 @@
 		EFBA26EF2C70E0F900CD85F6 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EFBA26F12C70E12F00CD85F6 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		EFBA26F32C72279300CD85F6 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		EFBA26F62C72562100CD85F6 /* BoulderBro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderBro.entitlements; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
@@ -268,6 +269,7 @@
 		EF1C60B82C6A6FD1000F29E2 /* BoulderBro */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA26F62C72562100CD85F6 /* BoulderBro.entitlements */,
 				EFBA26F52C72281400CD85F6 /* Managers */,
 				EF1C60ED2C6A8AB9000F29E2 /* App */,
 				EF1775CD2C6EAAF900EEAEF7 /* Components */,
@@ -754,6 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BoulderBro/BoulderBro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = /Users/hazz/Movies/BoulderBro/BoulderBro/;
@@ -788,6 +791,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BoulderBro/BoulderBro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = /Users/hazz/Movies/BoulderBro/BoulderBro/;
