@@ -20,9 +20,11 @@ struct WorkoutCard: View {
                 .background(.gray.opacity(0.1))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
-            VStack {
+            VStack (alignment: .leading) {
                 HStack {
                     Text (workout.title)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                     Spacer()
                     Text (workout.duration)
                 }

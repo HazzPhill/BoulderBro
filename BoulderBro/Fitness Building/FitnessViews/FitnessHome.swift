@@ -35,7 +35,7 @@ struct FitnessHome: View {
                                 Text ("Active")
                                     .font(.custom("Kurdis-ExtraWideBold", size: 15))
                                     .foregroundStyle(Color.green)
-                                Text ("\(viewModel.active)")
+                                Text ("\(viewModel.exercise)")
                             }
                             .padding(.bottom)
                             
@@ -53,7 +53,7 @@ struct FitnessHome: View {
                         ZStack{
                             ProgressCircleView(progress: $viewModel.calories, goal: 600, color: .red)
                             
-                            ProgressCircleView(progress: $viewModel.active, goal: 60, color: .green)
+                            ProgressCircleView(progress: $viewModel.exercise, goal: 60, color: .green)
                                 .padding(.all,20)
                             
                             ProgressCircleView(progress: $viewModel.stand, goal: 12, color: .blue)

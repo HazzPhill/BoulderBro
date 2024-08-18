@@ -73,7 +73,7 @@ struct SplashScreen: View {
                         
                         // Customized NavigationLink
                         NavigationLink {
-                            Insights()
+                            FitnessHome()
                                 .navigationBarBackButtonHidden(true)
                         } label: {
                             Text("View Insights")
