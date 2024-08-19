@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>Your data will be used to provide climbing insights.</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Your data will be used to provide climbing insights.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Your data will be used to provide climbing insights.</string>
+	<string>Your app needs access to update your health data to track your workouts.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Your app needs access to your health data to display your activity summary.</string>
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
 	<key>UIAppFonts</key>

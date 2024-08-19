@@ -17,7 +17,6 @@
 		EF1C60D72C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60D62C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift */; };
 		EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */; };
 		EF1C61262C6A9076000F29E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF1C61252C6A9076000F29E2 /* GoogleService-Info.plist */; };
-		EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C612B2C6B3E6F000F29E2 /* Insights.swift */; };
 		EF1C612F2C6B4C74000F29E2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */; };
 		EF1C61302C6B4C74000F29E2 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
@@ -59,6 +58,8 @@
 		EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26EA2C70E02A00CD85F6 /* FitnessHomeViewModel.swift */; };
 		EFBA26F02C70E0F900CD85F6 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26EF2C70E0F900CD85F6 /* Activity.swift */; };
 		EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26F12C70E12F00CD85F6 /* Workout.swift */; };
+		EFBA26F42C72279300CD85F6 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26F32C72279300CD85F6 /* HealthManager.swift */; };
+		EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26F82C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift */; };
 		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
 		EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
 		EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
@@ -104,7 +105,6 @@
 		EF1C60D62C6A6FD2000F29E2 /* BoulderBroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderBroUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Splash Screen.swift"; sourceTree = "<group>"; };
 		EF1C61252C6A9076000F29E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EF1C612B2C6B3E6F000F29E2 /* Insights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insights.swift; sourceTree = "<group>"; };
 		EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
 		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +124,9 @@
 		EFBA26EA2C70E02A00CD85F6 /* FitnessHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessHomeViewModel.swift; sourceTree = "<group>"; };
 		EFBA26EF2C70E0F900CD85F6 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EFBA26F12C70E12F00CD85F6 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		EFBA26F32C72279300CD85F6 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		EFBA26F62C72562100CD85F6 /* BoulderBro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderBro.entitlements; sourceTree = "<group>"; };
+		EFBA26F82C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutTypeActivityType+Ext.swift"; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
@@ -268,6 +271,9 @@
 		EF1C60B82C6A6FD1000F29E2 /* BoulderBro */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA26F72C72783200CD85F6 /* Utils */,
+				EFBA26F62C72562100CD85F6 /* BoulderBro.entitlements */,
+				EFBA26F52C72281400CD85F6 /* Managers */,
 				EF1C60ED2C6A8AB9000F29E2 /* App */,
 				EF1775CD2C6EAAF900EEAEF7 /* Components */,
 				EF1775D02C6EAB6E00EEAEF7 /* Core */,
@@ -321,7 +327,6 @@
 			children = (
 				EF1775CE2C6EAB2100EEAEF7 /* ViewModels */,
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
-				EF1C612B2C6B3E6F000F29E2 /* Insights.swift */,
 				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
 			);
@@ -381,6 +386,22 @@
 				EFBA26EA2C70E02A00CD85F6 /* FitnessHomeViewModel.swift */,
 			);
 			path = FitnessViewModels;
+			sourceTree = "<group>";
+		};
+		EFBA26F52C72281400CD85F6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				EFBA26F32C72279300CD85F6 /* HealthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		EFBA26F72C72783200CD85F6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EFBA26F82C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		EFC7CFDD2C6E614B002D5F78 /* Font */ = {
@@ -566,6 +587,7 @@
 			files = (
 				EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */,
 				EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */,
+				EFBA26F42C72279300CD85F6 /* HealthManager.swift in Sources */,
 				EFBA26E72C70B6D400CD85F6 /* ActivityCard.swift in Sources */,
 				EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */,
 				EFBA26DF2C70971200CD85F6 /* FitnessTabView.swift in Sources */,
@@ -580,10 +602,10 @@
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
 				EFBA26DC2C708A4A00CD85F6 /* CustomMenu.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
-				EF1C612C2C6B3E6F000F29E2 /* Insights.swift in Sources */,
 				EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
 				EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */,
+				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,
 				EFBA26E32C7098F800CD85F6 /* HistoricDataView.swift in Sources */,
 				EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */,
 			);
@@ -746,6 +768,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BoulderBro/BoulderBro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = /Users/hazz/Movies/BoulderBro/BoulderBro/;
@@ -780,6 +803,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BoulderBro/BoulderBro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = /Users/hazz/Movies/BoulderBro/BoulderBro/;

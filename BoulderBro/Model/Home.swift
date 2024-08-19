@@ -224,7 +224,7 @@ struct Home: View {
                             }
                         }
                         // NavigationLink to Insights
-                        NavigationLink(destination: Insights()
+                        NavigationLink(destination: FitnessHome()
                             .navigationBarBackButtonHidden()){
                             Text("View all Insights")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 16))

@@ -6,19 +6,18 @@
 //
 
 import SwiftUI
+import HealthKit
+import HealthKitUI
 
 class FitnessHomeViewModel: ObservableObject {
     
-    @State var calories: Int = 123
-    @State var active: Int = 52
-    @State var stand: Int = 8
+    let healthManager = HealthManager.shared
     
-    var mockactivities = [
-        ActivityCard(activity: Activity(id: 0, title: "Today's Steps", subtitle: "Goal 9,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "521")),
-        ActivityCard(activity: Activity(id: 1, title: "Today's Steps", subtitle: "Goal 19,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "532")),
-        ActivityCard(activity: Activity(id: 2, title: "Today's Steps", subtitle: "Goal 2,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "321")),
-        ActivityCard(activity: Activity(id: 3, title: "Today's Steps", subtitle: "Goal 12,931", image: "figure.run", tintColor:Color(hex: "#FF5733"), amount: "5321"))
-    ]
+    @Published var calories: Int = 0
+    @Published var exercise: Int = 0
+    @Published var stand: Int = 0
+    @Published var activities = [Activity]()
+    @Published var workouts = [Workout]()
     
     var mockWorkouts = [
         WorkoutCard(workout: Workout(id: 0, title: "Climbing", image: "figure.run", duration: "24 mins", tintColor: Color(hex: "#FF5733"), date: " August 1", calories: "642 kcal")),
@@ -26,4 +25,111 @@ class FitnessHomeViewModel: ObservableObject {
         WorkoutCard(workout: Workout(id: 2, title: "Climbing", image: "figure.run", duration: "62 mins", tintColor: Color(hex: "#FF5733"), date: " August 3", calories: "242 kcal")),
         WorkoutCard(workout: Workout(id: 3, title: "Climbing", image: "figure.run", duration: "92 mins", tintColor: Color(hex: "#FF5733"), date: " August 4", calories: "743 kcal"))
     ]
+    
+    var mockactivities = [
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 9,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "521")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 19,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "532")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 2,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "321")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 12,931", image: "figure.run", tintColor:Color(hex: "#FF5733"), amount: "5321"))
+    ]
+    
+    init() {
+        Task {
+            do {
+                try await healthManager.requestHealthKitAccess()
+                // Only fetch data if authorization is successful
+                fetchTodayCalories()
+                fetchTodayStandHours()
+                fetchTodayExerciseTime()
+                fetchTodaysSteps()
+                fetchCurrentWeekActivities()
+                fetchRecentWorkouts()
+            } catch {
+                print("Error requesting HealthKit access: \(error.localizedDescription)")
+                // Consider displaying an error message to the user here
+            }
+        }
+    }
+    
+    func fetchTodayCalories() {
+        healthManager.fetchTodayCaloriesBurned { result in
+            switch result {
+            case .success(let calories):
+                DispatchQueue.main.async {
+                    self.calories = Int(calories)
+                    let activity = Activity(title: "Calories Burned", subtitle: "today", image: "flame", tintColor: .red, amount: calories.formattedNumberString())
+                    self.activities.append(activity)
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchTodayExerciseTime() {
+        healthManager.fetchTodayExceriseTime { result in
+            switch result {
+            case .success(let exercise):
+                DispatchQueue.main.async {
+                    self.exercise = Int(exercise)
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchTodayStandHours() {
+        healthManager.fetchTodayStandHours { result in
+            switch result {
+            case .success(let hours):
+                DispatchQueue.main.async {
+                    self.stand = hours
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: Fitness Activity
+    func fetchTodaysSteps() {
+        healthManager.fetchTodaySteps { result in
+            switch result {
+            case .success(let activity):
+                DispatchQueue.main.async {
+                    self.activities.append(activity)
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchCurrentWeekActivities() {
+        healthManager.fetchCurrentWeekWorkoutStats { result in
+            switch result {
+            case .success(let activities):
+                DispatchQueue.main.async {
+                    self.activities.append(contentsOf: activities)
+                }
+            case .failure(let failure):
+                print (failure.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: Recent Workouts
+    func fetchRecentWorkouts() {
+        healthManager.fetchWorkoutsForMonth(month: Date()) { result in
+            switch  result {
+            case .success(let workouts):
+                DispatchQueue.main.async {
+                    self.workouts = Array(workouts.prefix(4))
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
 }

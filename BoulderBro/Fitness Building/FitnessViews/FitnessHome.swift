@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FitnessHome: View {
     @StateObject var viewModel = FitnessHomeViewModel()
-
+ 
     var body: some View {
         NavigationStack {
             ScrollView (showsIndicators: false) {
@@ -35,7 +35,7 @@ struct FitnessHome: View {
                                 Text ("Active")
                                     .font(.custom("Kurdis-ExtraWideBold", size: 15))
                                     .foregroundStyle(Color.green)
-                                Text ("\(viewModel.active)")
+                                Text ("\(viewModel.exercise)")
                             }
                             .padding(.bottom)
                             
@@ -53,7 +53,7 @@ struct FitnessHome: View {
                         ZStack{
                             ProgressCircleView(progress: $viewModel.calories, goal: 600, color: .red)
                             
-                            ProgressCircleView(progress: $viewModel.active, goal: 60, color: .green)
+                            ProgressCircleView(progress: $viewModel.exercise, goal: 60, color: .green)
                                 .padding(.all,20)
                             
                             ProgressCircleView(progress: $viewModel.stand, goal: 12, color: .blue)
@@ -81,12 +81,16 @@ struct FitnessHome: View {
                     }
                     .padding(.horizontal)
                 
-                    LazyVGrid(columns: Array(repeating: GridItem(spacing: 20),count: 2)) {
-                        ForEach(viewModel.mockactivities, id: \.activity.id) { activityCard in // Use activityCard here
-                            ActivityCard(activity: activityCard.activity) // Access the activity property
+                    if !viewModel.activities.isEmpty {
+                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 20),count: 2)) {
+                            ForEach(viewModel.activities, id: \.title) { activity in // Use activityCard here
+                                ActivityCard(activity: activity) // Access the activity property
+                            }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                    
+                    
                     
                     HStack{
                         Text ("Recent Workouts")
@@ -107,8 +111,8 @@ struct FitnessHome: View {
                     .padding(.top)
                     
                     LazyVStack{
-                        ForEach(viewModel.mockWorkouts, id: \.workout.id) { workoutCard in
-                            WorkoutCard(workout: workoutCard.workout)
+                        ForEach(viewModel.workouts, id: \.calories) { workouts in
+                            WorkoutCard(workout: workouts)
                         }
                     }
                 }

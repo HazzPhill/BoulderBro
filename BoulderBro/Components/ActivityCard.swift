@@ -20,17 +20,20 @@ struct ActivityCard: View {
                 HStack (alignment: .top) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text (activity.title)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                         Text (activity.subtitle)
                     }
                     
                     Spacer()
                     
                     Image(systemName: activity.image)
-                        .foregroundStyle(activity.tintColor)
+                        .foregroundStyle(Color(hex: "#FF5733"))
                 }
                 
                 Text (activity.amount)
                     .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                    .foregroundStyle(Color(hex: "#FF5733"))
                     .padding()
             }
             .padding()
@@ -39,5 +42,5 @@ struct ActivityCard: View {
 }
 
 #Preview {
-    ActivityCard(activity: Activity(id: 0, title: "Today's Steps", subtitle: "Goal 12,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "9,431"))
+    ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 12,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "9,431"))
 }
