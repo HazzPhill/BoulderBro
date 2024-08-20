@@ -19,6 +19,9 @@
 		EF1C61262C6A9076000F29E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF1C61252C6A9076000F29E2 /* GoogleService-Info.plist */; };
 		EF1C612F2C6B4C74000F29E2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */; };
 		EF1C61302C6B4C74000F29E2 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */; };
+		EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */; };
+		EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */; };
+		EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -42,6 +45,9 @@
 		EFA16F6B2C6D759A00D7301E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6A2C6D759A00D7301E /* FirebaseStorage */; };
 		EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6C2C6D759A00D7301E /* FirebaseStorageCombine-Community */; };
 		EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */; };
+		EFA7D8332C74E87C006E764E /* Climb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D8322C74E87C006E764E /* Climb.swift */; };
+		EFA7D8372C74EABC006E764E /* MyClimbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */; };
+		EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D8382C74ECE1006E764E /* ImagePicker.swift */; };
 		EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */; };
 		EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */; };
 		EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */; };
@@ -107,6 +113,12 @@
 		EF1C612D2C6B4C73000F29E2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		EF1C612E2C6B4C74000F29E2 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
 		EF1C61312C6B539E000F29E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsView.swift; sourceTree = "<group>"; };
+		EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLevel.swift; sourceTree = "<group>"; };
+		EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalClimb.swift; sourceTree = "<group>"; };
+		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
+		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
+		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -201,6 +213,9 @@
 				EFBA26E62C70B6D400CD85F6 /* ActivityCard.swift */,
 				EFBA26E82C70D6FC00CD85F6 /* WorkoutCard.swift */,
 				EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */,
+				EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */,
+				EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */,
+				EFA7D8382C74ECE1006E764E /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -209,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				EFBA26D72C6F70F200CD85F6 /* AuthViewModel.swift */,
+				EFA7D8322C74E87C006E764E /* Climb.swift */,
+				EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -327,6 +344,7 @@
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
 				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
+				EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -584,6 +602,7 @@
 			files = (
 				EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */,
 				EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */,
+				EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */,
 				EFBA26F42C72279300CD85F6 /* HealthManager.swift in Sources */,
 				EFBA26E72C70B6D400CD85F6 /* ActivityCard.swift in Sources */,
 				EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */,
@@ -591,14 +610,19 @@
 				EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */,
 				EFBA26FB2C72A02B00CD85F6 /* HangTimer.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
+				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EFBA26F02C70E0F900CD85F6 /* Activity.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
 				EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */,
 				EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */,
+				EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */,
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
+				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
+				EFA7D8332C74E87C006E764E /* Climb.swift in Sources */,
 				EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */,
+				EFA7D8372C74EABC006E764E /* MyClimbsViewController.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
 				EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */,
 				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,

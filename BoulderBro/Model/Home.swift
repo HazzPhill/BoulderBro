@@ -227,10 +227,41 @@ struct Home: View {
                                 }
                             }
                         }
+                        
+                        Text("Quick testing links")
+                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                            .padding(.top)
+                            .padding(.top)
                         // NavigationLink to Insights
                         NavigationLink(destination: FitnessHome()
                             .navigationBarBackButtonHidden()){
                             Text("View all Insights")
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity, minHeight: 40)
+                                .background(Color(hex: "#FF5733"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        }
+                        .padding(.top,5)
+                        
+                        NavigationLink(destination: MyClimbsViewController()
+                            .navigationBarBackButtonHidden()){
+                            Text("Upload Climb")
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity, minHeight: 40)
+                                .background(Color(hex: "#FF5733"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                        }
+                        .padding(.top,5)
+                        
+                        NavigationLink(destination: MyClimbsView()
+                            .navigationBarBackButtonHidden()){
+                            Text("My Climbs")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 16))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity, minHeight: 40)

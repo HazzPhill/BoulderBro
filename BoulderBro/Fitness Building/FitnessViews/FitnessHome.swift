@@ -88,6 +88,9 @@ struct FitnessHome: View {
                             .padding(.horizontal, 16)
                         }
                         
+                        CurrentLevel()
+                            .padding(.horizontal)
+                        
                         HStack {
                             Text("Recent Workouts")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 16))
@@ -104,7 +107,6 @@ struct FitnessHome: View {
                             }
                         }
                         .padding(.horizontal, 16)
-                        .padding(.top)
                         
                         LazyVStack {
                             ForEach(viewModel.workouts, id: \.calories) { workout in

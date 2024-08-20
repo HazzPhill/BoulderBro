@@ -12,6 +12,8 @@ struct User: Identifiable, Codable {
     let fullname: String
     let email: String
     
+    var profilePictureURL: String? // Optional, as users may not have set a profile picture yet
+    
     var initals: String {
         let formatter = PersonNameComponentsFormatter()
         if let components = formatter.personNameComponents(from: fullname){
