@@ -6,55 +6,66 @@ import AVKit
 
 struct MyClimbsViewController: View {
     @State private var name: String = ""
-    @State private var difficulty: String = "Easy" // Default to the first option
-    @State private var vRating: String = "V1" // Default to the first option
+    @State private var difficulty: String = "Easy"
+    @State private var vRating: String = "V1"
     @State private var location: String = ""
     @State private var selectedImage: UIImage? = nil
     @State private var selectedVideoURL: URL? = nil
     @State private var isImagePickerPresented = false
     @State private var isUploading = false
     @State private var uploadStatusMessage = ""
-    @State private var navigateToMyClimbView = false // Navigation state
+    @State private var navigateToMyClimbView = false
 
     let difficulties = ["Easy", "Medium", "Challenge", "Hard"]
-    let vRatings = (1...12).map { "V\($0)" } // Generates ["V1", "V2", ..., "V12"]
+    let vRatings = (1...12).map { "V\($0)" }
 
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("Climb Details").font(.title2).foregroundColor(.blue)) {
+                Section(header: Text("Upload your climb")
+                    .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                    .foregroundColor(.orange)) {
+                    
                     TextField("Name", text: $name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.vertical, 5)
-                    
+                        .background(Color.white)
+                        .font(.custom("Kurdis-Regular", size: 16))
+
                     Picker("Difficulty", selection: $difficulty) {
                         ForEach(difficulties, id: \.self) { difficulty in
                             Text(difficulty)
-                                .font(.headline)
+                                .font(.custom("Kurdis-Regular", size: 16))
                                 .foregroundColor(.primary)
                                 .tag(difficulty)
                         }
                     }
-                    .pickerStyle(MenuPickerStyle()) // Dropdown style picker
+                    .pickerStyle(MenuPickerStyle())
                     .padding(.vertical, 5)
+                    .background(Color.white)
 
                     Picker("V Rating", selection: $vRating) {
                         ForEach(vRatings, id: \.self) { rating in
                             Text(rating)
-                                .font(.headline)
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
                                 .foregroundColor(.primary)
                                 .tag(rating)
                         }
                     }
-                    .pickerStyle(MenuPickerStyle()) // Dropdown style picker
+                    .pickerStyle(MenuPickerStyle())
                     .padding(.vertical, 5)
+                    .background(Color.white)
 
                     TextField("Location", text: $location)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.vertical, 5)
+                        .background(Color.white)
+                        .font(.custom("Kurdis-Regular", size: 16))
                 }
-                
-                Section(header: Text("Select Image or Video").font(.title2).foregroundColor(.blue)) {
+
+                Section(header: Text("Select Image or Video")
+                    .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                    .foregroundColor(.orange)) {
                     if let image = selectedImage {
                         Image(uiImage: image)
                             .resizable()
@@ -67,12 +78,14 @@ struct MyClimbsViewController: View {
                         Button("Select Image/Video") {
                             isImagePickerPresented.toggle()
                         }
+                        .font(.custom("Kurdis-ExtraWideBold", size: 16))
                     }
                 }
-                
+
                 Section {
                     if isUploading {
                         ProgressView("Uploading...")
+                            .font(.custom("Kurdis-ExtraWideBold", size: 16))
                     } else {
                         Button("Upload Climb") {
                             uploadClimb()
@@ -82,15 +95,24 @@ struct MyClimbsViewController: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(8)
+                        .font(.custom("Kurdis-Regular", size: 16))
                     }
                 }
             }
             .navigationTitle("My Climbs")
+                .font(.custom("Kurdis-Regular", size: 16))
             .sheet(isPresented: $isImagePickerPresented) {
                 ImagePicker(selectedImage: $selectedImage, selectedVideoURL: $selectedVideoURL)
             }
             .alert(isPresented: .constant(!uploadStatusMessage.isEmpty)) {
-                Alert(title: Text("Upload Status"), message: Text(uploadStatusMessage), dismissButton: .default(Text("OK")))
+                Alert(
+                    title: Text("Upload Status")
+                        .font(.custom("Kurdis-Regular", size: 16)),
+                    message: Text(uploadStatusMessage)
+                        .font(.custom("Kurdis-Regular", size: 16)),
+                    dismissButton: .default(Text("OK")
+                        .font(.custom("Kurdis-Regular", size: 16)))
+                )
             }
             .navigationDestination(isPresented: $navigateToMyClimbView) {
                 MyClimbsView()

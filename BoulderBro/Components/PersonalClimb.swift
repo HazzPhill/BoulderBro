@@ -7,38 +7,32 @@ struct PersonalClimb: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            if climb.mediaURL.contains(".mp4") {
-                VideoPlayer(player: AVPlayer(url: URL(string: climb.mediaURL)!))
+            AsyncImage(url: URL(string: climb.mediaURL)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
                     .frame(height: 200)
                     .frame(maxWidth: .infinity)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding(.bottom)
-            } else {
-                AsyncImage(url: URL(string: climb.mediaURL)) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 200)
-                        .frame(maxWidth: .infinity)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .padding(.bottom)
-                } placeholder: {
-                    Image("ClimbPlaceholder")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 200)
-                        .frame(maxWidth: .infinity)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .padding(.bottom)
-                }
+            } placeholder: {
+                Image("ClimbPlaceholder")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .frame(maxWidth: .infinity)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.bottom)
             }
-            
+
             HStack(alignment: .center) {
                 VStack(alignment: .leading) {
                     Text(climb.name)
                         .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                        .foregroundColor(.primary) // Set text color
                     Text(climb.location)
                         .font(.custom("Kurdis-Regular", size: 11))
+                        .foregroundColor(.primary) // Set text color
                 }
                 Spacer()
                 Text(climb.vRating)

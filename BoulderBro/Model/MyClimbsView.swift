@@ -1,23 +1,14 @@
-//
-//  MyClimbsView.swift
-//  BoulderBro
-//
-//  Created by Hazz on 20/08/2024.
-//
-
 import SwiftUI
 import FirebaseFirestore
 import FirebaseAuth
 
 struct MyClimbsView: View {
     
-    @Environment(\.colorScheme) var colorScheme // To detect the current color
+    @Environment(\.colorScheme) var colorScheme
     
-    // Circle variables
     @State private var topCircleOffset = CGSize(width: 150, height: -300)
     @State private var bottomCircleOffset = CGSize(width: -150, height: 250)
     
-    // Use a timer for animation
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     @EnvironmentObject var viewModel: AuthViewModel
@@ -28,7 +19,7 @@ struct MyClimbsView: View {
             NavigationStack {
                 ZStack {
                     // Background color
-                    Color(colorScheme == .dark ? Color(hex: "#1f1f1f") :Color(hex: "#f1f0f5"))
+                    Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
                         .ignoresSafeArea()
                         .zIndex(-2)
                     
@@ -82,19 +73,19 @@ struct MyClimbsView: View {
                             CurrentLevel()
                             
                             HStack {
-                                HStack {
+                                NavigationLink(destination: MyClimbsViewController()) {
                                     Image(systemName: "plus.circle.fill")
                                         .resizable()
                                         .scaledToFit()
                                         .foregroundStyle(Color(hex:"#0093AA"))
                                         .frame(width: 45, height: 45)
-                                    
-                                    Image(systemName: "heart.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .foregroundStyle(Color(hex:"#0093AA"))
-                                        .frame(width: 45, height: 45)
                                 }
+                                
+                                Image(systemName: "heart.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundStyle(Color(hex:"#0093AA"))
+                                    .frame(width: 45, height: 45)
                                 
                                 Spacer()
                                 
@@ -112,8 +103,11 @@ struct MyClimbsView: View {
                             
                             // List of uploaded climbs
                             ForEach(climbs) { climb in
-                                PersonalClimb(climb: climb)
-                                    .padding(.horizontal)
+                                NavigationLink(destination: TheClimb(climb: climb)) {
+                                    PersonalClimb(climb: climb)
+                                        .padding(.horizontal)
+                                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black) // Force text color
+                                }
                             }
                         }
                         .padding(.horizontal)

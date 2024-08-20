@@ -48,6 +48,7 @@
 		EFA7D8332C74E87C006E764E /* Climb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D8322C74E87C006E764E /* Climb.swift */; };
 		EFA7D8372C74EABC006E764E /* MyClimbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */; };
 		EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D8382C74ECE1006E764E /* ImagePicker.swift */; };
+		EFA7D83B2C753592006E764E /* TheClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7D83A2C753592006E764E /* TheClimb.swift */; };
 		EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */; };
 		EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */; };
 		EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */; };
@@ -119,6 +120,7 @@
 		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
 		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EFA7D83A2C753592006E764E /* TheClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheClimb.swift; sourceTree = "<group>"; };
 		EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		EFBA26CF2C6EBA0000CD85F6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
 				EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */,
+				EFA7D83A2C753592006E764E /* TheClimb.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,
 				EFBA26E32C7098F800CD85F6 /* HistoricDataView.swift in Sources */,
 				EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */,
+				EFA7D83B2C753592006E764E /* TheClimb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
