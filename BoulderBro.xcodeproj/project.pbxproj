@@ -48,7 +48,6 @@
 		EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */; };
 		EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D52C6EC13100CD85F6 /* User.swift */; };
 		EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26D72C6F70F200CD85F6 /* AuthViewModel.swift */; };
-		EFBA26DC2C708A4A00CD85F6 /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26DB2C708A4A00CD85F6 /* CustomMenu.swift */; };
 		EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26E02C7097A200CD85F6 /* FitnessHome.swift */; };
 		EFBA26E32C7098F800CD85F6 /* HistoricDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26E22C7098F800CD85F6 /* HistoricDataView.swift */; };
 		EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26E42C70A09200CD85F6 /* ProgressCircleView.swift */; };
@@ -60,7 +59,6 @@
 		EFBA26F42C72279300CD85F6 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26F32C72279300CD85F6 /* HealthManager.swift */; };
 		EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26F82C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift */; };
 		EFBA26FB2C72A02B00CD85F6 /* HangTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */; };
-		EFBA26FF2C73673900CD85F6 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA26FE2C73673900CD85F6 /* Menu.swift */; };
 		EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */; };
 		EFC7CFE32C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
 		EFC7CFE42C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */; };
@@ -115,7 +113,6 @@
 		EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		EFBA26D52C6EC13100CD85F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EFBA26D72C6F70F200CD85F6 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		EFBA26DB2C708A4A00CD85F6 /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		EFBA26E02C7097A200CD85F6 /* FitnessHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessHome.swift; sourceTree = "<group>"; };
 		EFBA26E22C7098F800CD85F6 /* HistoricDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricDataView.swift; sourceTree = "<group>"; };
 		EFBA26E42C70A09200CD85F6 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
@@ -128,7 +125,6 @@
 		EFBA26F62C72562100CD85F6 /* BoulderBro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderBro.entitlements; sourceTree = "<group>"; };
 		EFBA26F82C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutTypeActivityType+Ext.swift"; sourceTree = "<group>"; };
 		EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangTimer.swift; sourceTree = "<group>"; };
-		EFBA26FE2C73673900CD85F6 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
@@ -202,11 +198,9 @@
 				EF1775CF2C6EAB3C00EEAEF7 /* Core */,
 				EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */,
 				EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */,
-				EFBA26DB2C708A4A00CD85F6 /* CustomMenu.swift */,
 				EFBA26E62C70B6D400CD85F6 /* ActivityCard.swift */,
 				EFBA26E82C70D6FC00CD85F6 /* WorkoutCard.swift */,
 				EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */,
-				EFBA26FE2C73673900CD85F6 /* Menu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -508,7 +502,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					EF1C60B52C6A6FD1000F29E2 = {
 						CreatedOnToolsVersion = 15.4;
@@ -601,10 +595,8 @@
 				EFBA26F02C70E0F900CD85F6 /* Activity.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
 				EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */,
-				EFBA26FF2C73673900CD85F6 /* Menu.swift in Sources */,
 				EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */,
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
-				EFBA26DC2C708A4A00CD85F6 /* CustomMenu.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
 				EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
@@ -700,7 +692,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -708,6 +700,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -757,12 +750,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -840,7 +834,6 @@
 		EF1C60DE2C6A6FD2000F29E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -859,7 +852,6 @@
 		EF1C60DF2C6A6FD2000F29E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -878,7 +870,6 @@
 		EF1C60E12C6A6FD2000F29E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
@@ -896,7 +887,6 @@
 		EF1C60E22C6A6FD2000F29E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
