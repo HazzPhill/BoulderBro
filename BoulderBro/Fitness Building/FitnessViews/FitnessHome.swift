@@ -2,12 +2,12 @@ import SwiftUI
 
 struct FitnessHome: View {
     @StateObject var viewModel = FitnessHomeViewModel()
-
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
     var body: some View {
         NavigationStack {
             ZStack {
                 // Background layer that ignores safe area
-                Color(uiColor: .systemGray6)
+                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") :Color(hex: "#f1f0f5"))
                     .ignoresSafeArea()
 
                 // Content layer that respects safe area
@@ -84,6 +84,7 @@ struct FitnessHome: View {
                                     ActivityCard(activity: activity)
                                 }
                             }
+                            
                             .padding(.horizontal, 16)
                         }
                         
@@ -110,9 +111,9 @@ struct FitnessHome: View {
                                 WorkoutCard(workout: workout)
                             }
                         }
+                        .padding()
                     }
-                    .padding(.bottom, 50) // Bottom padding to avoid content cut-off
-                    .padding(.horizontal) // Overall horizontal padding
+                    .padding(.bottom,50)
                 }
             }
         }

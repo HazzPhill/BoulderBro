@@ -57,11 +57,11 @@ class HealthManager {
     
     private init () {
         
-    Task {
-        do {
-            try await requestHealthKitAccess()
-        } catch {
-            print (error.localizedDescription)
+        Task {
+            do {
+                try await requestHealthKitAccess()
+            } catch {
+                print (error.localizedDescription)
             }
         }
     }
@@ -139,7 +139,7 @@ class HealthManager {
             }
             
             let steps = quantity.doubleValue(for: .count())
-            let activity = Activity(title: "Today Steps", subtitle: "Goal: 800", image: "figure.walk", tintColor: .green, amount: steps.formattedNumberString())
+            let activity = Activity(title: "Steps", subtitle: "Today", image: "figure.walk", tintColor: .green, amount: steps.formattedNumberString())
             completion(.success(activity))
         }
         
@@ -147,59 +147,68 @@ class HealthManager {
     }
     
     func fetchCurrentWeekWorkoutStats(completion: @escaping (Result<[Activity],Error>)->Void) {
-            let workouts = HKSampleType.workoutType()
-            let predicate = HKQuery.predicateForSamples(withStart:.startOfWeek, end: Date())
-            let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { [weak self] _, results, error in
-                guard let workouts = results as? [HKWorkout], let self = self, error == nil else {
-                    completion(.failure(URLError(.badURL)))
-                    return
-                }
-                
-                var climbingCount: Int = 0
-                
-                for workout in workouts{
-                    let duration = Int(workout.duration)/60
-                    if workout.workoutActivityType == .climbing {
-                        climbingCount += duration
-                    }
-                }
-                    completion(.success(self.generateActivitiesFromDurations(climbing: climbingCount)))
-                }
-                healthStore.execute(query)
+        let workouts = HKSampleType.workoutType()
+        let predicate = HKQuery.predicateForSamples(withStart:.startOfWeek, end: Date())
+        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { [weak self] _, results, error in
+            guard let workouts = results as? [HKWorkout], let self = self, error == nil else {
+                completion(.failure(URLError(.badURL)))
+                return
             }
-
-       private func generateActivitiesFromDurations(climbing: Int) -> [Activity] {
-            return [
-                Activity(title: "Climbing", subtitle: "This Week", image: "figure.climbing", tintColor: .green, amount: "\(climbing) mins")
-                
-            ]
+            
+            var climbingCount: Int = 0
+            
+            for workout in workouts{
+                let duration = Int(workout.duration)/60
+                if workout.workoutActivityType == .climbing {
+                    climbingCount += duration
+                }
+            }
+            completion(.success(self.generateActivitiesFromDurations(climbing: climbingCount)))
         }
+        healthStore.execute(query)
+    }
     
-    //MARK:  Recent Workouts
+    private func generateActivitiesFromDurations(climbing: Int) -> [Activity] {
+        return [
+            Activity(title: "Climbing", subtitle: "This week", image: "figure.climbing", tintColor: .green, amount: "\(climbing) mins")
+            
+        ]
+    }
+    
+    //MARK:  Recent Workouts
     
     func fetchWorkoutsForMonth(month:Date,completion: @escaping (Result<[Workout],Error>)->Void) {
         let workouts = HKSampleType.workoutType()
         let (startDate,endDate) = month.fetchMonthStartAndEndDate()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate,ascending: false)
+        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate,ascending:
+                                                false)
         
-        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, result, error in
+        let query = HKSampleQuery(sampleType:
+                                    workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, result, error in
             guard let workouts = result as? [HKWorkout], error == nil else {
                 completion(.failure(URLError(.badURL)))
                 return
             }
             
-            let workoutArray = workouts.map({Workout(id: 0, // Provide a default value of 0
-                                                     title: $0.workoutActivityType.name,
-                                                     image: "figure.climbing",
-                                                     duration: "\(Int($0.duration)/60) mins",
-                                                     tintColor: Color(hex: "#FF5733"),
-                                                     date: $0.startDate.formatWorkoutDate(),
-                                                     calories: ($0.totalEnergyBurned?.doubleValue(for: .kilocalorie()).formattedNumberString() ?? "-") + "kcal" )})
+            // Filter for climbing workouts
+            let climbingWorkouts = workouts.filter { $0.workoutActivityType == .climbing }
+            
+            let workoutArray = climbingWorkouts.map { workout -> Workout in
+                let energyBurned = workout.statistics(for: HKQuantityType(.activeEnergyBurned))?.sumQuantity()?.doubleValue(for: .kilocalorie())
+                
+                return Workout(
+                    id: 0,
+                    title: workout.workoutActivityType.name,
+                    image: "figure.climbing",
+                    duration: "\(Int(workout.duration)/60) mins",
+                    tintColor: Color(hex: "#FF5733"),
+                    date: workout.startDate.formatWorkoutDate(),
+                    calories: (energyBurned?.formattedNumberString() ?? "-") + "kcal")
+            }
+            
             completion(.success(workoutArray))
         }
         healthStore.execute(query)
     }
-    
-    }
-
+}
