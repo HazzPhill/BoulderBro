@@ -135,7 +135,6 @@ struct Home: View {
                                     VStack {
                                         Image(systemName: "star.fill")
                                             .font(.largeTitle)
-                                            .foregroundColor(.yellow)
                                         Text("Star")
                                     }
                                 }
