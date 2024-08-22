@@ -3,17 +3,17 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct MyClimbsView: View {
-    
     @Environment(\.colorScheme) var colorScheme
-    
+
     @State private var topCircleOffset = CGSize(width: 150, height: -300)
     @State private var bottomCircleOffset = CGSize(width: -150, height: 250)
-    
+
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    
+
     @EnvironmentObject var viewModel: AuthViewModel
-    @State private var climbs: [Climb] = [] // State for storing the list of climbs
-    
+    @State private var climbs: [Climb] = []
+    @State private var isLoading = true // Track loading state
+
     var body: some View {
         if let user = viewModel.currentUser {
             NavigationStack {
@@ -22,7 +22,7 @@ struct MyClimbsView: View {
                     Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
                         .ignoresSafeArea()
                         .zIndex(-2)
-                    
+
                     // Top circle
                     Circle()
                         .fill(Color(hex: "#FF5733")).opacity(0.3)
@@ -31,7 +31,7 @@ struct MyClimbsView: View {
                         .offset(topCircleOffset)
                         .opacity(0.5)
                         .zIndex(-1)
-                    
+
                     // Bottom circle
                     Circle()
                         .fill(Color(hex: "#FF5733")).opacity(0.3)
@@ -40,7 +40,7 @@ struct MyClimbsView: View {
                         .offset(bottomCircleOffset)
                         .opacity(0.5)
                         .zIndex(-1)
-                    
+
                     // Animate circle offsets
                     .onReceive(timer) { _ in
                         withAnimation(.linear(duration: 0.9)) {
@@ -52,12 +52,12 @@ struct MyClimbsView: View {
                                 width: max(-200, min(UIScreen.main.bounds.width - 300, bottomCircleOffset.width + CGFloat.random(in: -50...50))),
                                 height: max(50, min(UIScreen.main.bounds.height - 450, bottomCircleOffset.height + CGFloat.random(in: -25...25)))
                             )
-                            
+
                             topCircleOffset = newTopOffset
                             bottomCircleOffset = newBottomOffset
                         }
                     }
-                    
+
                     ScrollView {
                         VStack(alignment: .leading, spacing: 16) {
                             Text(" \(user.firstName)'s Climbs")
@@ -69,9 +69,9 @@ struct MyClimbsView: View {
                                 .opacity(0.7)
                                 .padding(.top, 30)
                                 .padding(.bottom, 15)
-                            
+
                             CurrentLevel()
-                            
+
                             HStack {
                                 NavigationLink(destination: MyClimbsViewController()) {
                                     Image(systemName: "plus.circle.fill")
@@ -80,15 +80,15 @@ struct MyClimbsView: View {
                                         .foregroundStyle(Color(hex:"#0093AA"))
                                         .frame(width: 45, height: 45)
                                 }
-                                
+
                                 Image(systemName: "heart.circle.fill")
                                     .resizable()
                                     .scaledToFit()
                                     .foregroundStyle(Color(hex:"#0093AA"))
                                     .frame(width: 45, height: 45)
-                                
+
                                 Spacer()
-                                
+
                                 Button {
                                     print("View All")
                                 } label: {
@@ -100,35 +100,42 @@ struct MyClimbsView: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 16))
                                 }
                             }
-                            
-                            // List of uploaded climbs
-                            ForEach(climbs) { climb in
-                                NavigationLink(destination: TheClimb(climb: climb)) {
-                                    PersonalClimb(climb: climb)
-                                        .padding(.horizontal)
-                                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black) // Force text color
+
+                            if isLoading {
+                                ProgressView() // Activity indicator while loading
+                            } else {
+                                // List of uploaded climbs
+                                ForEach(climbs) { climb in
+                                    NavigationLink(destination: TheClimb(climb: climb)) {
+                                        PersonalClimb(climb: climb)
+                                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                                    }
                                 }
                             }
                         }
                         .padding(.horizontal)
                     }
-                    .onAppear(perform: fetchClimbs) // Fetch climbs when view appears
                 }
+                .onAppear(perform: fetchClimbs)
             }
         }
     }
-    
+
     // Fetch the climbs from Firestore
     func fetchClimbs() {
+        isLoading = true
+
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Error: User is not logged in.")
+            isLoading = false
             return
         }
-        
+
         let db = Firestore.firestore()
         db.collection("climbs").whereField("userId", isEqualTo: uid).getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching documents: \(error)")
+                isLoading = false
                 return
             }
             if let snapshot = snapshot {
@@ -143,6 +150,7 @@ struct MyClimbsView: View {
                     )
                 }
             }
+            isLoading = false
         }
     }
 }
