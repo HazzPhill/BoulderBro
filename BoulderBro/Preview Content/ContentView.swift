@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var selectedTab: Int = 0
-
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
     var body: some View {
         Group {
             if viewModel.userSession != nil {
@@ -45,7 +45,8 @@ struct ContentView: View {
                         }
                         .padding(.horizontal, 10) // Reduced horizontal padding
                         .padding(.vertical, 10)
-                        .background(Capsule().fill(Color.white))
+                        .background(Capsule().fill(Color(colorScheme == .dark ? Color(hex: "#333333") : Color.white)))
+                            .shadow(color: Color.black.opacity(0.3), radius: 15, x: 0, y: 5)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
                         .padding(.horizontal, 20) // Reduced overall padding to push the pill further to the edges
                         .padding(.bottom, 20)

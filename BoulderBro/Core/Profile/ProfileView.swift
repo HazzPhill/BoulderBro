@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
-    
+    @Environment(\.colorScheme) var colorScheme // To detect the current color
     var body: some View {
         if let user = viewModel.currentUser {
             VStack{
@@ -31,35 +31,41 @@ struct ProfileView: View {
                     }
                     
                     Section("General") {
-                        HStack {
-                            SettingsRowView(imageName: "gear", title: "Version", tintColor: Color(.systemGray))
-                            
-                            Spacer()
-                            
-                            Text("1.0.0")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.gray)
-                        }
-                        .padding(.vertical, 8) // Adjust vertical padding for consistent spacing
-                    }
-                    
-                    Section("Account") {
-                        Button {
-                            viewModel.signout()
-                        } label: {
-                            SettingsRowView(imageName: "arrow.left.circle.fill",
-                                            title: "Sign Out", tintColor: .red)
-                        }
-                        .padding(.vertical, 8) // Add padding for consistent spacing
-                        
-                        Button {
-                            print("Delete Account...")
-                        } label: {
-                            SettingsRowView(imageName: "xmark.circle.fill",
-                                            title: "Delete Account", tintColor: .red)
-                        }
-                        .padding(.vertical, 8) // Add padding for consistent spacing
-                    }
+                                            HStack {
+                                                SettingsRowView(imageName: "gear", title: "Version", tintColor: Color(.systemGray))
+                                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#000000") : Color.white)) // Existing color logic
+                                                Spacer()
+                                                
+                                                Text("1.0.0")
+                                                    .font(.subheadline)
+                                                    .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000"))) // **Modify this line**
+                                            }
+                                            .padding(.vertical, 8)
+                                        }
+                                        
+                                        Section("Account") {
+                                            Button {
+                                                viewModel.signout()
+                                            } label: {
+                                                SettingsRowView(imageName: "arrow.left.circle.fill",
+                                                                title: "Sign Out", tintColor:
+                                                        .red)
+                                                .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000"))) // **Modify this line**
+                                                
+                                            }
+                                            .padding(.vertical, 8)
+                                            
+                                            Button {
+                                                print("Delete Account...")
+                                                
+                                            } label: {
+                                                SettingsRowView(imageName: "xmark.circle.fill",
+                                                                title: "Delete Account", tintColor: .red)
+                                                .foregroundStyle(Color(colorScheme
+                                                                       == .dark ? Color.white : Color(hex: "#000000"))) // **Modify this line**
+                                            }
+                                            .padding(.vertical, 8)
+                                        }
                 }
                 .listStyle(InsetGroupedListStyle()) // Adjust the list style as needed
                 .navigationTitle("Profile") // Set a title if needed
