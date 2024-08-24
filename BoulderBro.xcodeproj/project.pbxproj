@@ -80,6 +80,7 @@
 		EFC7CFED2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
 		EFC7D01C2C6EA6EC002D5F78 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */; };
 		EFC7D01E2C6EA6EC002D5F78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */; };
+		EFD994122C7A01CB00B316BC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994112C7A01CB00B316BC /* Mantis */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 				EFA16F4D2C6D759A00D7301E /* FirebaseAuth in Frameworks */,
 				EFA16F5B2C6D759A00D7301E /* FirebaseFunctions in Frameworks */,
 				EFA16F552C6D759A00D7301E /* FirebaseDynamicLinks in Frameworks */,
+				EFD994122C7A01CB00B316BC /* Mantis in Frameworks */,
 				EFA16F592C6D759A00D7301E /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +482,7 @@
 				EFA16F6E2C6D759A00D7301E /* FirebaseVertexAI-Preview */,
 				EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */,
 				EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */,
+				EFD994112C7A01CB00B316BC /* Mantis */,
 			);
 			productName = BoulderBro;
 			productReference = EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */;
@@ -556,6 +559,7 @@
 			packageReferences = (
 				EF1C60F52C6A9011000F29E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */,
 			);
 			productRefGroup = EF1C60B72C6A6FD1000F29E2 /* Products */;
 			projectDirPath = "";
@@ -995,6 +999,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guoyingtao/Mantis.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1122,6 +1134,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		EFD994112C7A01CB00B316BC /* Mantis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */;
+			productName = Mantis;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

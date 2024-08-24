@@ -5,6 +5,56 @@ import CoreImage.CIFilterBuiltins
 import Firebase
 import FirebaseAuth
 import FirebaseStorage
+import Mantis
+
+struct ManualCropView: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Binding var isPresented: Bool
+    var onCropDone: (UIImage) -> Void
+
+    func makeUIViewController(context: Context) -> UIViewController {
+        var config = Mantis.Config()
+        config.cropShapeType = .rect
+        let cropViewController = Mantis.cropViewController(image: image!, config: config)
+        cropViewController.delegate = context.coordinator
+        
+        let navigationController = UINavigationController(rootViewController: cropViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        return navigationController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, CropViewControllerDelegate {
+        var parent: ManualCropView
+
+        init(_ parent: ManualCropView) {
+            self.parent = parent
+        }
+
+        func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
+            parent.onCropDone(cropped)
+            parent.isPresented = false
+        }
+
+        func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController, original: UIImage) {
+            parent.isPresented = false
+        }
+
+        func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
+            parent.isPresented = false
+        }
+
+        func cropViewControllerDidBeginResize(_ cropViewController: CropViewController) {}
+
+        func cropViewControllerDidEndResize(_ cropViewController: CropViewController, original: UIImage, cropInfo: CropInfo) {}
+    }
+}
 
 struct MembershipCardView: View {
     @State private var membershipImage: UIImage? = nil
@@ -12,10 +62,10 @@ struct MembershipCardView: View {
     @State private var cardInfo: String = ""
     @State private var showImagePicker = false
     @State private var showRemoveAlert = false
-    @State private var showSaveAlert = false // For success/error alerts
+    @State private var showSaveAlert = false
     @State private var alertMessage = ""
+    @State private var isManualCropping = false
 
-    // Navigation
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -26,6 +76,9 @@ struct MembershipCardView: View {
                     .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: 300)
                     .padding()
+                    .background(Color("CardBackground"))
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
             } else {
                 Text("No Membership Card Uploaded")
                     .foregroundColor(.gray)
@@ -33,20 +86,35 @@ struct MembershipCardView: View {
             }
 
             Text(cardInfo)
+                .font(.custom("YourCustomFont", size: 16))
                 .padding()
 
             HStack {
-                Button("Update Card") {
+                Button(action: {
                     showImagePicker.toggle()
+                }) {
+                    Text("Update Card")
+                        .font(.custom("YourCustomFont-Bold", size: 16))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-                .buttonStyle(.borderedProminent)
                 .padding()
 
                 if membershipImage != nil || croppedImage != nil {
-                    Button("Remove Card") {
+                    Button(action: {
                         showRemoveAlert.toggle()
+                    }) {
+                        Text("Remove Card")
+                            .font(.custom("YourCustomFont-Bold", size: 16))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.red.opacity(0.7))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
-                    .buttonStyle(.bordered)
                     .padding()
                     .alert(isPresented: $showRemoveAlert) {
                         Alert(
@@ -62,21 +130,53 @@ struct MembershipCardView: View {
                         )
                     }
                 }
+            }
 
-                if (membershipImage != nil || croppedImage != nil) && !cardInfo.isEmpty {
-                    Button("Save") {
-                        saveToFirebase()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding()
-                    .alert(isPresented: $showSaveAlert) {
-                        Alert(title: Text(alertMessage))
-                    }
+            if membershipImage != nil || croppedImage != nil {
+                Button(action: {
+                    isManualCropping = true
+                }) {
+                    Text("Manual Crop")
+                        .font(.custom("YourCustomFont-Bold", size: 16))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
+            }
+
+            if (membershipImage != nil || croppedImage != nil) && !cardInfo.isEmpty {
+                Button(action: {
+                    saveToFirebase()
+                }) {
+                    Text("Save")
+                        .font(.custom("YourCustomFont-Bold", size: 16))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
+                .alert(isPresented: $showSaveAlert) {
+                    Alert(title: Text(alertMessage))
                 }
             }
         }
+        .padding()
+        .background(Color("Background"))
+        .cornerRadius(15)
+        .shadow(radius: 10)
         .sheet(isPresented: $showImagePicker, onDismiss: processImage) {
             ImagePicker(selectedImage: $membershipImage, selectedVideoURL: .constant(nil))
+        }
+        .fullScreenCover(isPresented: $isManualCropping) {
+            ManualCropView(image: $membershipImage, isPresented: $isManualCropping) { croppedImage in
+                self.croppedImage = croppedImage
+                extractText(from: croppedImage)
+            }
         }
         .navigationTitle("Membership Card")
         .onAppear(perform: loadMembershipCardData)
@@ -137,16 +237,14 @@ struct MembershipCardView: View {
             print("Error: No membership image available.")
             return
         }
-        
-        // Attempt to crop the image to the membership card
+
         croppedImage = cropToMembershipCard(image)
-        
-        // Fallback: Use the original image if cropping fails
+
         if croppedImage == nil {
             print("Warning: Cropping failed, using original image.")
             croppedImage = image
         }
-        
+
         extractText(from: croppedImage ?? image)
     }
 
@@ -273,7 +371,6 @@ struct MembershipCardView: View {
                     return
                 }
 
-                // Save the card info and image URL to Firestore under the user's document
                 let db = Firestore.firestore()
                 db.collection("users").document(currentUserID).setData([
                     "membershipCardInfo": cardInfo,
@@ -283,7 +380,6 @@ struct MembershipCardView: View {
                         alertMessage = "Error saving to Firestore: \(error.localizedDescription)"
                     } else {
                         alertMessage = "Membership card saved successfully!"
-                        // Navigate back to profile view
                         presentationMode.wrappedValue.dismiss()
                     }
                     showSaveAlert = true
