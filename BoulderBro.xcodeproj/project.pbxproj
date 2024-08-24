@@ -22,6 +22,7 @@
 		EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */; };
 		EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */; };
 		EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */; };
+		EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BA32C7906B60067329B /* CaloriesChart.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -117,6 +118,7 @@
 		EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsView.swift; sourceTree = "<group>"; };
 		EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLevel.swift; sourceTree = "<group>"; };
 		EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalClimb.swift; sourceTree = "<group>"; };
+		EF359BA32C7906B60067329B /* CaloriesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesChart.swift; sourceTree = "<group>"; };
 		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
 		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */,
 				EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */,
 				EFA7D8382C74ECE1006E764E /* ImagePicker.swift */,
+				EF359BA32C7906B60067329B /* CaloriesChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */,
 				EFBA26FB2C72A02B00CD85F6 /* HangTimer.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
+				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EFBA26F02C70E0F900CD85F6 /* Activity.swift in Sources */,

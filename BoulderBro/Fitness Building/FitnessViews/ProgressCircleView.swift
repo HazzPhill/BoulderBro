@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct ProgressCircleView: View {
-    
     @Binding var progress: Int
     var goal: Int
     var color: Color
     private let width: CGFloat = 20
-    
+
     var body: some View {
         ZStack {
             Circle()
-                .stroke(color.opacity(0.1), lineWidth: 20) // Apply stroke directly to the first Circle
-            
+                .stroke(color.opacity(0.1), lineWidth: 20)
+
+            // Calculate progress, ensuring it's never 0 to avoid division by zero
+            let safeProgress = max(progress, 1) // Or any other suitable minimum value > 0
+            let progressRatio = CGFloat(safeProgress) / CGFloat(goal)
+
             Circle()
-                .trim(from: 0, to: CGFloat(progress)/CGFloat(goal))
-                .stroke(color, style:StrokeStyle(lineWidth: 20, lineCap: .round)) // Apply stroke directly to the second Circle
+                .trim(from: 0, to: progressRatio)
+                .stroke(color, style: StrokeStyle(lineWidth: 20, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
         .padding()

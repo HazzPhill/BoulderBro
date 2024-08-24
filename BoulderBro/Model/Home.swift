@@ -51,16 +51,13 @@ struct FixedHeightEditableBlock<Content: View>: View {
 }
 
 struct Home: View {
-    
-    
-    
     init() {
         UITabBar.appearance().isHidden = true
     }
 
     @Environment(\.colorScheme) var colorScheme // To detect the current color
     
-    // Circle variables
+    // Circle variables for animated background circles
     @State private var topCircleOffset = CGSize(width: 150, height: -300)
     @State private var bottomCircleOffset = CGSize(width: -150, height: 250)
 
@@ -71,7 +68,7 @@ struct Home: View {
         NavigationStack {
             ZStack {
                 // Background color
-                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") :Color(hex: "#f1f0f5"))
+                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
                     .ignoresSafeArea()
                     .zIndex(-2)
 
@@ -118,146 +115,151 @@ struct Home: View {
                             .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
                             .opacity(0.7)
 
-                        Rectangle()
-                            .frame(height: 163)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                        // Overview section with the calorie chart
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                .shadow(radius: 5)
+                                .frame(height: 165) // Adjust the height based on content
+
+                            CaloriesChart()
+                        }
 
                         Text("My Climbs")
-                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                            .padding(.top)
+                                                   .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                                   .fontWeight(.bold)
+                                                   .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                                   .padding(.top)
 
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                EditableBlock {
-                                    VStack {
-                                        Image(systemName: "star.fill")
-                                            .font(.largeTitle)
-                                        Text("Star")
-                                    }
-                                }
-                                .padding(.trailing, 5)
+                                               ScrollView(.horizontal, showsIndicators: false) {
+                                                   HStack {
+                                                       EditableBlock {
+                                                           VStack {
+                                                               Image(systemName: "star.fill")
+                                                                   .font(.largeTitle)
+                                                               Text("Star")
+                                                           }
+                                                       }
+                                                       .padding(.trailing, 5)
 
-                                EditableBlock {
-                                    VStack {
-                                        Image(systemName: "flame.fill")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.orange)
-                                        Text("Flame")
-                                    }
-                                }
-                                .padding(.trailing, 5)
+                                                       EditableBlock {
+                                                           VStack {
+                                                               Image(systemName: "flame.fill")
+                                                                   .font(.largeTitle)
+                                                                   .foregroundColor(.orange)
+                                                               Text("Flame")
+                                                           }
+                                                       }
+                                                       .padding(.trailing, 5)
 
-                                EditableBlock {
-                                    VStack {
-                                        Image(systemName: "bolt.fill")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.blue)
-                                        Text("Bolt")
-                                    }
-                                }
-                                .padding(.trailing, 5)
+                                                       EditableBlock {
+                                                           VStack {
+                                                               Image(systemName: "bolt.fill")
+                                                                   .font(.largeTitle)
+                                                                   .foregroundColor(.blue)
+                                                               Text("Bolt")
+                                                           }
+                                                       }
+                                                       .padding(.trailing, 5)
 
-                                EditableBlock {
-                                    VStack {
-                                        Text("Custom")
-                                            .font(.headline)
-                                        Text("Text Layout")
-                                            .font(.subheadline)
-                                    }
-                                }
-                                .padding(.trailing, 5)
+                                                       EditableBlock {
+                                                           VStack {
+                                                               Text("Custom")
+                                                                   .font(.headline)
+                                                               Text("Text Layout")
+                                                                   .font(.subheadline)
+                                                           }
+                                                       }
+                                                       .padding(.trailing, 5)
 
-                                EditableBlock {
-                                    VStack {
-                                        Image(systemName: "heart.fill")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.red)
-                                        Text("Heart")
-                                    }
-                                }
-                                .padding(.trailing, 5)
+                                                       EditableBlock {
+                                                           VStack {
+                                                               Image(systemName: "heart.fill")
+                                                                   .font(.largeTitle)
+                                                                   .foregroundColor(.red)
+                                                               Text("Heart")
+                                                           }
+                                                       }
+                                                       .padding(.trailing, 5)
 
-                                Spacer()
-                                    .frame(width: 5)
-                            }
-                            .padding(.top)
-                            .padding(.bottom)
-                        }
+                                                       Spacer()
+                                                           .frame(width: 5)
+                                                   }
+                                                   .padding(.top)
+                                                   .padding(.bottom)
+                                               }
 
-                        Text("Stats")
-                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                            .padding(.top)
-                            .padding(.top)
+                                               Text("Stats")
+                                                   .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                                   .fontWeight(.bold)
+                                                   .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                                   .padding(.top)
+                                                   .padding(.top)
 
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                            FixedHeightEditableBlock {
-                                VStack {
-                                    Text("First Rectangle")
-                                        .font(.headline)
-                                }
-                            }
-                            
-                            FixedHeightEditableBlock {
-                                HStack {
-                                    Image(systemName: "heart.fill")
-                                        .font(.largeTitle)
-                                        .foregroundColor(.red)
-                                    Text("Second Rectangle")
-                                }
-                            }
-                            
-                            FixedHeightEditableBlock {
-                                VStack {
-                                    Text("Third Rectangle")
-                                        .font(.headline)
-                                }
-                            }
-                            
-                            FixedHeightEditableBlock {
-                                HStack {
-                                    Image(systemName: "staroflife.fill")
-                                        .font(.largeTitle)
-                                        .foregroundColor(.blue)
-                                    Text("Fourth Rectangle")
-                                }
-                            }
-                        }
-                        
-                        
-                        Text("HangTimer")
-                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                            .padding(.top)
-                            .padding(.top)
-                        
-                        HangTimer()
-                        
-                        
-                        Text("Climb of the week")
-                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                            .padding(.top)
-                            .padding(.top)
+                                               LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                                   FixedHeightEditableBlock {
+                                                       VStack {
+                                                           Text("First Rectangle")
+                                                               .font(.headline)
+                                                       }
+                                                   }
+                                                   
+                                                   FixedHeightEditableBlock {
+                                                       HStack {
+                                                           Image(systemName: "heart.fill")
+                                                               .font(.largeTitle)
+                                                               .foregroundColor(.red)
+                                                           Text("Second Rectangle")
+                                                       }
+                                                   }
+                                                   
+                                                   FixedHeightEditableBlock {
+                                                       VStack {
+                                                           Text("Third Rectangle")
+                                                               .font(.headline)
+                                                       }
+                                                   }
+                                                   
+                                                   FixedHeightEditableBlock {
+                                                       HStack {
+                                                           Image(systemName: "staroflife.fill")
+                                                               .font(.largeTitle)
+                                                               .foregroundColor(.blue)
+                                                           Text("Fourth Rectangle")
+                                                       }
+                                                   }
+                                               }
+                                               
+                                               
+                                               Text("HangTimer")
+                                                   .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                                   .fontWeight(.bold)
+                                                   .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                                   .padding(.top)
+                                                   .padding(.top)
+                                               
+                                               HangTimer()
+                                               
+                                               
+                                               Text("Climb of the week")
+                                                   .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                                   .fontWeight(.bold)
+                                                   .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                                   .padding(.top)
+                                                   .padding(.top)
 
-                        Rectangle()
-                            .frame(height: 200)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
-                    }
-                    .padding()
-                }
-            }
-        }
-    }
-}
+                                               Rectangle()
+                                                   .frame(height: 200)
+                                                   .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                   .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                           }
+                                           .padding()
+                                       }
+                                   }
+                               }
+                           }
+                       }
 
-#Preview {
-    Home()
-}
+                       #Preview {
+                           Home()
+                       }

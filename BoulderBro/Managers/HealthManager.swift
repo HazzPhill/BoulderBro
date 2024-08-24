@@ -211,4 +211,40 @@ class HealthManager {
         }
         healthStore.execute(query)
     }
+    
+    func fetchLastTenClimbingWorkouts(completion: @escaping (Result<[Workout], Error>) -> Void) {
+        let workouts = HKSampleType.workoutType()
+        let predicate = HKQuery.predicateForSamples(withStart: nil, end: Date())
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: 10, sortDescriptors: [sortDescriptor]) { _, result, error in
+            guard let workouts = result as? [HKWorkout], error == nil else {
+                completion(.failure(URLError(.badURL)))
+                return
+            }
+            
+            // Filter for climbing workouts
+            let climbingWorkouts = workouts.filter { $0.workoutActivityType == .climbing }
+            
+            let workoutArray = climbingWorkouts.map { workout -> Workout in
+                let energyBurned = workout.statistics(for: HKQuantityType(.activeEnergyBurned))?.sumQuantity()?.doubleValue(for: .kilocalorie())
+                
+                return Workout(
+                    id: 0,
+                    title: workout.workoutActivityType.name,
+                    image: "figure.climbing",
+                    duration: "\(Int(workout.duration)/60) mins",
+                    tintColor: Color(hex: "#FF5733"),
+                    date: workout.startDate.formatWorkoutDate(),
+                    calories: (energyBurned?.formattedNumberString() ?? "0") + " kcal"
+                )
+            }
+            
+            completion(.success(workoutArray))
+        }
+        
+        healthStore.execute(query)
+    }
 }
+
+
