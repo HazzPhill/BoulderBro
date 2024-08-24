@@ -23,6 +23,7 @@
 		EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */; };
 		EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */; };
 		EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BA32C7906B60067329B /* CaloriesChart.swift */; };
+		EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BAB2C79E7A90067329B /* MembershipCardView.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -119,6 +120,7 @@
 		EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLevel.swift; sourceTree = "<group>"; };
 		EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalClimb.swift; sourceTree = "<group>"; };
 		EF359BA32C7906B60067329B /* CaloriesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesChart.swift; sourceTree = "<group>"; };
+		EF359BAB2C79E7A90067329B /* MembershipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCardView.swift; sourceTree = "<group>"; };
 		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
 		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
 				EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */,
 				EFA7D83A2C753592006E764E /* TheClimb.swift */,
+				EF359BAB2C79E7A90067329B /* MembershipCardView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
 				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
+				EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */,
 				EFA7D8332C74E87C006E764E /* Climb.swift in Sources */,
 				EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */,
 				EFA7D8372C74EABC006E764E /* MyClimbsViewController.swift in Sources */,

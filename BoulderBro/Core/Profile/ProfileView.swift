@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.colorScheme) var colorScheme // To detect the current color
+    @State private var showMembershipCard = false // State to show membership card view
+
     var body: some View {
         if let user = viewModel.currentUser {
             VStack{
@@ -31,47 +33,59 @@ struct ProfileView: View {
                     }
                     
                     Section("General") {
-                                            HStack {
-                                                SettingsRowView(imageName: "gear", title: "Version", tintColor: Color(.systemGray))
-                                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#000000") : Color.white)) // Existing color logic
-                                                Spacer()
-                                                
-                                                Text("1.0.0")
-                                                    .font(.subheadline)
-                                                    .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000"))) // **Modify this line**
-                                            }
-                                            .padding(.vertical, 8)
-                                        }
-                                        
-                                        Section("Account") {
-                                            Button {
-                                                viewModel.signout()
-                                            } label: {
-                                                SettingsRowView(imageName: "arrow.left.circle.fill",
-                                                                title: "Sign Out", tintColor:
-                                                        .red)
-                                                .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000"))) // **Modify this line**
-                                                
-                                            }
-                                            .padding(.vertical, 8)
-                                            
-                                            Button {
-                                                print("Delete Account...")
-                                                
-                                            } label: {
-                                                SettingsRowView(imageName: "xmark.circle.fill",
-                                                                title: "Delete Account", tintColor: .red)
-                                                .foregroundStyle(Color(colorScheme
-                                                                       == .dark ? Color.white : Color(hex: "#000000"))) // **Modify this line**
-                                            }
-                                            .padding(.vertical, 8)
-                                        }
+                        HStack {
+                            SettingsRowView(imageName: "gear", title: "Version", tintColor: Color(.systemGray))
+                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#000000") : Color.white))
+                            Spacer()
+                            
+                            Text("1.0.0")
+                                .font(.subheadline)
+                                .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000")))
+                        }
+                        .padding(.vertical, 8)
+                    }
+                    
+                    Section("Account") {
+                        Button {
+                            viewModel.signout()
+                        } label: {
+                            SettingsRowView(imageName: "arrow.left.circle.fill",
+                                            title: "Sign Out", tintColor:
+                                                    .red)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000")))
+                        }
+                        .padding(.vertical, 8)
+                        
+                        Button {
+                            print("Delete Account...")
+                        } label: {
+                            SettingsRowView(imageName: "xmark.circle.fill",
+                                            title: "Delete Account", tintColor: .red)
+                            .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000")))
+                        }
+                        .padding(.vertical, 8)
+                    }
+                    
+                    // New Section for Membership Card
+                    Section("Membership") {
+                        Button {
+                            showMembershipCard.toggle()
+                        } label: {
+                            SettingsRowView(imageName: "creditcard.fill",
+                                            title: "See My Membership Card", tintColor: Color(.systemBlue))
+                                .foregroundStyle(Color(colorScheme == .dark ? Color.white : Color(hex: "#000000")))
+                        }
+                        .padding(.vertical, 8)
+                    }
                 }
                 .listStyle(InsetGroupedListStyle()) // Adjust the list style as needed
                 .navigationTitle("Profile") // Set a title if needed
                 .navigationBarTitleDisplayMode(.inline) // Adjust title display mode
+                .sheet(isPresented: $showMembershipCard) {
+                    MembershipCardView()
+                }
             }
-            .padding(.top,50)
+            .padding(.top, 50)
         } else {
             Text("Loading...") // Fallback if user data isn't available
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -80,6 +94,7 @@ struct ProfileView: View {
         }
     }
 }
+
 
 #Preview {
     ProfileView()
