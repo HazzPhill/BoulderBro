@@ -92,6 +92,32 @@ struct FitnessHome: View {
                             .padding(.horizontal)
                         
                         HStack {
+                            Text("Take a deep look")
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                            Spacer()
+                            
+                            NavigationLink {
+                                DeepInsightsView()
+                            } label: {
+                                Text("Show More")
+                                    .padding(.all, 10)
+                                    .foregroundStyle(Color.white)
+                                    .background(Color(hex: "#FF5733"))
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                .shadow(radius: 5)
+                                .frame(height: 165) // Adjust the height based on content
+
+                            CaloriesChart()
+                        }
+                        
+                        HStack {
                             Text("Recent Workouts")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 16))
                             Spacer()

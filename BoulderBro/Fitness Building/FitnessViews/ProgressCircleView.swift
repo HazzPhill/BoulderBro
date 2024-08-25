@@ -1,10 +1,3 @@
-//
-//  ProgressCircleView.swift
-//  BoulderBro
-//
-//  Created by Hazz on 17/08/2024.
-//
-
 import SwiftUI
 
 struct ProgressCircleView: View {
@@ -16,15 +9,14 @@ struct ProgressCircleView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(color.opacity(0.1), lineWidth: 20)
+                .stroke(color.opacity(0.1), lineWidth: width)
 
-            // Calculate progress, ensuring it's never 0 to avoid division by zero
-            let safeProgress = max(progress, 1) // Or any other suitable minimum value > 0
-            let progressRatio = CGFloat(safeProgress) / CGFloat(goal)
+            // Calculate progress ratio, ensuring it stays between 0 and 1
+            let progressRatio = min(max(CGFloat(progress) / CGFloat(goal), 0), 1)
 
             Circle()
                 .trim(from: 0, to: progressRatio)
-                .stroke(color, style: StrokeStyle(lineWidth: 20, lineCap: .round))
+                .stroke(color, style: StrokeStyle(lineWidth: width, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
         .padding()
@@ -32,5 +24,5 @@ struct ProgressCircleView: View {
 }
 
 #Preview {
-    ProgressCircleView(progress: .constant(100), goal: 200, color: .red)
+    ProgressCircleView(progress: .constant(0), goal: 200, color: .red)
 }

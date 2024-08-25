@@ -56,12 +56,19 @@ class FitnessHomeViewModel: ObservableObject {
             switch result {
             case .success(let calories):
                 DispatchQueue.main.async {
-                    self.calories = Int(calories)
-                    let activity = Activity(title: "Calories Burned", subtitle: "Today", image: "flame", tintColor: .red, amount: calories.formattedNumberString())
+                    let caloriesValue = max(0, Int(calories))
+                    self.calories = caloriesValue
+                    let activity = Activity(
+                        title: "Calories Burned",
+                        subtitle: "Today",
+                        image: "flame",
+                        tintColor: .red,
+                        amount: calories.formattedNumberString()
+                    )
                     self.activities.append(activity)
                 }
             case .failure(let failure):
-                print (failure.localizedDescription)
+                print("0")
             }
         }
     }
@@ -71,10 +78,11 @@ class FitnessHomeViewModel: ObservableObject {
             switch result {
             case .success(let exercise):
                 DispatchQueue.main.async {
-                    self.exercise = Int(exercise)
+                    let exerciseValue = max(0, Int(exercise))
+                    self.exercise = exerciseValue
                 }
             case .failure(let failure):
-                print (failure.localizedDescription)
+                print("0")
             }
         }
     }
@@ -84,10 +92,11 @@ class FitnessHomeViewModel: ObservableObject {
             switch result {
             case .success(let hours):
                 DispatchQueue.main.async {
-                    self.stand = hours
+                    let standValue = max(0, hours)
+                    self.stand = standValue
                 }
             case .failure(let failure):
-                print (failure.localizedDescription)
+                print("0")
             }
         }
     }
@@ -101,7 +110,7 @@ class FitnessHomeViewModel: ObservableObject {
                     self.activities.append(activity)
                 }
             case .failure(let failure):
-                print (failure.localizedDescription)
+                print("0")
             }
         }
     }
@@ -114,7 +123,7 @@ class FitnessHomeViewModel: ObservableObject {
                     self.activities.append(contentsOf: activities)
                 }
             case .failure(let failure):
-                print (failure.localizedDescription)
+                print(failure.localizedDescription)
             }
         }
     }

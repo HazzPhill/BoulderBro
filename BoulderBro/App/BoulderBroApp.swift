@@ -25,6 +25,7 @@ struct BoulderBroApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
+                
         }
     }
 }

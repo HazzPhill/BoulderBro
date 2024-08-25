@@ -6,6 +6,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 import Mantis
+import FirebaseFirestore
+import FirebaseFirestoreCombineSwift
 
 struct ManualCropView: UIViewControllerRepresentable {
     @Binding var image: UIImage?
@@ -120,60 +122,64 @@ struct MembershipCardView: View {
                     }
                 }
                 
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text ("\(user.firstName)'s Membership Card")
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.5)
-                            .font(.custom("Kurdis-ExtraWideBlack", size: 30))
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                            .opacity(0.7)
-                            .padding(.top)
+                VStack {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text ("\(user.firstName)'s Membership Card")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                                .font(.custom("Kurdis-ExtraWideBlack", size: 30))
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                .opacity(0.7)
+                                .padding(.top)
 
-                        if let image = croppedImage ?? membershipImage {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: .infinity, maxHeight: 300)
-                                .padding()
-                                .background(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                            
-                            VStack(spacing: 16) { // Stack buttons vertically
-                                EditButton(showEditOptions: $showEditOptions)
-                                    .frame(maxWidth: .infinity) // Ensure buttons are the same width
-                                
-                                if shouldShowSaveButton {
-                                    SaveButton(action: saveToFirebase)
-                                        .frame(maxWidth: .infinity)
-                                        .alert(isPresented: $showSaveAlert) {
-                                            Alert(title: Text(alertMessage))
-                                        }
-                                }
+                            if let image = croppedImage ?? membershipImage {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: .infinity, maxHeight: 300)
+                                    .padding()
+                                    .background(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                    .cornerRadius(10)
+                                    .shadow(radius: 5)
+                            } else {
+                                EmptyStateView(showImagePicker: $showImagePicker)
+                                    .frame(maxWidth: .infinity)
                             }
-                            .padding(.horizontal)
-                            .actionSheet(isPresented: $showEditOptions) {
-                                ActionSheet(
-                                    title: Text("Edit Membership Card"),
-                                    buttons: editActionButtons()
-                                )
+
+                            if shouldShowCardInfo {
+                                CardInfoView(cardInfo: $cardInfo, gymName: $gymName, isEditingInfo: $isEditingInfo)
+                                    .frame(maxWidth: .infinity)
                             }
-                            .alert(isPresented: $showRemoveAlert) {
-                                removeAlert()
-                            }
-                        } else {
-                            EmptyStateView(showImagePicker: $showImagePicker)
-                                .frame(maxWidth: .infinity)
                         }
+                        .padding()
+                    }
 
-                        if shouldShowCardInfo {
-                            CardInfoView(cardInfo: $cardInfo, gymName: $gymName, isEditingInfo: $isEditingInfo)
+                    // Buttons placed at the bottom
+                    VStack(spacing: 16) {
+                        EditButton(showEditOptions: $showEditOptions)
+                            .frame(maxWidth: .infinity)
+
+                        if shouldShowSaveButton {
+                            SaveButton(action: saveToFirebase)
                                 .frame(maxWidth: .infinity)
+                                .alert(isPresented: $showSaveAlert) {
+                                    Alert(title: Text(alertMessage))
+                                }
                         }
                     }
                     .padding()
+                    .background(Color(.systemBackground).shadow(radius: 5))
+                    .actionSheet(isPresented: $showEditOptions) {
+                        ActionSheet(
+                            title: Text("Edit Membership Card"),
+                            buttons: editActionButtons()
+                        )
+                    }
+                    .alert(isPresented: $showRemoveAlert) {
+                        removeAlert()
+                    }
                 }
             }
             .sheet(isPresented: $showImagePicker, onDismiss: processImage) {
@@ -465,7 +471,7 @@ struct EditButton: View {
         }) {
             HStack {
                 Image(systemName: "pencil.circle")
-                Text("Edit Card Info")
+                Text("Edit Image")
                     .fontWeight(.semibold)
             }
             .frame(maxWidth: .infinity) // Ensure full width
@@ -522,10 +528,25 @@ struct CardInfoView: View {
                 .font(.custom("YourCustomFont", size: 16))
                 .padding()
 
-            EditButton(showEditOptions: $isEditingInfo)
-                .sheet(isPresented: $isEditingInfo) {
-                    EditCardInfoView(cardInfo: $cardInfo, gymName: $gymName)
+            // Modified Edit Button for Card Info
+            Button(action: {
+                isEditingInfo.toggle()
+            }) {
+                HStack {
+                    Image(systemName: "pencil.circle")
+                    Text("Edit Card Info")
+                        .fontWeight(.semibold)
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.accentColor)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+            }
+            .padding(.horizontal)
+            .sheet(isPresented: $isEditingInfo) {
+                EditCardInfoView(cardInfo: $cardInfo, gymName: $gymName)
+            }
         }
         .padding(.horizontal)
     }
