@@ -1,15 +1,9 @@
-//
-//  ActivityCard.swift
-//  BoulderBro
-//
-//  Created by Hazz on 17/08/2024.
-//
-
 import SwiftUI
 
 struct ActivityCard: View {
     @State var activity: Activity
     @Environment(\.colorScheme) var colorScheme // To detect the current color scheme
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
     var body: some View {
         ZStack {
@@ -32,12 +26,12 @@ struct ActivityCard: View {
                     Spacer()
                     
                     Image(systemName: activity.image)
-                        .foregroundStyle(Color(hex: "#FF5733"))
+                        .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                 }
                 
                 Text(activity.amount)
                     .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                    .foregroundStyle(Color(hex: "#FF5733"))
+                    .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                     .padding()
             }
             .padding()
@@ -46,5 +40,14 @@ struct ActivityCard: View {
 }
 
 #Preview {
-    ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 12,000", image: "figure.walk", tintColor: Color(hex: "#FF5733"), amount: "9,431"))
+    ActivityCard(
+        activity: Activity(
+            title: "Today's Steps",
+            subtitle: "Goal 12,000",
+            image: "figure.walk",
+            tintColor: Color(hex: "#FF5733"),
+            amount: "9,431"
+        )
+    )
+    .environmentObject(ColorThemeManager()) // Provide the ColorThemeManager for the preview
 }

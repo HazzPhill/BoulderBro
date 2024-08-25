@@ -12,7 +12,6 @@ struct Workout: Identifiable {
     let title: String
     let image: String
     let duration: String
-    let tintColor: Color
     let date: String
     let calories: String
 }

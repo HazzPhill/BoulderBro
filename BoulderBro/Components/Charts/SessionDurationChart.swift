@@ -1,9 +1,3 @@
-//
-//  SessionDurationChart.swift
-//  BoulderBro
-//
-//  Created by Hazz on 25/08/2024.
-//
 import SwiftUI
 import Charts
 
@@ -11,6 +5,7 @@ struct DurationChart: View {
     @State private var workouts: [Workout] = []
     @State private var isLoading = true
     @State private var averageDuration: Double = 0.0
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
     var body: some View {
         VStack {
@@ -19,12 +14,12 @@ struct DurationChart: View {
             } else if workouts.isEmpty {
                 Text("No climbing workouts available.")
             } else {
-                Chart(workouts) { workout in
+                Chart(workouts.reversed()) { workout in
                     LineMark(
                         x: .value("Date", workout.date),
                         y: .value("Duration", Double(workout.duration.replacingOccurrences(of: " mins", with: "")) ?? 0.0)
                     )
-                    .foregroundStyle(Color(hex: "#FF5733"))
+                    .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                     .symbol(Circle())
                     .lineStyle(StrokeStyle(lineWidth: 2))
                 }

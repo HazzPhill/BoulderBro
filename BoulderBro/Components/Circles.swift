@@ -14,6 +14,8 @@ struct MovingCircles: View {
     // Timer for animation
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
+ 
     var body: some View {
         ZStack {
             // Background color

@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct FitnessHome: View {
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     @StateObject var viewModel = FitnessHomeViewModel()
     @Environment(\.colorScheme) var colorScheme // To detect the current color
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 // Background layer that ignores safe area
-                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") :Color(hex: "#f1f0f5"))
+                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
                     .ignoresSafeArea()
 
                 // Content layer that respects safe area
@@ -71,8 +73,8 @@ struct FitnessHome: View {
                             } label: {
                                 Text("Show More")
                                     .padding(.all, 10)
-                                    .foregroundStyle(Color.white)
-                                    .background(Color(hex: "#FF5733"))
+                                    .foregroundColor(textColor()) // Dynamic text color for button
+                                    .background(colorThemeManager.currentThemeColor) // Use theme color for background
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                         }
@@ -84,7 +86,6 @@ struct FitnessHome: View {
                                     ActivityCard(activity: activity)
                                 }
                             }
-                            
                             .padding(.horizontal, 16)
                         }
                         
@@ -101,8 +102,8 @@ struct FitnessHome: View {
                             } label: {
                                 Text("Show More")
                                     .padding(.all, 10)
-                                    .foregroundStyle(Color.white)
-                                    .background(Color(hex: "#FF5733"))
+                                    .foregroundColor(textColor()) // Dynamic text color for button
+                                    .background(colorThemeManager.currentThemeColor) // Use theme color for background
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                         }
@@ -128,8 +129,8 @@ struct FitnessHome: View {
                             } label: {
                                 Text("Show More")
                                     .padding(.all, 10)
-                                    .foregroundStyle(Color.white)
-                                    .background(Color(hex: "#FF5733"))
+                                    .foregroundColor(textColor()) // Dynamic text color for button
+                                    .background(colorThemeManager.currentThemeColor) // Use theme color for background
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                         }
@@ -142,13 +143,20 @@ struct FitnessHome: View {
                         }
                         .padding()
                     }
-                    .padding(.bottom,50)
+                    .padding(.bottom, 50)
                 }
             }
         }
+    }
+    
+    // Helper method to determine text color based on the theme color brightness
+    private func textColor() -> Color {
+        return colorThemeManager.isLightColor ? .black : .white
     }
 }
 
 #Preview {
     FitnessHome()
+        .environmentObject(ColorThemeManager()) // Provide ColorThemeManager for the preview
+        .environmentObject(FitnessHomeViewModel()) // Provide FitnessHomeViewModel for the preview
 }

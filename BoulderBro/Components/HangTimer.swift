@@ -8,7 +8,8 @@ struct HangTimer: View {
     @State private var personalBest: TimeInterval = 0
     @State private var timer: Timer?
     @State private var countdown: Int?
-
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Rectangle()
@@ -20,7 +21,7 @@ struct HangTimer: View {
                         if let countdown = countdown {
                             Text(countdown > 0 ? "\(countdown)" : "Go!")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 60))
-                                .foregroundStyle(Color(hex: "#FF5733"))
+                                .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                         } else {
                             HStack {
                                 // Timer display on the left with fixed width
@@ -41,7 +42,7 @@ struct HangTimer: View {
                                 }) {
                                     Image(systemName: isRunning ? "stop.circle.fill" : "play.circle.fill")
                                         .font(.system(size: 50))
-                                        .foregroundColor(Color(hex: "#FF5733"))
+                                        .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                                 }
                                 
                                 Spacer()

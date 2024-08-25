@@ -10,6 +10,7 @@ import SwiftUI
 struct WorkoutCard: View {
     @State var workout: Workout
     @Environment(\.colorScheme) var colorScheme // To detect the current color scheme
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
     var body: some View {
         HStack {
@@ -17,7 +18,7 @@ struct WorkoutCard: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 36, height: 36)
-                .foregroundStyle(workout.tintColor)
+                .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                 .padding()
                 .background(Color(colorScheme == .dark ? Color(hex: "#212121") : Color(hex: "#ECECEC")))
                 .clipShape(Circle())
@@ -53,5 +54,7 @@ struct WorkoutCard: View {
 }
 
 #Preview {
-    WorkoutCard(workout: Workout(id: 0, title: "Climbing", image: "figure.run", duration: "24 mins", tintColor: Color(hex: "#FF5733"), date: "August 4", calories: "461 kcal"))
+    let colorThemeManager = ColorThemeManager() // Create an instance of ColorThemeManager
+    WorkoutCard(workout: Workout(id: 0, title: "Climbing", image: "figure.run", duration: "24 mins", date: "August 4", calories: "461 kcal"))
+        .environmentObject(colorThemeManager) // Inject the colorThemeManager into the environment
 }

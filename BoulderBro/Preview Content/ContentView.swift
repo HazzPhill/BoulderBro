@@ -4,6 +4,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var selectedTab: Int = 0
     @Environment(\.colorScheme) var colorScheme // To detect the current color
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     var body: some View {
         Group {
             if viewModel.userSession != nil {
@@ -64,12 +65,13 @@ struct TabBarButton: View {
     let icon: String
     let isSelected: Bool
     let action: () -> Void
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
     var body: some View {
         Button(action: action) {
             Image(systemName: icon)
                 .font(.system(size: 24))
-                .foregroundColor(isSelected ?  Color(hex: "#FF5733") : Color.gray)
+                .foregroundColor(isSelected ? colorThemeManager.currentThemeColor : Color.gray)
                 .padding()
         }
     }

@@ -4,7 +4,7 @@ import AVFoundation
 
 struct PersonalClimb: View {
     var climb: Climb
-
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     var body: some View {
         VStack(alignment: .leading) {
             AsyncImage(url: URL(string: climb.mediaURL)) { image in
@@ -37,7 +37,7 @@ struct PersonalClimb: View {
                 Spacer()
                 Text(climb.vRating)
                     .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                    .foregroundColor(Color(hex: "#FF5733"))
+                    .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
             }
         }
         .padding(.top)

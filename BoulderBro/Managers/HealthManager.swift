@@ -1,14 +1,8 @@
-//
-//  HealthManager.swift
-//  BoulderBro
-//
-//  Created by Hazz on 18/08/2024.
-//
-
 import Foundation
 import HealthKit
 import SwiftUI
 
+// MARK: - Date Extension
 extension Date {
     static var startOfDay: Date {
         let calendar = Calendar.current
@@ -22,11 +16,11 @@ extension Date {
         return calendar.date(from: components) ?? Date()
     }
     
-    func fetchMonthStartAndEndDate () -> (Date,Date) {
+    func fetchMonthStartAndEndDate() -> (Date, Date) {
         let calendar = Calendar.current
-        let startDateComponent = calendar.dateComponents([.year,.month], from: calendar.startOfDay(for: self))
+        let startDateComponent = calendar.dateComponents([.year, .month], from: calendar.startOfDay(for: self))
         let startDate = calendar.date(from: startDateComponent) ?? self
-        let endDate = calendar.date(byAdding: DateComponents(month:1, day: -1), to: startDate) ?? self
+        let endDate = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startDate) ?? self
         
         return (startDate, endDate)
     }
@@ -38,30 +32,29 @@ extension Date {
     }
 }
 
+// MARK: - Double Extension
 extension Double {
-    
     func formattedNumberString() -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 0
         
-        return formatter.string(from:NSNumber(value: self)) ?? "0"
+        return formatter.string(from: NSNumber(value: self)) ?? "0"
     }
-    
 }
 
+// MARK: - HealthManager Class
 class HealthManager {
     static let shared = HealthManager()
     
     private let healthStore = HKHealthStore()
     
-    private init () {
-        
+    private init() {
         Task {
             do {
                 try await requestHealthKitAccess()
             } catch {
-                print (error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }
@@ -72,17 +65,81 @@ class HealthManager {
         let stand = HKCategoryType(.appleStandHour)
         let steps = HKQuantityType(.stepCount)
         let workouts = HKSampleType.workoutType()
+        let heartRate = HKQuantityType(.heartRate)  // Added Heart Rate type
         
-        let healthTypes: Set = [calories, exercise, stand, steps, workouts]
+        let healthTypes: Set = [calories, exercise, stand, steps, workouts, heartRate]
         try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
     }
+
+    // MARK: - Fetch Average Heart Rate for Last 5 Climbing Workouts
+    func fetchAverageHeartRateForLastClimbingWorkouts(limit: Int = 5, completion: @escaping (Result<[(date: String, heartRate: Double)], Error>) -> Void) {
+        let workouts = HKSampleType.workoutType()
+        let predicate = HKQuery.predicateForSamples(withStart: nil, end: Date())
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { [weak self] _, result, error in
+            guard let workouts = result as? [HKWorkout], error == nil else {
+                completion(.failure(error ?? URLError(.badURL)))
+                return
+            }
+            
+            // Filter for climbing workouts and limit to the last `limit` workouts
+            let climbingWorkouts = workouts.filter { $0.workoutActivityType == .climbing }.prefix(limit)
+            
+            guard !climbingWorkouts.isEmpty else {
+                completion(.success([]))
+                return
+            }
+            
+            var averageHeartRates: [(date: String, heartRate: Double)] = []
+            let group = DispatchGroup()
+            
+            for workout in climbingWorkouts {
+                group.enter()
+                self?.fetchAverageHeartRate(for: workout) { result in
+                    switch result {
+                    case .success(let averageHeartRate):
+                        let date = workout.startDate.formatWorkoutDate()
+                        averageHeartRates.append((date: date, heartRate: averageHeartRate))
+                    case .failure(let error):
+                        print("Error fetching heart rate for workout: \(error)")
+                    }
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                completion(.success(averageHeartRates))
+            }
+        }
+        
+        healthStore.execute(query)
+    }
     
-    func fetchTodayCaloriesBurned(completion: @escaping(Result<Double,Error>)->Void) {
+    private func fetchAverageHeartRate(for workout: HKWorkout, completion: @escaping (Result<Double, Error>) -> Void) {
+        let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        
+        let query = HKStatisticsQuery(quantityType: heartRateType, quantitySamplePredicate: predicate, options: .discreteAverage) { _, result, error in
+            guard let result = result, let averageQuantity = result.averageQuantity() else {
+                completion(.failure(error ?? URLError(.badURL)))
+                return
+            }
+            let averageHeartRate = averageQuantity.doubleValue(for: HKUnit(from: "count/min"))
+            completion(.success(averageHeartRate))
+        }
+        
+        healthStore.execute(query)
+    }
+
+    // MARK: - Other Methods (Existing)
+    
+    func fetchTodayCaloriesBurned(completion: @escaping (Result<Double, Error>) -> Void) {
         let calories = HKQuantityType(.activeEnergyBurned)
-        let predicate = HKQuery.predicateForSamples(withStart:.startOfDay, end: Date())
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
         let query = HKStatisticsQuery(quantityType: calories, quantitySamplePredicate: predicate) { _, results, error in
             guard let quantity = results?.sumQuantity(), error == nil else {
-                completion(.failure(NSError()))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
             
@@ -93,48 +150,44 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    func fetchTodayExceriseTime(completion: @escaping(Result<Double,Error>) -> Void) {
+    func fetchTodayExerciseTime(completion: @escaping (Result<Double, Error>) -> Void) {
         let exercise = HKQuantityType(.appleExerciseTime)
-        let predicate = HKQuery.predicateForSamples(withStart:.startOfDay, end: Date())
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
         let query = HKStatisticsQuery(quantityType: exercise, quantitySamplePredicate: predicate) { _, results, error in
             guard let quantity = results?.sumQuantity(), error == nil else {
-                completion(.failure(NSError()))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
             
-            let exceriseTime = quantity.doubleValue(for: .minute())
-            completion(.success(exceriseTime))
+            let exerciseTime = quantity.doubleValue(for: .minute())
+            completion(.success(exerciseTime))
         }
         
         healthStore.execute(query)
     }
     
-    func fetchTodayStandHours(completion: @escaping(Result<Int,Error>)->Void) {
+    func fetchTodayStandHours(completion: @escaping (Result<Int, Error>) -> Void) {
         let stand = HKCategoryType(.appleStandHour)
-        let predicate = HKQuery.predicateForSamples(withStart:.startOfDay, end: Date())
-        let query = HKSampleQuery(sampleType: stand, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _,  results, error in
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
+        let query = HKSampleQuery(sampleType: stand, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
             guard let samples = results as? [HKCategorySample], error == nil else {
-                completion(.failure(NSError()))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
-            print (samples)
-            print (samples.map({$0.value}))
-            let standCount = samples.filter({ $0.value == 0 }).count
+            
+            let standCount = samples.filter { $0.value == 0 }.count
             completion(.success(standCount))
         }
         
-        
         healthStore.execute(query)
     }
     
-    //MARK: Fitness Activity
-    
-    func fetchTodaySteps(completion: @escaping(Result<Activity,Error>)->Void) {
+    func fetchTodaySteps(completion: @escaping (Result<Activity, Error>) -> Void) {
         let steps = HKQuantityType(.stepCount)
-        let predicate = HKQuery.predicateForSamples(withStart:.startOfDay, end: Date())
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
         let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate) { _, results, error in
             guard let quantity = results?.sumQuantity(), error == nil else {
-                completion(.failure(NSError()))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
             
@@ -146,19 +199,19 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    func fetchCurrentWeekWorkoutStats(completion: @escaping (Result<[Activity],Error>)->Void) {
+    func fetchCurrentWeekWorkoutStats(completion: @escaping (Result<[Activity], Error>) -> Void) {
         let workouts = HKSampleType.workoutType()
-        let predicate = HKQuery.predicateForSamples(withStart:.startOfWeek, end: Date())
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfWeek, end: Date())
         let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { [weak self] _, results, error in
             guard let workouts = results as? [HKWorkout], let self = self, error == nil else {
-                completion(.failure(URLError(.badURL)))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
             
             var climbingCount: Int = 0
             
-            for workout in workouts{
-                let duration = Int(workout.duration)/60
+            for workout in workouts {
+                let duration = Int(workout.duration) / 60
                 if workout.workoutActivityType == .climbing {
                     climbingCount += duration
                 }
@@ -171,23 +224,20 @@ class HealthManager {
     private func generateActivitiesFromDurations(climbing: Int) -> [Activity] {
         return [
             Activity(title: "Climbing", subtitle: "This week", image: "figure.climbing", tintColor: .green, amount: "\(climbing) mins")
-            
         ]
     }
     
-    //MARK:  Recent Workouts
+    // MARK: - Fetch Recent Workouts
     
-    func fetchWorkoutsForMonth(month:Date,completion: @escaping (Result<[Workout],Error>)->Void) {
+    func fetchWorkoutsForMonth(month: Date, completion: @escaping (Result<[Workout], Error>) -> Void) {
         let workouts = HKSampleType.workoutType()
-        let (startDate,endDate) = month.fetchMonthStartAndEndDate()
+        let (startDate, endDate) = month.fetchMonthStartAndEndDate()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate,ascending:
-                                                false)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         
-        let query = HKSampleQuery(sampleType:
-                                    workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, result, error in
+        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, result, error in
             guard let workouts = result as? [HKWorkout], error == nil else {
-                completion(.failure(URLError(.badURL)))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
             
@@ -201,10 +251,10 @@ class HealthManager {
                     id: 0,
                     title: workout.workoutActivityType.name,
                     image: "figure.climbing",
-                    duration: "\(Int(workout.duration)/60) mins",
-                    tintColor: Color(hex: "#FF5733"),
+                    duration: "\(Int(workout.duration) / 60) mins",
                     date: workout.startDate.formatWorkoutDate(),
-                    calories: (energyBurned?.formattedNumberString() ?? "-") + "kcal")
+                    calories: (energyBurned?.formattedNumberString() ?? "-") + " kcal"
+                )
             }
             
             completion(.success(workoutArray))
@@ -219,7 +269,7 @@ class HealthManager {
         
         let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: 10, sortDescriptors: [sortDescriptor]) { _, result, error in
             guard let workouts = result as? [HKWorkout], error == nil else {
-                completion(.failure(URLError(.badURL)))
+                completion(.failure(error ?? URLError(.badURL)))
                 return
             }
             
@@ -233,8 +283,7 @@ class HealthManager {
                     id: 0,
                     title: workout.workoutActivityType.name,
                     image: "figure.climbing",
-                    duration: "\(Int(workout.duration)/60) mins",
-                    tintColor: Color(hex: "#FF5733"),
+                    duration: "\(Int(workout.duration) / 60) mins",
                     date: workout.startDate.formatWorkoutDate(),
                     calories: (energyBurned?.formattedNumberString() ?? "0") + " kcal"
                 )
@@ -246,5 +295,3 @@ class HealthManager {
         healthStore.execute(query)
     }
 }
-
-

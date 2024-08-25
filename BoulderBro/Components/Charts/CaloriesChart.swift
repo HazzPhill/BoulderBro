@@ -1,16 +1,10 @@
-//
-//  CaloriesChart.swift
-//  BoulderBro
-//
-//  Created by Hazz on 23/08/2024.
-//
-
 import SwiftUI
 import Charts
 
 struct CaloriesChart: View {
     @State private var workouts: [Workout] = []
     @State private var isLoading = true
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
     var body: some View {
         VStack {
@@ -19,14 +13,12 @@ struct CaloriesChart: View {
             } else if workouts.isEmpty {
                 Text("No climbing workouts available.")
             } else {
-                Chart(workouts.prefix(5)) { workout in  // Limit to the last 5 workouts
-                    LineMark(
+                Chart(workouts.prefix(5).reversed()) { workout in  // Reversed order to show oldest first
+                    BarMark(
                         x: .value("Date", workout.date),
                         y: .value("Calories Burned", Double(workout.calories.replacingOccurrences(of: " kcal", with: "")) ?? 0.0)
                     )
-                    .foregroundStyle(Color(hex: "#FF5733"))
-                    .symbol(Circle()) // Adds circular points on the line
-                    .lineStyle(StrokeStyle(lineWidth: 2))
+                    .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
                 }
                 .chartXAxis {
                     AxisMarks(position: .bottom)
@@ -46,7 +38,7 @@ struct CaloriesChart: View {
                             .foregroundStyle(Color.gray.opacity(0.1))
                     }
                 }
-                .frame(height: 150) // Set the height to half of the original
+                .frame(height: 140) // Set the height to half of the original
             }
         }
         .padding()

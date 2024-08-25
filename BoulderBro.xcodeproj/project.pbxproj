@@ -84,6 +84,10 @@
 		EFD994142C7A153900B316BC /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994132C7A153900B316BC /* Circles.swift */; };
 		EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994192C7B357A00B316BC /* DeepInsightsView.swift */; };
 		EFD9941C2C7B3E8A00B316BC /* SessionDurationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */; };
+		EFD9941E2C7B73A800B316BC /* HeartRateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9941D2C7B73A800B316BC /* HeartRateChart.swift */; };
+		EFD994202C7B747000B316BC /* IdentifiableHeartRateSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9941F2C7B747000B316BC /* IdentifiableHeartRateSample.swift */; };
+		EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994222C7B7F7900B316BC /* ColorThemeManager.swift */; };
+		EFD994252C7B7FC900B316BC /* ThemeColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +158,10 @@
 		EFD994132C7A153900B316BC /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		EFD994192C7B357A00B316BC /* DeepInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepInsightsView.swift; sourceTree = "<group>"; };
 		EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDurationChart.swift; sourceTree = "<group>"; };
+		EFD9941D2C7B73A800B316BC /* HeartRateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChart.swift; sourceTree = "<group>"; };
+		EFD9941F2C7B747000B316BC /* IdentifiableHeartRateSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableHeartRateSample.swift; sourceTree = "<group>"; };
+		EFD994222C7B7F7900B316BC /* ColorThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeManager.swift; sourceTree = "<group>"; };
+		EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,18 +229,14 @@
 		EF1775CD2C6EAAF900EEAEF7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EFD994212C7B7D8800B316BC /* Charts */,
 				EF1775CF2C6EAB3C00EEAEF7 /* Core */,
-				EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */,
-				EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */,
 				EFBA26E62C70B6D400CD85F6 /* ActivityCard.swift */,
 				EFBA26E82C70D6FC00CD85F6 /* WorkoutCard.swift */,
 				EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */,
 				EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */,
 				EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */,
-				EFA7D8382C74ECE1006E764E /* ImagePicker.swift */,
-				EF359BA32C7906B60067329B /* CaloriesChart.swift */,
 				EFD994132C7A153900B316BC /* Circles.swift */,
-				EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -250,6 +254,9 @@
 		EF1775CF2C6EAB3C00EEAEF7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA26CD2C6EAD2700CD85F6 /* InputView.swift */,
+				EFBA26D32C6EBDE600CD85F6 /* SettingsRowView.swift */,
+				EFA7D8382C74ECE1006E764E /* ImagePicker.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -365,6 +372,7 @@
 				EFA7D83A2C753592006E764E /* TheClimb.swift */,
 				EF359BAB2C79E7A90067329B /* MembershipCardView.swift */,
 				EFD994192C7B357A00B316BC /* DeepInsightsView.swift */,
+				EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -411,6 +419,7 @@
 			children = (
 				EFBA26F12C70E12F00CD85F6 /* Workout.swift */,
 				EFBA26EF2C70E0F900CD85F6 /* Activity.swift */,
+				EFD9941F2C7B747000B316BC /* IdentifiableHeartRateSample.swift */,
 			);
 			path = FitnessModels;
 			sourceTree = "<group>";
@@ -427,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				EFBA26F32C72279300CD85F6 /* HealthManager.swift */,
+				EFD994222C7B7F7900B316BC /* ColorThemeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -447,6 +457,16 @@
 				EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		EFD994212C7B7D8800B316BC /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				EFD9941D2C7B73A800B316BC /* HeartRateChart.swift */,
+				EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */,
+				EF359BA32C7906B60067329B /* CaloriesChart.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -636,14 +656,17 @@
 				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
+				EFD9941E2C7B73A800B316BC /* HeartRateChart.swift in Sources */,
 				EFD994142C7A153900B316BC /* Circles.swift in Sources */,
 				EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */,
 				EFBA26F02C70E0F900CD85F6 /* Activity.swift in Sources */,
+				EFD994202C7B747000B316BC /* IdentifiableHeartRateSample.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
 				EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */,
 				EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */,
 				EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */,
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
+				EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */,
 				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
 				EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */,
@@ -651,6 +674,7 @@
 				EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */,
 				EFA7D8372C74EABC006E764E /* MyClimbsViewController.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
+				EFD994252C7B7FC900B316BC /* ThemeColorPickerView.swift in Sources */,
 				EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */,
 				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,
 				EFBA26E32C7098F800CD85F6 /* HistoricDataView.swift in Sources */,

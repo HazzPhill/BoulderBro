@@ -1,10 +1,3 @@
-//
-//  FitnessHomeViewModel.swift
-//  BoulderBro
-//
-//  Created by Hazz on 17/08/2024.
-//
-
 import SwiftUI
 import HealthKit
 import HealthKitUI
@@ -20,17 +13,17 @@ class FitnessHomeViewModel: ObservableObject {
     @Published var workouts = [Workout]()
     
     var mockWorkouts = [
-        WorkoutCard(workout: Workout(id: 0, title: "Climbing", image: "figure.run", duration: "24 mins", tintColor: Color(hex: "#FF5733"), date: " August 1", calories: "642 kcal")),
-        WorkoutCard(workout: Workout(id: 1, title: "Running", image: "figure.run", duration: "43 mins", tintColor: Color(hex: "#FF5733"), date: " August 2", calories: "235 kcal")),
-        WorkoutCard(workout: Workout(id: 2, title: "Climbing", image: "figure.run", duration: "62 mins", tintColor: Color(hex: "#FF5733"), date: " August 3", calories: "242 kcal")),
-        WorkoutCard(workout: Workout(id: 3, title: "Climbing", image: "figure.run", duration: "92 mins", tintColor: Color(hex: "#FF5733"), date: " August 4", calories: "743 kcal"))
+        WorkoutCard(workout: Workout(id: 0, title: "Climbing", image: "figure.run", duration: "24 mins", date: " August 1", calories: "642 kcal")),
+        WorkoutCard(workout: Workout(id: 1, title: "Running", image: "figure.run", duration: "43 mins",  date: " August 2", calories: "235 kcal")),
+        WorkoutCard(workout: Workout(id: 2, title: "Climbing", image: "figure.run", duration: "62 mins", date: " August 3", calories: "242 kcal")),
+        WorkoutCard(workout: Workout(id: 3, title: "Climbing", image: "figure.run", duration: "92 mins", date: " August 4", calories: "743 kcal"))
     ]
     
     var mockactivities = [
-        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 9,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "521")),
-        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 19,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "532")),
-        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 2,000", image: "figure.walk", tintColor:Color(hex: "#FF5733"), amount: "321")),
-        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 12,931", image: "figure.run", tintColor:Color(hex: "#FF5733"), amount: "5321"))
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 9,000", image: "figure.walk", tintColor: Color(hex: "#FF5733"), amount: "521")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 19,000", image: "figure.walk", tintColor: Color(hex: "#FF5733"), amount: "532")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 2,000", image: "figure.walk", tintColor: Color(hex: "#FF5733"), amount: "321")),
+        ActivityCard(activity: Activity(title: "Today's Steps", subtitle: "Goal 12,931", image: "figure.run", tintColor: Color(hex: "#FF5733"), amount: "5321"))
     ]
     
     init() {
@@ -40,7 +33,7 @@ class FitnessHomeViewModel: ObservableObject {
                 // Only fetch data if authorization is successful
                 fetchTodayCalories()
                 fetchTodayStandHours()
-                fetchTodayExerciseTime()
+                fetchTodayExerciseTime()  // Corrected method name
                 fetchTodaysSteps()
                 fetchCurrentWeekActivities()
                 fetchRecentWorkouts()
@@ -74,7 +67,7 @@ class FitnessHomeViewModel: ObservableObject {
     }
     
     func fetchTodayExerciseTime() {
-        healthManager.fetchTodayExceriseTime { result in
+        healthManager.fetchTodayExerciseTime { result in  // Corrected method name
             switch result {
             case .success(let exercise):
                 DispatchQueue.main.async {
@@ -101,7 +94,7 @@ class FitnessHomeViewModel: ObservableObject {
         }
     }
     
-    //MARK: Fitness Activity
+    // MARK: Fitness Activity
     func fetchTodaysSteps() {
         healthManager.fetchTodaySteps { result in
             switch result {
@@ -128,10 +121,10 @@ class FitnessHomeViewModel: ObservableObject {
         }
     }
     
-    //MARK: Recent Workouts
+    // MARK: Recent Workouts
     func fetchRecentWorkouts() {
         healthManager.fetchWorkoutsForMonth(month: Date()) { result in
-            switch  result {
+            switch result {
             case .success(let workouts):
                 DispatchQueue.main.async {
                     self.workouts = Array(workouts.prefix(4))

@@ -8,15 +8,16 @@ struct MyClimbsView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var climbs: [Climb] = []
     @State private var isLoading = true // Track loading state
-
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
+    
     var body: some View {
         if let user = viewModel.currentUser {
             NavigationStack {
                 ZStack {
                     // Use customizable MovingCircles
                     MovingCircles(
-                        topCircleColor: Color(hex: "#FF5733"),
-                        bottomCircleColor: Color(hex: "#FF5733"),
+                        topCircleColor: colorThemeManager.currentThemeColor,
+                        bottomCircleColor: colorThemeManager.currentThemeColor,
                         topCircleOpacity: 0.3,
                         bottomCircleOpacity: 0.3,
                         backgroundColor: Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))

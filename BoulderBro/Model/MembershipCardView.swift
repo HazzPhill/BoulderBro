@@ -73,55 +73,21 @@ struct MembershipCardView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
-    // Circle variables for animated background circles
-    @State private var topCircleOffset = CGSize(width: 150, height: -300)
-    @State private var bottomCircleOffset = CGSize(width: -150, height: 250)
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-
     var body: some View {
         if let user = viewModel.currentUser {
             ZStack {
-                // Background color
-                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
-                    .ignoresSafeArea()
-                    .zIndex(-2)
+                // Use customizable MovingCircles component
+                MovingCircles(
+                    topCircleColor: colorThemeManager.currentThemeColor,
+                    bottomCircleColor: colorThemeManager.currentThemeColor,
+                    topCircleOpacity: 0.3,
+                    bottomCircleOpacity: 0.3,
+                    backgroundColor: Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
+                )
+                .zIndex(-1) // Ensure the circles and background are behind other content
 
-                // Top circle
-                Circle()
-                    .fill(Color(hex: "#FF5733")).opacity(0.3)
-                    .frame(width: 350, height: 350)
-                    .blur(radius: 60)
-                    .offset(topCircleOffset)
-                    .opacity(0.5)
-                    .zIndex(-1)
-
-                // Bottom circle
-                Circle()
-                    .fill(Color(hex: "#FF5733")).opacity(0.3)
-                    .frame(width: 350, height: 500)
-                    .blur(radius: 60)
-                    .offset(bottomCircleOffset)
-                    .opacity(0.5)
-                    .zIndex(-1)
-
-                // Animate circle offsets
-                .onReceive(timer) { _ in
-                    withAnimation(.linear(duration: 0.9)) {
-                        let newTopOffset = CGSize(
-                            width: max(50, min(UIScreen.main.bounds.width - 300, topCircleOffset.width + CGFloat.random(in: -50...50))),
-                            height: max(-250, min(-50, topCircleOffset.height + CGFloat.random(in: -25...25)))
-                        )
-                        let newBottomOffset = CGSize(
-                            width: max(-200, min(UIScreen.main.bounds.width - 300, bottomCircleOffset.width + CGFloat.random(in: -50...50))),
-                            height: max(50, min(UIScreen.main.bounds.height - 450, bottomCircleOffset.height + CGFloat.random(in: -25...25)))
-                        )
-
-                        topCircleOffset = newTopOffset
-                        bottomCircleOffset = newBottomOffset
-                    }
-                }
-                
                 VStack {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 16) {
@@ -554,7 +520,7 @@ struct CardInfoView: View {
 
 struct SaveButton: View {
     var action: () -> Void
-
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     var body: some View {
         Button(action: action) {
             HStack {
@@ -564,7 +530,7 @@ struct SaveButton: View {
             }
             .frame(maxWidth: .infinity) // Ensure full width
             .padding()
-            .background(Color(hex: "#FF5733"))
+            .background(colorThemeManager.currentThemeColor) // Use theme color
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -576,7 +542,7 @@ struct EditCardInfoView: View {
     @Binding var cardInfo: String
     @Binding var gymName: String
     @Environment(\.presentationMode) var presentationMode
-
+    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {

@@ -9,23 +9,24 @@ import SwiftUI
 import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
 }
 
 @main
 struct BoulderBroApp: App {
     @StateObject var viewModel = AuthViewModel()
+    @StateObject var colorThemeManager = ColorThemeManager() // Add ColorThemeManager as a StateObject
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
-                
+                .environmentObject(colorThemeManager) // Inject ColorThemeManager into the environment
         }
     }
 }
@@ -56,5 +57,3 @@ extension Color {
         )
     }
 }
-
-
