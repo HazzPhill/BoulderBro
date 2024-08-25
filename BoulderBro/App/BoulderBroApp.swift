@@ -19,18 +19,39 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct BoulderBroApp: App {
     @StateObject var viewModel = AuthViewModel()
-    @StateObject var colorThemeManager = ColorThemeManager() // Add ColorThemeManager as a StateObject
+    @StateObject var colorThemeManager = ColorThemeManager()
+    @AppStorage("selectedThemeMode") private var themeMode: ThemeMode = .system // Store theme mode in AppStorage
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    init() {
+        applyThemeMode(themeMode) // Apply the theme mode when the app launches
+    }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
-                .environmentObject(colorThemeManager) // Inject ColorThemeManager into the environment
+                .environmentObject(colorThemeManager)
+                .onAppear {
+                    applyThemeMode(themeMode) // Ensure the theme mode is applied on the app's main view appearance
+                }
+        }
+    }
+    
+    private func applyThemeMode(_ mode: ThemeMode) {
+        // Apply the theme mode to the app's user interface
+        switch mode {
+        case .light:
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
+        case .dark:
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+        case .system:
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
         }
     }
 }
 
+// Extension to initialize Color from a hex string
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

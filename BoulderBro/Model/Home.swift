@@ -155,16 +155,12 @@ struct Home: View {
                                     Spacer()
                                         .frame(width: 5)
                                 }
-                                .padding(.top)
-                                .padding(.bottom)
                             }
 
                             Text("Stats")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 20))
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                                .padding(.top)
-                                .padding(.top)
 
                             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                                 FixedHeightEditableBlock {
@@ -204,8 +200,7 @@ struct Home: View {
                                 .font(.custom("Kurdis-ExtraWideBold", size: 20))
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                                .padding(.top)
-                                .padding(.top)
+
                             
                             HangTimer()
                             
@@ -213,8 +208,6 @@ struct Home: View {
                                 .font(.custom("Kurdis-ExtraWideBold", size: 20))
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-                                .padding(.top)
-                                .padding(.top)
 
                             Rectangle()
                                 .frame(height: 200)
