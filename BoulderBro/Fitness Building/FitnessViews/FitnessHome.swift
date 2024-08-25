@@ -116,6 +116,7 @@ struct FitnessHome: View {
 
                             CaloriesChart()
                         }
+                        .padding(.horizontal)
                         
                         HStack {
                             Text("Recent Workouts")

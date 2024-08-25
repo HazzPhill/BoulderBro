@@ -83,6 +83,7 @@
 		EFD994122C7A01CB00B316BC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994112C7A01CB00B316BC /* Mantis */; };
 		EFD994142C7A153900B316BC /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994132C7A153900B316BC /* Circles.swift */; };
 		EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994192C7B357A00B316BC /* DeepInsightsView.swift */; };
+		EFD9941C2C7B3E8A00B316BC /* SessionDurationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-Regular.otf"; sourceTree = "<group>"; };
 		EFD994132C7A153900B316BC /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		EFD994192C7B357A00B316BC /* DeepInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepInsightsView.swift; sourceTree = "<group>"; };
+		EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDurationChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				EFA7D8382C74ECE1006E764E /* ImagePicker.swift */,
 				EF359BA32C7906B60067329B /* CaloriesChart.swift */,
 				EFD994132C7A153900B316BC /* Circles.swift */,
+				EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				EFBA26E72C70B6D400CD85F6 /* ActivityCard.swift in Sources */,
 				EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */,
 				EFBA26E92C70D6FC00CD85F6 /* WorkoutCard.swift in Sources */,
+				EFD9941C2C7B3E8A00B316BC /* SessionDurationChart.swift in Sources */,
 				EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */,
 				EFBA26FB2C72A02B00CD85F6 /* HangTimer.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
