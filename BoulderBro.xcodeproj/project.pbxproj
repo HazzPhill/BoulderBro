@@ -87,6 +87,9 @@
 		EFD994202C7B747000B316BC /* IdentifiableHeartRateSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9941F2C7B747000B316BC /* IdentifiableHeartRateSample.swift */; };
 		EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994222C7B7F7900B316BC /* ColorThemeManager.swift */; };
 		EFD994252C7B7FC900B316BC /* ThemeColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */; };
+		EFD994312C7BD99400B316BC /* videosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994302C7BD99400B316BC /* videosView.swift */; };
+		EFD994332C7BDA7700B316BC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994322C7BDA7700B316BC /* Chat.swift */; };
+		EFD994362C7BDCAC00B316BC /* CometChatUIKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +163,8 @@
 		EFD9941F2C7B747000B316BC /* IdentifiableHeartRateSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableHeartRateSample.swift; sourceTree = "<group>"; };
 		EFD994222C7B7F7900B316BC /* ColorThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeManager.swift; sourceTree = "<group>"; };
 		EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorPickerView.swift; sourceTree = "<group>"; };
+		EFD994302C7BD99400B316BC /* videosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videosView.swift; sourceTree = "<group>"; };
+		EFD994322C7BDA7700B316BC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +185,7 @@
 				EFA16F652C6D759A00D7301E /* FirebaseMLModelDownloader in Frameworks */,
 				EF1C612F2C6B4C74000F29E2 /* HealthKit.framework in Frameworks */,
 				EFA16F632C6D759A00D7301E /* FirebaseMessaging in Frameworks */,
+				EFD994362C7BDCAC00B316BC /* CometChatUIKitSwift in Frameworks */,
 				EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */,
 				EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */,
 				EFA16F6B2C6D759A00D7301E /* FirebaseStorage in Frameworks */,
@@ -438,6 +444,8 @@
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
 				EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */,
 				EFD994192C7B357A00B316BC /* DeepInsightsView.swift */,
+				EFD994302C7BD99400B316BC /* videosView.swift */,
+				EFD994322C7BDA7700B316BC /* Chat.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,6 +493,7 @@
 				EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */,
 				EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */,
 				EFD994112C7A01CB00B316BC /* Mantis */,
+				EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */,
 			);
 			productName = BoulderBro;
 			productReference = EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */;
@@ -562,6 +571,7 @@
 				EF1C60F52C6A9011000F29E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */,
+				EFD994342C7BDCAC00B316BC /* XCRemoteSwiftPackageReference "cometchat-chat-uikit-ios-swift" */,
 			);
 			productRefGroup = EF1C60B72C6A6FD1000F29E2 /* Products */;
 			projectDirPath = "";
@@ -628,6 +638,7 @@
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
+				EFD994332C7BDA7700B316BC /* Chat.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EFD9941E2C7B73A800B316BC /* HeartRateChart.swift in Sources */,
 				EFD994142C7A153900B316BC /* Circles.swift in Sources */,
@@ -641,6 +652,7 @@
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
 				EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */,
 				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
+				EFD994312C7BD99400B316BC /* videosView.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
 				EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */,
 				EFA7D8332C74E87C006E764E /* Climb.swift in Sources */,
@@ -1015,6 +1027,14 @@
 				minimumVersion = 1.7.5;
 			};
 		};
+		EFD994342C7BDCAC00B316BC /* XCRemoteSwiftPackageReference "cometchat-chat-uikit-ios-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cometchat-pro/cometchat-chat-uikit-ios-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.17;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1147,6 +1167,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */;
 			productName = Mantis;
+		};
+		EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFD994342C7BDCAC00B316BC /* XCRemoteSwiftPackageReference "cometchat-chat-uikit-ios-swift" */;
+			productName = CometChatUIKitSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

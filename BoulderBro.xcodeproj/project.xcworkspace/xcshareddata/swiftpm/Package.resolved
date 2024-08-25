@@ -1,5 +1,5 @@
 {
-  "originHash" : "070fe5d4f5ef4d3d8f2c9870682baef51fe036503110c7e0a21419eebc460fcd",
+  "originHash" : "6eb7f8ad5268c81ea78332bf326db8bb232f7681d2371476634d9abf5382b41a",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -26,6 +26,24 @@
       "state" : {
         "revision" : "c89ed571ae140f8eb1142735e6e23d7bb8c34cb2",
         "version" : "1.7.5"
+      }
+    },
+    {
+      "identity" : "chat-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat/chat-sdk-ios.git",
+      "state" : {
+        "revision" : "45c388770e3475e10d39d5eb5e16e9ecc5e632ca",
+        "version" : "4.0.53"
+      }
+    },
+    {
+      "identity" : "cometchat-chat-uikit-ios-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cometchat-pro/cometchat-chat-uikit-ios-swift.git",
+      "state" : {
+        "revision" : "5c2a24b8f24cd76b287ae8ea04b35317fd8f0c81",
+        "version" : "4.3.17"
       }
     },
     {
