@@ -2,7 +2,7 @@ import SwiftUI
 import Charts
 
 struct HeartRateChart: View {
-    @State private var averageHeartRates: [(date: String, heartRate: Double)] = []
+    @State private var averageHeartRates: [(date: Date, heartRate: Double)] = []
     @State private var isLoading = true
     @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
@@ -14,9 +14,9 @@ struct HeartRateChart: View {
                 Text("No heart rate data available.")
             } else {
                 Chart {
-                    ForEach(averageHeartRates.reversed(), id: \.date) { data in
+                    ForEach(sortedHeartRates(), id: \.date) { data in
                         LineMark(
-                            x: .value("Date", data.date),
+                            x: .value("Date", formattedDate(data.date)),
                             y: .value("Average Heart Rate", data.heartRate)
                         )
                         .foregroundStyle(colorThemeManager.currentThemeColor) // Use theme color
@@ -51,6 +51,16 @@ struct HeartRateChart: View {
                 self.isLoading = false
             }
         }
+    }
+    
+    private func sortedHeartRates() -> [(date: Date, heartRate: Double)] {
+        return averageHeartRates.sorted { $0.date < $1.date }
+    }
+    
+    private func formattedDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d" // Display format, e.g., "Aug 26"
+        return dateFormatter.string(from: date)
     }
 }
 

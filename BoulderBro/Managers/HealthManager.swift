@@ -65,14 +65,14 @@ class HealthManager {
         let stand = HKCategoryType(.appleStandHour)
         let steps = HKQuantityType(.stepCount)
         let workouts = HKSampleType.workoutType()
-        let heartRate = HKQuantityType(.heartRate)  // Added Heart Rate type
+        let heartRate = HKQuantityType(.heartRate)
         
         let healthTypes: Set = [calories, exercise, stand, steps, workouts, heartRate]
         try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
     }
 
     // MARK: - Fetch Average Heart Rate for Last 5 Climbing Workouts
-    func fetchAverageHeartRateForLastClimbingWorkouts(limit: Int = 5, completion: @escaping (Result<[(date: String, heartRate: Double)], Error>) -> Void) {
+    func fetchAverageHeartRateForLastClimbingWorkouts(limit: Int = 5, completion: @escaping (Result<[(date: Date, heartRate: Double)], Error>) -> Void) {
         let workouts = HKSampleType.workoutType()
         let predicate = HKQuery.predicateForSamples(withStart: nil, end: Date())
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
@@ -91,7 +91,7 @@ class HealthManager {
                 return
             }
             
-            var averageHeartRates: [(date: String, heartRate: Double)] = []
+            var averageHeartRates: [(date: Date, heartRate: Double)] = []
             let group = DispatchGroup()
             
             for workout in climbingWorkouts {
@@ -99,8 +99,7 @@ class HealthManager {
                 self?.fetchAverageHeartRate(for: workout) { result in
                     switch result {
                     case .success(let averageHeartRate):
-                        let date = workout.startDate.formatWorkoutDate()
-                        averageHeartRates.append((date: date, heartRate: averageHeartRate))
+                        averageHeartRates.append((date: workout.startDate, heartRate: averageHeartRate))
                     case .failure(let error):
                         print("Error fetching heart rate for workout: \(error)")
                     }
@@ -109,7 +108,9 @@ class HealthManager {
             }
             
             group.notify(queue: .main) {
-                completion(.success(averageHeartRates))
+                // Sort the results by date to ensure they are in order
+                let sortedHeartRates = averageHeartRates.sorted { $0.date < $1.date }
+                completion(.success(sortedHeartRates))
             }
         }
         

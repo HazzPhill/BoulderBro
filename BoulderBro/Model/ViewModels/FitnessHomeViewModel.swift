@@ -60,21 +60,21 @@ class FitnessHomeViewModel: ObservableObject {
                     )
                     self.activities.append(activity)
                 }
-            case .failure(let failure):
+            case .failure(_):  // Replace `let failure` with `_`
                 print("0")
             }
         }
     }
     
     func fetchTodayExerciseTime() {
-        healthManager.fetchTodayExerciseTime { result in  // Corrected method name
+        healthManager.fetchTodayExerciseTime { result in
             switch result {
             case .success(let exercise):
                 DispatchQueue.main.async {
                     let exerciseValue = max(0, Int(exercise))
                     self.exercise = exerciseValue
                 }
-            case .failure(let failure):
+            case .failure(_):  // Replace `let failure` with `_`
                 print("0")
             }
         }
@@ -88,7 +88,7 @@ class FitnessHomeViewModel: ObservableObject {
                     let standValue = max(0, hours)
                     self.stand = standValue
                 }
-            case .failure(let failure):
+            case .failure(_):  // Replace `let failure` with `_`
                 print("0")
             }
         }
@@ -102,7 +102,7 @@ class FitnessHomeViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.activities.append(activity)
                 }
-            case .failure(let failure):
+            case .failure(_):  // Replace `let failure` with `_`
                 print("0")
             }
         }

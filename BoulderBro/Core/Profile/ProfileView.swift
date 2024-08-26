@@ -155,13 +155,16 @@ struct ProfileView: View {
         UserDefaults.standard.set(mode.rawValue, forKey: "selectedThemeMode")
         
         // Apply the theme mode
-        switch mode {
-        case .light:
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
-        case .dark:
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
-        case .system:
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            switch mode {
+            case .light:
+                window.overrideUserInterfaceStyle = .light
+            case .dark:
+                window.overrideUserInterfaceStyle = .dark
+            case .system:
+                window.overrideUserInterfaceStyle = .unspecified
+            }
         }
     }
     

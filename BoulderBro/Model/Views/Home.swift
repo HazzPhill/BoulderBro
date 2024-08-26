@@ -156,6 +156,8 @@ struct Home: View {
                                         .frame(width: 5)
                                 }
                             }
+                            
+                            CurrentLevel()
 
                             Text("Stats")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 20))

@@ -37,7 +37,7 @@ class ColorThemeManager: ObservableObject {
     // Make this method static so it can be called without needing `self`
     private static func loadColorFromDefaults() -> Color? {
         if let colorData = UserDefaults.standard.data(forKey: "themeColor"),
-           let uiColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
+           let uiColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData) {
             return Color(uiColor)
         }
         return nil

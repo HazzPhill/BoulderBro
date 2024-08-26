@@ -90,6 +90,7 @@
 		EFD994312C7BD99400B316BC /* videosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994302C7BD99400B316BC /* videosView.swift */; };
 		EFD994332C7BDA7700B316BC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994322C7BDA7700B316BC /* Chat.swift */; };
 		EFD994362C7BDCAC00B316BC /* CometChatUIKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */; };
+		EFF137CE2C7CDAE1003B666C /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF137CD2C7CDAE1003B666C /* WorkoutManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorPickerView.swift; sourceTree = "<group>"; };
 		EFD994302C7BD99400B316BC /* videosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videosView.swift; sourceTree = "<group>"; };
 		EFD994322C7BDA7700B316BC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		EFF137CD2C7CDAE1003B666C /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +404,7 @@
 			children = (
 				EFBA26F32C72279300CD85F6 /* HealthManager.swift */,
 				EFD994222C7B7F7900B316BC /* ColorThemeManager.swift */,
+				EFF137CD2C7CDAE1003B666C /* WorkoutManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				EFD994252C7B7FC900B316BC /* ThemeColorPickerView.swift in Sources */,
 				EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */,
 				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,
+				EFF137CE2C7CDAE1003B666C /* WorkoutManager.swift in Sources */,
 				EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */,
 				EFA7D83B2C753592006E764E /* TheClimb.swift in Sources */,
 			);
@@ -737,7 +741,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -801,7 +805,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

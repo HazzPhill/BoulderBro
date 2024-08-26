@@ -18,6 +18,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct BoulderBroApp: App {
+    
+    
     @StateObject var viewModel = AuthViewModel()
     @StateObject var colorThemeManager = ColorThemeManager()
     @AppStorage("selectedThemeMode") private var themeMode: ThemeMode = .system // Store theme mode in AppStorage
@@ -39,14 +41,21 @@ struct BoulderBroApp: App {
     }
     
     private func applyThemeMode(_ mode: ThemeMode) {
-        // Apply the theme mode to the app's user interface
-        switch mode {
-        case .light:
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
-        case .dark:
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
-        case .system:
-            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
+        // Store the selected theme mode in UserDefaults
+        UserDefaults.standard.set(mode.rawValue, forKey: "selectedThemeMode")
+        
+        // Apply the theme mode
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                switch mode {
+                case .light:
+                    window.overrideUserInterfaceStyle = .light
+                case .dark:
+                    window.overrideUserInterfaceStyle = .dark
+                case .system:
+                    window.overrideUserInterfaceStyle = .unspecified
+                }
+            }
         }
     }
 }
