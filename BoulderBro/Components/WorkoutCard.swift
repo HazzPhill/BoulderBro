@@ -27,7 +27,7 @@ struct WorkoutCard: View {
             VStack(alignment: .leading, spacing: 4) { // Adjust spacing between texts
                 HStack {
                     Text(workout.title)
-                        .font(.headline) // Adjust font style if needed
+                        .font(.custom("Kurdis-ExtraWideBold", size: 16))
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
                     Spacer()

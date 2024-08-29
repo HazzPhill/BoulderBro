@@ -8,10 +8,11 @@
 import Foundation
 
 struct Climb: Identifiable {
-    var id: String // Firestore document ID
+    var id: String
     var name: String
-    var location: String
+    var climbtype: String
     var difficulty: String
     var vRating: String
-    var mediaURL: String // Image or video URL
+    var mediaURL: String
+    var isFavorite: Bool = false // Add this property
 }

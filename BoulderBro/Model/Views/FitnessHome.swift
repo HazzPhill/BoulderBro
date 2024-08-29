@@ -8,9 +8,17 @@ struct FitnessHome: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background layer that ignores safe area
-                Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
-                    .ignoresSafeArea()
+                
+                // Use customizable MovingCircles
+                MovingCircles(
+                    topCircleColor: colorThemeManager.currentThemeColor,
+                    bottomCircleColor: colorThemeManager.currentThemeColor,
+                    topCircleOpacity: 0.0,
+                    bottomCircleOpacity: 0.05,
+                    backgroundColor: Color(colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5"))
+                )
+                .zIndex(-3) // Ensure MovingCircles stay in the background
+                .ignoresSafeArea()
 
                 // Content layer that respects safe area
                 ScrollView(showsIndicators: false) {
@@ -51,13 +59,17 @@ struct FitnessHome: View {
                             
                             ZStack {
                                 ProgressCircleView(progress: $viewModel.calories, goal: 600, color: .red)
-                                
+                                    .zIndex(1) // Bring the progress circles to the front
+
                                 ProgressCircleView(progress: $viewModel.exercise, goal: 60, color: .green)
                                     .padding(.all, 20)
-                                
+                                    .zIndex(1) // Bring the progress circles to the front
+
                                 ProgressCircleView(progress: $viewModel.stand, goal: 12, color: .blue)
                                     .padding(.all, 40)
+                                    .zIndex(1) // Bring the progress circles to the front
                             }
+                            .zIndex(2) // Bring the progress circles to the front
                         }
                         .padding(.horizontal, 16) // Ensuring the original padding is maintained
                         
@@ -79,7 +91,7 @@ struct FitnessHome: View {
                             }
                         }
                         .padding(.horizontal, 16)
-                    
+                        
                         if !viewModel.activities.isEmpty {
                             LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 2)) {
                                 ForEach(viewModel.activities, id: \.title) { activity in

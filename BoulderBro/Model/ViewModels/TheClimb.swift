@@ -40,7 +40,7 @@ struct TheClimb: View {
                     .font(.custom("Kurdis-ExtraWideBold", size: 30))
                     .padding(.horizontal)
                 
-                Text("Location: \(climb.location)")
+                Text("Location: \(climb.climbtype)")
                     .font(.custom("Kurdis-Regular", size: 18))
                     .padding(.horizontal)
                 
@@ -62,5 +62,5 @@ struct TheClimb: View {
 }
 
 #Preview {
-    TheClimb(climb: Climb(id: "1", name: "Sample Climb", location: "Sample Location", difficulty: "Medium", vRating: "V5", mediaURL: "https://example.com/sample.jpg"))
+    TheClimb(climb: Climb(id: "1", name: "Sample Climb", climbtype: "Sample Location", difficulty: "Medium", vRating: "V5", mediaURL: "https://example.com/sample.jpg"))
 }

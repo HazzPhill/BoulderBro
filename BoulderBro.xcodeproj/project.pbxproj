@@ -24,6 +24,16 @@
 		EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */; };
 		EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BA32C7906B60067329B /* CaloriesChart.swift */; };
 		EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BAB2C79E7A90067329B /* MembershipCardView.swift */; };
+		EF6476112C7E33C200C8C9BA /* AllClimbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476102C7E33C200C8C9BA /* AllClimbs.swift */; };
+		EF6476132C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476122C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift */; };
+		EF6476152C7F654F00C8C9BA /* LogClimbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476142C7F654F00C8C9BA /* LogClimbView.swift */; };
+		EF6476172C80C3CD00C8C9BA /* HeartRateActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476162C80C3CD00C8C9BA /* HeartRateActivityCard.swift */; };
+		EF6476192C80C54800C8C9BA /* HighestHeartRateActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476182C80C54800C8C9BA /* HighestHeartRateActivityCard.swift */; };
+		EF64761B2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64761A2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift */; };
+		EF64761D2C80CE4E00C8C9BA /* HRVActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64761C2C80CE4E00C8C9BA /* HRVActivityCard.swift */; };
+		EF64761F2C81258200C8C9BA /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64761E2C81258200C8C9BA /* Settings View.swift */; };
+		EF6476212C81291400C8C9BA /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */; };
+		EF6476232C81293300C8C9BA /* ApperanceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -132,6 +142,16 @@
 		EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalClimb.swift; sourceTree = "<group>"; };
 		EF359BA32C7906B60067329B /* CaloriesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesChart.swift; sourceTree = "<group>"; };
 		EF359BAB2C79E7A90067329B /* MembershipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCardView.swift; sourceTree = "<group>"; };
+		EF6476102C7E33C200C8C9BA /* AllClimbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClimbs.swift; sourceTree = "<group>"; };
+		EF6476122C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyClimbingDuration.swift; sourceTree = "<group>"; };
+		EF6476142C7F654F00C8C9BA /* LogClimbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogClimbView.swift; sourceTree = "<group>"; };
+		EF6476162C80C3CD00C8C9BA /* HeartRateActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateActivityCard.swift; sourceTree = "<group>"; };
+		EF6476182C80C54800C8C9BA /* HighestHeartRateActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighestHeartRateActivityCard.swift; sourceTree = "<group>"; };
+		EF64761A2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryTimeActivityCard.swift; sourceTree = "<group>"; };
+		EF64761C2C80CE4E00C8C9BA /* HRVActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRVActivityCard.swift; sourceTree = "<group>"; };
+		EF64761E2C81258200C8C9BA /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
+		EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApperanceSettingView.swift; sourceTree = "<group>"; };
 		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
 		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -244,6 +264,10 @@
 				EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */,
 				EFBA26E42C70A09200CD85F6 /* ProgressCircleView.swift */,
 				EFD994132C7A153900B316BC /* Circles.swift */,
+				EF6476162C80C3CD00C8C9BA /* HeartRateActivityCard.swift */,
+				EF6476182C80C54800C8C9BA /* HighestHeartRateActivityCard.swift */,
+				EF64761A2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift */,
+				EF64761C2C80CE4E00C8C9BA /* HRVActivityCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -259,6 +283,7 @@
 				EFBA26F12C70E12F00CD85F6 /* Workout.swift */,
 				EFA7D83A2C753592006E764E /* TheClimb.swift */,
 				EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */,
+				EF6476142C7F654F00C8C9BA /* LogClimbView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -295,6 +320,9 @@
 			children = (
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
 				EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */,
+				EF64761E2C81258200C8C9BA /* Settings View.swift */,
+				EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */,
+				EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -433,6 +461,7 @@
 				EFD9941D2C7B73A800B316BC /* HeartRateChart.swift */,
 				EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */,
 				EF359BA32C7906B60067329B /* CaloriesChart.swift */,
+				EF6476122C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -449,6 +478,7 @@
 				EFD994192C7B357A00B316BC /* DeepInsightsView.swift */,
 				EFD994302C7BD99400B316BC /* videosView.swift */,
 				EFD994322C7BDA7700B316BC /* Chat.swift */,
+				EF6476102C7E33C200C8C9BA /* AllClimbs.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -631,6 +661,7 @@
 				EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */,
 				EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */,
 				EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */,
+				EF6476212C81291400C8C9BA /* GeneralSettingsView.swift in Sources */,
 				EFBA26F42C72279300CD85F6 /* HealthManager.swift in Sources */,
 				EFBA26E72C70B6D400CD85F6 /* ActivityCard.swift in Sources */,
 				EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */,
@@ -638,27 +669,34 @@
 				EFD9941C2C7B3E8A00B316BC /* SessionDurationChart.swift in Sources */,
 				EFBA26CE2C6EAD2700CD85F6 /* InputView.swift in Sources */,
 				EFBA26FB2C72A02B00CD85F6 /* HangTimer.swift in Sources */,
+				EF64761F2C81258200C8C9BA /* Settings View.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
 				EFD994332C7BDA7700B316BC /* Chat.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EFD9941E2C7B73A800B316BC /* HeartRateChart.swift in Sources */,
+				EF64761D2C80CE4E00C8C9BA /* HRVActivityCard.swift in Sources */,
+				EF6476172C80C3CD00C8C9BA /* HeartRateActivityCard.swift in Sources */,
 				EFD994142C7A153900B316BC /* Circles.swift in Sources */,
 				EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */,
 				EFBA26F02C70E0F900CD85F6 /* Activity.swift in Sources */,
 				EFD994202C7B747000B316BC /* IdentifiableHeartRateSample.swift in Sources */,
 				EF1C60BC2C6A6FD1000F29E2 /* ContentView.swift in Sources */,
+				EF6476232C81293300C8C9BA /* ApperanceSettingView.swift in Sources */,
 				EFBA26D02C6EBA0000CD85F6 /* RegisterView.swift in Sources */,
 				EFBA26D82C6F70F200CD85F6 /* AuthViewModel.swift in Sources */,
 				EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */,
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
 				EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */,
 				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
+				EF6476192C80C54800C8C9BA /* HighestHeartRateActivityCard.swift in Sources */,
 				EFD994312C7BD99400B316BC /* videosView.swift in Sources */,
 				EFBA26EB2C70E02A00CD85F6 /* FitnessHomeViewModel.swift in Sources */,
+				EF6476112C7E33C200C8C9BA /* AllClimbs.swift in Sources */,
 				EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */,
 				EFA7D8332C74E87C006E764E /* Climb.swift in Sources */,
+				EF6476152C7F654F00C8C9BA /* LogClimbView.swift in Sources */,
 				EFBA26F22C70E12F00CD85F6 /* Workout.swift in Sources */,
 				EFA7D8372C74EABC006E764E /* MyClimbsViewController.swift in Sources */,
 				EF1C60BA2C6A6FD1000F29E2 /* BoulderBroApp.swift in Sources */,
@@ -666,6 +704,8 @@
 				EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */,
 				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,
 				EFF137CE2C7CDAE1003B666C /* WorkoutManager.swift in Sources */,
+				EF64761B2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift in Sources */,
+				EF6476132C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift in Sources */,
 				EFBA26D62C6EC13100CD85F6 /* User.swift in Sources */,
 				EFA7D83B2C753592006E764E /* TheClimb.swift in Sources */,
 			);
@@ -839,19 +879,22 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoulderBro/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your data will be used to supply insightful climbing insights.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your app needs access to your health data to display your activity summary.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your app needs access to update your health data to track your workouts.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access Microphone";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Use Photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access Photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro.Climbing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -874,19 +917,22 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoulderBro/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your data will be used to supply insightful climbing insights.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your data will be used to supply insightful climbing insights.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your app needs access to your health data to display your activity summary.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your app needs access to update your health data to track your workouts.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access Microphone";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Use Photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access Photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBro.Climbing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
