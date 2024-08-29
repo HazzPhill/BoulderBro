@@ -3,6 +3,7 @@ import SwiftUI
 // EditableBlock with flexible height (for "My Climbs" section)
 struct EditableBlock<Content: View>: View {
     @Environment(\.colorScheme) var colorScheme // To detect the current color
+    
     var content: Content
 
     init(@ViewBuilder content: () -> Content) {
@@ -66,6 +67,8 @@ struct Home: View {
 
     @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
     
+    @StateObject var viewModel = FitnessHomeViewModel()
+    
     var body: some View {
             NavigationStack {
                 ZStack {
@@ -88,12 +91,20 @@ struct Home: View {
                                 .opacity(0.7)
 
                             // Overview section with the calorie chart
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
-                                    .frame(height: 185) // Adjust the height based on content
-
-                                CaloriesChart()
+                            VStack (alignment: .leading) {
+                                Text("Minutes climbed this week")
+                                    .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                    .padding(.top)
+                                
+                                Rectangle()
+                                    .fill(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                    .cornerRadius(12)
+                                    .overlay(
+                                        WeeklyClimbingChartView()
+                                            .padding()
+                                    )
+                                    .frame(height: 150) // Adjust the height as needed
+                                    .padding(.bottom, 10) // Optional: Add some padding below the chart
                             }
 
                             Text("My Climbs")
@@ -158,70 +169,30 @@ struct Home: View {
                             }
                             
                             CurrentLevel()
-
-                            Text("Stats")
+                            
+                                Text("Recent Workouts")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 20))
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-
-                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                                FixedHeightEditableBlock {
-                                    VStack {
-                                        Text("First Rectangle")
-                                            .font(.headline)
-                                    }
-                                }
-                                
-                                FixedHeightEditableBlock {
-                                    HStack {
-                                        Image(systemName: "heart.fill")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.red)
-                                        Text("Second Rectangle")
-                                    }
-                                }
-                                
-                                FixedHeightEditableBlock {
-                                    VStack {
-                                        Text("Third Rectangle")
-                                            .font(.headline)
-                                    }
-                                }
-                                
-                                FixedHeightEditableBlock {
-                                    HStack {
-                                        Image(systemName: "staroflife.fill")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.blue)
-                                        Text("Fourth Rectangle")
-                                    }
+                                Spacer()
+                        
+                            
+                            LazyVStack {
+                                ForEach(viewModel.workouts.prefix(3), id: \.calories) { workout in
+                                    WorkoutCard(workout: workout)
                                 }
                             }
-                            
-                            Text("HangTimer")
-                                .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                                .fontWeight(.bold)
-                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-
-                            
-                            HangTimer()
-                            
-                            Text("Climb of the week")
-                                .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                                .fontWeight(.bold)
-                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
-
-                            Rectangle()
-                                .frame(height: 200)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
                         }
                         .padding()
                     }
                 }
             }
         }
+    // Helper method to determine text color based on the theme color brightness
+    private func textColor() -> Color {
+        return colorThemeManager.isLightColor ? .black : .white
     }
+}
 
     #Preview {
         Home()

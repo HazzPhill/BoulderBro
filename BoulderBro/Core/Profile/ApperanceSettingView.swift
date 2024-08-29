@@ -4,6 +4,7 @@ struct AppearanceSettingView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var showColorPicker = false
     @AppStorage("selectedThemeMode") private var themeMode: ThemeMode = .system
+    @AppStorage("countdownLength") private var countdownLength: Int = 3 // Default is 3 seconds
 
     var body: some View {
         List {
@@ -48,6 +49,14 @@ struct AppearanceSettingView: View {
                 .padding(.vertical, 8)
                 .sheet(isPresented: $showColorPicker) {
                     ThemeColorPickerView()
+                }
+                
+                // Countdown Length Picker
+                Section("Countdown Length") {
+                    Stepper(value: $countdownLength, in: 1...10) {
+                        Text("Countdown: \(countdownLength) seconds")
+                    }
+                    .padding(.vertical, 8)
                 }
             }
         }

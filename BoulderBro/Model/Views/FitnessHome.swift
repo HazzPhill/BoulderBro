@@ -105,7 +105,7 @@ struct FitnessHome: View {
                             .padding(.horizontal)
                         
                         HStack {
-                            Text("Take a deep look")
+                            Text("Calories Burnt")
                                 .font(.custom("Kurdis-ExtraWideBold", size: 16))
                             Spacer()
                             
@@ -130,6 +130,7 @@ struct FitnessHome: View {
                             CaloriesChart()
                         }
                         .padding(.horizontal)
+            
                         
                         HStack {
                             Text("Recent Workouts")

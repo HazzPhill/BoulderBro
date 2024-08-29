@@ -83,15 +83,13 @@ struct MyClimbsView: View {
                                     .frame(height: 150)
                                     .padding(.bottom, 10) // Optional: Add some padding below the chart
                                 
-                                Rectangle()
-                                    .fill(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        WeeklyClimbingChartView()
-                                            .padding()
-                                    )
-                                    .frame(height: 150) // Adjust the height as needed
-                                    .padding(.bottom, 10) // Optional: Add some padding below the chart
+                                Text("HangTimer")
+                                    .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+
+                                
+                                HangTimer()
                                 
                                 Text(" \(user.firstName)'s Climbs")
                                     .lineLimit(1)
