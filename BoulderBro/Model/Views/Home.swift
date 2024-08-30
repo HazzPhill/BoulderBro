@@ -69,13 +69,6 @@ struct Home: View {
     
     @StateObject var viewModel = FitnessHomeViewModel()
     
-    // Computed property to calculate the average V rating
-    var averageVRating: Int {
-        let lastTenClimbs = viewModel.climbs.suffix(10) // Assuming you have a climbs array in viewModel
-        let ratings = lastTenClimbs.map { parseVRating($0.vRating) }
-        let sum = ratings.reduce(0, +)
-        return ratings.isEmpty ? 0 : sum / ratings.count
-    }
     
     var body: some View {
         NavigationStack {
@@ -176,10 +169,7 @@ struct Home: View {
                             }
                         }
 
-                        // Pass the calculated average V rating to CurrentLevel
-                        CurrentLevel(averageVRating: averageVRating)
-                            .environmentObject(colorThemeManager)
-                            .padding(.horizontal)
+                
 
                         Text("Recent Workouts")
                             .font(.custom("Kurdis-ExtraWideBold", size: 20))
