@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
+import FirebaseStorage
 
 protocol AuthenticationFormProtocol {
     var formIsValid: Bool { get }
@@ -19,22 +20,23 @@ protocol AuthenticationFormProtocol {
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    @Published var profileImageUrl: URL? // Add this property
     
     init() {
         self.userSession = Auth.auth().currentUser
         
-        Task{
+        Task {
             await fetchUser()
         }
     }
     
-    func signIn(withEmail email:String, password:String) async throws {
+    func signIn(withEmail email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
             await fetchUser()
         } catch {
-            print("DBUG failed to sign in user \(error.localizedDescription)")
+            print("DEBUG: Failed to sign in user \(error.localizedDescription)")
         }
     }
     
@@ -55,8 +57,31 @@ class AuthViewModel: ObservableObject {
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await fetchUser()
         } catch {
-            print("DBUG failed to create user \(error.localizedDescription)")
-            // You might want to re-throw the error here or handle it in a more user-friendly way
+            print("DEBUG: Failed to create user \(error.localizedDescription)")
+        }
+    }
+    
+    func updateUser(fullname: String, email: String, username: String) async {
+        guard let uid = userSession?.uid else { return }
+        
+        do {
+            // Update user data in Firestore
+            let userRef = Firestore.firestore().collection("users").document(uid)
+            try await userRef.updateData([
+                "fullname": fullname,
+                "email": email,
+                "username": username
+            ])
+            
+            // Update the authentication email if it's changed
+            if email != currentUser?.email {
+                try await userSession?.updateEmail(to: email)
+            }
+            
+            // Fetch the updated user data to refresh UI
+            await fetchUser()
+        } catch {
+            print("DEBUG: Failed to update user with error: \(error.localizedDescription)")
         }
     }
     
@@ -71,7 +96,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func deleteAccount() async throws {
-        guard let user = Auth.auth().currentUser else { return } // Make sure there's a user signed in
+        guard let user = Auth.auth().currentUser else { return }
 
         do {
             // 1. Delete user data from Firestore
@@ -86,14 +111,47 @@ class AuthViewModel: ObservableObject {
 
         } catch {
             print("DEBUG: Failed to delete account with error: \(error.localizedDescription)")
-            // Consider re-throwing the error or handling it in a more user-friendly way
         }
     }
     
+    func uploadProfileImage(_ image: UIImage) async throws {
+            guard let uid = userSession?.uid else { return }
+            
+            let storageRef = Storage.storage().reference().child("profile_images/\(uid).jpg")
+            guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            do {
+                _ = try await storageRef.putDataAsync(imageData, metadata: metadata)
+                let profileImageUrl = try await storageRef.downloadURL()
+                
+                // Update Firestore with the new profile image URL
+                let userRef = Firestore.firestore().collection("users").document(uid)
+                try await userRef.updateData(["profileImageUrl": profileImageUrl.absoluteString])
+                
+                // Update the profileImageUrl property in the view model
+                self.profileImageUrl = profileImageUrl
+            } catch {
+                print("DEBUG: Failed to upload profile image with error: \(error.localizedDescription)")
+            }
+        }
+    
     func fetchUser() async {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
-        self.currentUser = try? snapshot.data(as: User.self)
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            do {
+                let snapshot = try await Firestore.firestore().collection("users").document(uid).getDocument()
+                self.currentUser = try snapshot.data(as: User.self)
+                
+                // Fetch profile image URL if available
+                if let profileImageUrlString = snapshot.data()?["profileImageUrl"] as? String,
+                   let url = URL(string: profileImageUrlString) {
+                    self.profileImageUrl = url
+                }
+            } catch {
+                print("DEBUG: Failed to fetch user with error: \(error.localizedDescription)")
+            }
+        }
     }
-}

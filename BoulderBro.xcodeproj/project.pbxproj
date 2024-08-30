@@ -38,6 +38,7 @@
 		EF6476272C81FDCF00C8C9BA /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476262C81FDCF00C8C9BA /* MailView.swift */; };
 		EF6476292C81FDF000C8C9BA /* ConactSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476282C81FDF000C8C9BA /* ConactSupportView.swift */; };
 		EF64762B2C81FE1400C8C9BA /* ReportBugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64762A2C81FE1400C8C9BA /* ReportBugView.swift */; };
+		EF6476392C820ACB00C8C9BA /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476382C820ACB00C8C9BA /* EditAccountView.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -160,6 +161,7 @@
 		EF6476262C81FDCF00C8C9BA /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		EF6476282C81FDF000C8C9BA /* ConactSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConactSupportView.swift; sourceTree = "<group>"; };
 		EF64762A2C81FE1400C8C9BA /* ReportBugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBugView.swift; sourceTree = "<group>"; };
+		EF6476382C820ACB00C8C9BA /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
 		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				EF64761E2C81258200C8C9BA /* Settings View.swift */,
 				EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */,
 				EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */,
+				EF6476382C820ACB00C8C9BA /* EditAccountView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */,
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
 				EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */,
+				EF6476392C820ACB00C8C9BA /* EditAccountView.swift in Sources */,
 				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
 				EF6476192C80C54800C8C9BA /* HighestHeartRateActivityCard.swift in Sources */,
 				EFD994312C7BD99400B316BC /* videosView.swift in Sources */,
