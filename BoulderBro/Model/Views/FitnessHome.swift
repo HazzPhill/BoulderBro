@@ -131,6 +131,15 @@ struct FitnessHome: View {
                         }
                         .padding(.horizontal)
             
+                        NavigationLink(destination:MinutesClimbedLeaderboardView()) {
+                            Text ("Show Minutes Leaderboard")
+                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                .foregroundStyle(Color.white)
+                                .padding()
+                        }
+                        .background(Color.gray)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .frame(maxWidth: .infinity)
                         
                         HStack {
                             Text("Recent Workouts")

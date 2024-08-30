@@ -1,25 +1,26 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import HealthKit
 
-// Model for Leaderboard Entries
-struct LeaderboardEntry: Identifiable {
+// Model for Leaderboard Entries (Minutes Climbed)
+struct MinutesClimbedLeaderboardEntry: Identifiable {
     let id = UUID()
     let username: String
-    let bestTime: TimeInterval
-    let position: Int // Added position property to store original position
+    let totalMinutes: Double
+    let position: Int
 }
 
-// Leaderboard View
-struct LeaderboardView: View {
-    @State private var leaderboard: [LeaderboardEntry] = []
+// Leaderboard View for Minutes Climbed
+struct MinutesClimbedLeaderboardView: View {
+    @State private var leaderboard: [MinutesClimbedLeaderboardEntry] = []
     @State private var searchText: String = ""
-    @State private var isSearchBarVisible: Bool = false // State variable to toggle search bar visibility
-    @Environment(\.colorScheme) var colorScheme // To detect the current color scheme
-    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
+    @State private var isSearchBarVisible: Bool = false
+    @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var colorThemeManager: ColorThemeManager
     
     // Filtered leaderboard with original positions retained
-    var filteredLeaderboard: [LeaderboardEntry] {
+    var filteredLeaderboard: [MinutesClimbedLeaderboardEntry] {
         if searchText.isEmpty {
             return leaderboard
         } else {
@@ -29,7 +30,7 @@ struct LeaderboardView: View {
     
     var body: some View {
         ZStack {
-            // Use customizable MovingCircles component as the background
+            // Custom background
             MovingCircles(
                 topCircleColor: colorThemeManager.currentThemeColor,
                 bottomCircleColor: colorThemeManager.currentThemeColor,
@@ -37,18 +38,18 @@ struct LeaderboardView: View {
                 bottomCircleOpacity: 0.2,
                 backgroundColor: colorScheme == .dark ? Color(hex: "#1f1f1f") : Color(hex: "#f1f0f5")
             )
-            .zIndex(-1) // Ensure the circles and background are behind other content
+            .zIndex(-1)
             
             VStack(alignment: .center, spacing: 16) {
                 VStack (alignment: .leading, spacing: 16) {
-                    Text("Learboard")
-                        .frame(alignment: .leading)
-                        .font(.custom("Kurdis-ExtraWideBold", size: 32))
-                        .padding(.top, 16)
-                    Text("Leaderboard of longest hang time this month")
-                        .font(.custom("Kurdis-Regular", size: 16))
-                        .frame(alignment: .leading)
-                }
+                Text("Learboard")
+                    .frame(alignment: .leading)
+                    .font(.custom("Kurdis-ExtraWideBold", size: 32))
+                    .padding(.top, 16)
+                Text("Leaderboard of minutes climbed this month")
+                    .font(.custom("Kurdis-Regular", size: 16))
+                    .frame(alignment: .leading)
+            }
                 
                 // Search Bar Toggle
                 HStack {
@@ -56,7 +57,7 @@ struct LeaderboardView: View {
                     
                     Button(action: {
                         withAnimation {
-                            isSearchBarVisible.toggle() // Toggle search bar visibility
+                            isSearchBarVisible.toggle()
                         }
                     }) {
                         Image(systemName: isSearchBarVisible ? "xmark.circle.fill" : "magnifyingglass")
@@ -75,7 +76,7 @@ struct LeaderboardView: View {
                             .cornerRadius(10)
                             .padding(.horizontal)
                     }
-                    .transition(.move(edge: .top)) // Smooth transition for appearance
+                    .transition(.move(edge: .top))
                 }
                 
                 // Scrollable Leaderboard
@@ -83,9 +84,9 @@ struct LeaderboardView: View {
                     VStack(spacing: 16) {
                         ForEach(filteredLeaderboard) { entry in
                             if entry.position <= 3 {
-                                TopThreeLeaderboardRow(entry: entry, position: entry.position)
+                                TopThreeMinutesClimbedRow(entry: entry, position: entry.position)
                             } else {
-                                RegularLeaderboardRow(entry: entry, position: entry.position)
+                                RegularMinutesClimbedRow(entry: entry, position: entry.position)
                             }
                         }
                     }
@@ -94,54 +95,58 @@ struct LeaderboardView: View {
                 Spacer()
             }
             .onAppear {
-                fetchLeaderboard { leaderboardEntries in
-                    self.leaderboard = leaderboardEntries.enumerated().map { index, entry in
-                        LeaderboardEntry(username: entry.username, bestTime: entry.bestTime, position: index + 1)
-                    }
+                // Update climbing minutes for the current user
+                if let currentUser = Auth.auth().currentUser {
+                    HealthManager.shared.fetchAndStoreMonthlyClimbingMinutes(for: currentUser.uid)
                 }
+                fetchLeaderboard()
             }
         }
-        .background(Color.clear.ignoresSafeArea()) // Ensures MovingCircles background is visible
+        .background(Color.clear.ignoresSafeArea())
     }
-
-    // Fetch the leaderboard from Firestore
-    private func fetchLeaderboard(completion: @escaping ([LeaderboardEntry]) -> Void) {
-        let currentMonth = Calendar.current.component(.month, from: Date())
-        let currentYear = Calendar.current.component(.year, from: Date())
-        let leaderboardId = "\(currentYear)_\(currentMonth)"
-        
+    
+    // Fetch the leaderboard from Firestore and calculate positions
+    private func fetchLeaderboard() {
         let db = Firestore.firestore()
         
-        db.collection("leaderboards").document(leaderboardId).getDocument { document, error in
+        db.collection("users").getDocuments { querySnapshot, error in
             if let error = error {
-                print("Error fetching leaderboard: \(error)")
-                completion([])
-            } else if let document = document, document.exists {
-                if let data = document.data() {
-                    let leaderboardEntries = data.compactMap { (userId, value) -> LeaderboardEntry? in
-                        if let userData = value as? [String: Any],
-                           let username = userData["username"] as? String,
-                           let bestTime = userData["bestTime"] as? Double {
-                            return LeaderboardEntry(username: username, bestTime: bestTime, position: 0) // Temporary position
-                        }
-                        return nil
-                    }
-                    .sorted(by: { $0.bestTime > $1.bestTime }) // Sort by best time
-                    completion(leaderboardEntries)
-                } else {
-                    completion([])
-                }
+                print("Error fetching users: \(error)")
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("No user documents found.")
+                return
+            }
+            
+            var leaderboardEntries: [MinutesClimbedLeaderboardEntry] = []
+            
+            for document in documents {
+                let username = document.data()["username"] as? String ?? "Unknown User"
+                let totalMinutes = document.data()["monthlyClimbingMinutes"] as? Double ?? 0
+                
+                let entry = MinutesClimbedLeaderboardEntry(username: username, totalMinutes: totalMinutes, position: 0)
+                leaderboardEntries.append(entry)
+            }
+            
+            // Sort the leaderboard by totalMinutes in descending order
+            leaderboardEntries.sort { $0.totalMinutes > $1.totalMinutes }
+            
+            // Assign positions
+            leaderboard = leaderboardEntries.enumerated().map { index, entry in
+                MinutesClimbedLeaderboardEntry(username: entry.username, totalMinutes: entry.totalMinutes, position: index + 1)
             }
         }
     }
 }
 
-// Top 3 Leaderboard Row
-struct TopThreeLeaderboardRow: View {
-    let entry: LeaderboardEntry
+// Top 3 Leaderboard Row for Minutes Climbed
+struct TopThreeMinutesClimbedRow: View {
+    let entry: MinutesClimbedLeaderboardEntry
     let position: Int
-    @Environment(\.colorScheme) var colorScheme // To detect the current color scheme
-    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
+    @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var colorThemeManager: ColorThemeManager
     
     var positionColor: Color {
         switch position {
@@ -163,17 +168,15 @@ struct TopThreeLeaderboardRow: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            // Position Box
             Text(positionLabel)
                 .font(.custom("Kurdis-ExtraWideBold", size: positionLabelFontSize))
                 .foregroundColor(.primary)
-                .frame(width: 60, height: 50, alignment: .center) // Fixed width box for position
+                .frame(width: 60, height: 50, alignment: .center)
                 .background(positionColor)
                 .cornerRadius(12)
                 .minimumScaleFactor(0.2)
                 .lineLimit(1)
             
-            // Name and Time Box
             HStack(spacing: 0) {
                 Text(entry.username.uppercased())
                     .lineLimit(1)
@@ -182,13 +185,13 @@ struct TopThreeLeaderboardRow: View {
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16)
-                    .padding(.trailing, 8) // Padding between name and separator
+                    .padding(.trailing, 8)
                 
                 Divider()
                     .frame(width: 1, height: 25)
                     .background(Color.white)
                 
-                Text(timeString(from: entry.bestTime))
+                Text("\(Int(entry.totalMinutes)) MIN")
                     .font(.custom("Kurdis-ExtraWideBold", size: 16))
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -205,26 +208,24 @@ struct TopThreeLeaderboardRow: View {
     }
 }
 
-// Regular Leaderboard Row
-struct RegularLeaderboardRow: View {
-    let entry: LeaderboardEntry
+// Regular Leaderboard Row for Minutes Climbed
+struct RegularMinutesClimbedRow: View {
+    let entry: MinutesClimbedLeaderboardEntry
     let position: Int
-    @Environment(\.colorScheme) var colorScheme // To detect the current color scheme
-    @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
+    @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var colorThemeManager: ColorThemeManager
     
     var body: some View {
         HStack(spacing: 16) {
-            // Position Box
             Text("\(position)TH")
                 .font(.custom("Kurdis-ExtraWideBold", size: positionFontSize(for: position)))
                 .foregroundColor(.primary)
-                .frame(width: 60, height: 50, alignment: .center) // Fixed width box for position
+                .frame(width: 60, height: 50, alignment: .center)
                 .background(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
                 .cornerRadius(12)
                 .minimumScaleFactor(0.2)
                 .lineLimit(1)
             
-            // Name and Time Box
             HStack(spacing: 0) {
                 Text(entry.username.uppercased())
                     .lineLimit(1)
@@ -233,13 +234,13 @@ struct RegularLeaderboardRow: View {
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16)
-                    .padding(.trailing, 8) // Padding between name and separator
+                    .padding(.trailing, 8)
                 
                 Divider()
                     .frame(width: 1, height: 25)
                     .background(Color.white)
                 
-                Text(timeString(from: entry.bestTime))
+                Text("\(Int(entry.totalMinutes)) MIN")
                     .font(.custom("Kurdis-ExtraWideBold", size: 16))
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -256,15 +257,7 @@ struct RegularLeaderboardRow: View {
     }
 }
 
-// Helper function to format time as minutes:seconds:milliseconds
-private func timeString(from timeInterval: TimeInterval) -> String {
-    let minutes = Int(timeInterval) / 60
-    let seconds = Int(timeInterval) % 60
-    let milliseconds = Int((timeInterval - floor(timeInterval)) * 100)
-    return String(format: "%02d:%02d:%02d", minutes, seconds, milliseconds)
-}
-
 // Preview the Leaderboard View
 #Preview {
-    LeaderboardView()
+    MinutesClimbedLeaderboardView()
 }

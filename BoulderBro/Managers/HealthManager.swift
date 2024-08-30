@@ -1,6 +1,7 @@
 import Foundation
 import HealthKit
 import SwiftUI
+import FirebaseFirestore
 
 // MARK: - Date Extension
 extension Date {
@@ -379,6 +380,7 @@ class HealthManager {
         ]
     }
     
+    
     // MARK: - Fetch Workouts for the Month
     func fetchWorkoutsForMonth(month: Date, completion: @escaping (Result<[Workout], Error>) -> Void) {
         let workouts = HKSampleType.workoutType()
@@ -516,4 +518,50 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-}
+    func fetchAndStoreMonthlyClimbingMinutes(for userId: String) {
+            fetchMonthlyClimbingMinutes { result in
+                switch result {
+                case .success(let totalMinutes):
+                    // Store totalMinutes in Firestore
+                    let db = Firestore.firestore()
+                    let userRef = db.collection("users").document(userId)
+                    
+                    userRef.updateData([
+                        "monthlyClimbingMinutes": totalMinutes
+                    ]) { error in
+                        if let error = error {
+                            print("Error updating Firestore: \(error)")
+                        } else {
+                            print("Climbing minutes successfully updated in Firestore.")
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print("Error fetching climbing minutes: \(error)")
+                }
+            }
+        }
+        
+        // Fetch Monthly Climbing Minutes from HealthKit
+        func fetchMonthlyClimbingMinutes(completion: @escaping (Result<Double, Error>) -> Void) {
+            let workouts = HKSampleType.workoutType()
+            let (startDate, endDate) = Date().fetchMonthStartAndEndDate()
+            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+            
+            let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, result, error in
+                guard let workouts = result as? [HKWorkout], error == nil else {
+                    completion(.failure(error ?? URLError(.badURL)))
+                    return
+                }
+                
+                let totalMinutes = workouts
+                    .filter { $0.workoutActivityType == .climbing }
+                    .reduce(0) { $0 + ($1.duration / 60) }
+                
+                completion(.success(totalMinutes))
+            }
+            
+            healthStore.execute(query)
+        }
+    }

@@ -94,6 +94,7 @@
 		EFC7CFED2C6E6775002D5F78 /* Kurdis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */; };
 		EFC7D01C2C6EA6EC002D5F78 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */; };
 		EFC7D01E2C6EA6EC002D5F78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */; };
+		EFD67A772C821B0100889629 /* MinutesClimbedLeaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */; };
 		EFD994122C7A01CB00B316BC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994112C7A01CB00B316BC /* Mantis */; };
 		EFD994142C7A153900B316BC /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994132C7A153900B316BC /* Circles.swift */; };
 		EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994192C7B357A00B316BC /* DeepInsightsView.swift */; };
@@ -187,6 +188,7 @@
 		EFC7CFE22C6E657A002D5F78 /* Kurdis-ExtraWideBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBold.otf"; sourceTree = "<group>"; };
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
 		EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-Regular.otf"; sourceTree = "<group>"; };
+		EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutesClimbedLeaderboard.swift; sourceTree = "<group>"; };
 		EFD994132C7A153900B316BC /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		EFD994192C7B357A00B316BC /* DeepInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepInsightsView.swift; sourceTree = "<group>"; };
 		EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDurationChart.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				EF6476242C81E76000C8C9BA /* HangTimerLeaderBoard.swift */,
 				EF6476282C81FDF000C8C9BA /* ConactSupportView.swift */,
 				EF64762A2C81FE1400C8C9BA /* ReportBugView.swift */,
+				EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */,
 				EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */,
 				EF6476212C81291400C8C9BA /* GeneralSettingsView.swift in Sources */,
+				EFD67A772C821B0100889629 /* MinutesClimbedLeaderboard.swift in Sources */,
 				EFBA26F42C72279300CD85F6 /* HealthManager.swift in Sources */,
 				EFBA26E72C70B6D400CD85F6 /* ActivityCard.swift in Sources */,
 				EFBA26D42C6EBDE600CD85F6 /* SettingsRowView.swift in Sources */,
