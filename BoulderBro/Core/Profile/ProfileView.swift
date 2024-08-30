@@ -1,6 +1,5 @@
 import SwiftUI
 
-// ProfileView Implementation
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.colorScheme) var colorScheme
@@ -58,6 +57,16 @@ struct ProfileView: View {
                             Section("General") {
                                 NavigationLink(destination: SettingsView()) {
                                     SettingsRowView(imageName: "gear", title: "Settings", tintColor: Color(.systemGray))
+                                }
+                                .padding(.vertical, 8)
+                                
+                                NavigationLink(destination: ContactSupportView()) {
+                                    SettingsRowView(imageName: "envelope.fill", title: "Contact Support", tintColor: Color(.systemBlue))
+                                }
+                                .padding(.vertical, 8)
+
+                                NavigationLink(destination: ReportBugView()) {
+                                    SettingsRowView(imageName: "exclamationmark.triangle.fill", title: "Report Bug", tintColor: Color(.systemYellow))
                                 }
                                 .padding(.vertical, 8)
                             }
