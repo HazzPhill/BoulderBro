@@ -11,6 +11,7 @@ struct User: Identifiable, Codable {
     let id: String
     let fullname: String
     let email: String
+    let username: String
     
     var profilePictureURL: String? // Optional, as users may not have set a profile picture yet
     

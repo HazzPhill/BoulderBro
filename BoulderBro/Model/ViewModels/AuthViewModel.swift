@@ -38,16 +38,25 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func createUser(WithEmail email: String, password: String, fullname: String) async throws {
+    func createUser(WithEmail email: String, password: String, fullname: String, username: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
-            let user = User(id: result.user.uid, fullname: fullname, email: email)
+
+            // Check if the username is already taken
+            let usernameQuery = Firestore.firestore().collection("users").whereField("username", isEqualTo: username)
+            let usernameSnapshot = try await usernameQuery.getDocuments()
+            if !usernameSnapshot.isEmpty {
+                throw NSError(domain: "AppErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Username already taken"])
+            }
+
+            let user = User(id: result.user.uid, fullname: fullname, email: email, username: username)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await fetchUser()
         } catch {
             print("DBUG failed to create user \(error.localizedDescription)")
+            // You might want to re-throw the error here or handle it in a more user-friendly way
         }
     }
     
@@ -62,7 +71,23 @@ class AuthViewModel: ObservableObject {
     }
     
     func deleteAccount() async throws {
-        
+        guard let user = Auth.auth().currentUser else { return } // Make sure there's a user signed in
+
+        do {
+            // 1. Delete user data from Firestore
+            try await Firestore.firestore().collection("users").document(user.uid).delete()
+
+            // 2. Delete the user's authentication account
+            try await user.delete()
+
+            // 3. Update local state
+            self.userSession = nil
+            self.currentUser = nil
+
+        } catch {
+            print("DEBUG: Failed to delete account with error: \(error.localizedDescription)")
+            // Consider re-throwing the error or handling it in a more user-friendly way
+        }
     }
     
     func fetchUser() async {

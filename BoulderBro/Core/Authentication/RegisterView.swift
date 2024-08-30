@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterView: View {
     @State private var email = ""
     @State private var fullname = ""
+    @State private var username = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     @Environment(\.dismiss) var dismiss
@@ -22,6 +23,9 @@ struct RegisterView: View {
                     Spacer()
                     VStack(spacing:24){
                         InputView(text: $fullname, title: "Full Name", placehodler: "Harry Phillips")
+                            .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        
+                        InputView(text: $username, title: "Username", placehodler: "Hazphil")
                             .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         
                         InputView(text: $email, title: "Email Address", placehodler: "name@example.com")
@@ -52,7 +56,7 @@ struct RegisterView: View {
                     
                     Button {
                         Task {
-                            try await viewModel.createUser(WithEmail:email,password:password,fullname:fullname)
+                            try await viewModel.createUser(WithEmail:email,password:password,fullname:fullname, username: username)
                         }
                     } label: {
                         HStack{

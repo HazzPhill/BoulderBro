@@ -91,6 +91,18 @@ struct MyClimbsView: View {
                                 
                                 HangTimer()
                                 
+                            
+                                NavigationLink(destination:LeaderboardView()) {
+                                    Text ("Show Leaderboard")
+                                        .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                        .foregroundStyle(Color.white)
+                                        .padding()
+                                }
+                                .background(Color.gray)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .frame(maxWidth: .infinity)
+
+                                
                                 Text(" \(user.firstName)'s Climbs")
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.5)

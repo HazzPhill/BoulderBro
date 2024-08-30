@@ -34,6 +34,7 @@
 		EF64761F2C81258200C8C9BA /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF64761E2C81258200C8C9BA /* Settings View.swift */; };
 		EF6476212C81291400C8C9BA /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */; };
 		EF6476232C81293300C8C9BA /* ApperanceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */; };
+		EF6476252C81E76000C8C9BA /* HangTimerLeaderBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476242C81E76000C8C9BA /* HangTimerLeaderBoard.swift */; };
 		EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F422C6D759A00D7301E /* FirebaseAnalytics */; };
 		EFA16F452C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F442C6D759A00D7301E /* FirebaseAnalyticsOnDeviceConversion */; };
 		EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EFA16F462C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -152,6 +153,7 @@
 		EF64761E2C81258200C8C9BA /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApperanceSettingView.swift; sourceTree = "<group>"; };
+		EF6476242C81E76000C8C9BA /* HangTimerLeaderBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangTimerLeaderBoard.swift; sourceTree = "<group>"; };
 		EFA7D8322C74E87C006E764E /* Climb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyClimbsViewController.swift; sourceTree = "<group>"; };
 		EFA7D8382C74ECE1006E764E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				EFD994302C7BD99400B316BC /* videosView.swift */,
 				EFD994322C7BDA7700B316BC /* Chat.swift */,
 				EF6476102C7E33C200C8C9BA /* AllClimbs.swift */,
+				EF6476242C81E76000C8C9BA /* HangTimerLeaderBoard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				EF64761F2C81258200C8C9BA /* Settings View.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
+				EF6476252C81E76000C8C9BA /* HangTimerLeaderBoard.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
 				EFD994332C7BDA7700B316BC /* Chat.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
