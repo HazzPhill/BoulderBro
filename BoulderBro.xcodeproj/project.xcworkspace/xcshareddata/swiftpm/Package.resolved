@@ -1,5 +1,5 @@
 {
-  "originHash" : "5a97bd8015da7f504874da3fa218f3b4f2840bfe590e7b3b5f0f09e37e1010c1",
+  "originHash" : "e100b5f854b10ad3d98115e368b1a1790874d33fd77b1d03694dea4a57986370",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -26,24 +26,6 @@
       "state" : {
         "revision" : "c89ed571ae140f8eb1142735e6e23d7bb8c34cb2",
         "version" : "1.7.5"
-      }
-    },
-    {
-      "identity" : "chat-sdk-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cometchat/chat-sdk-ios.git",
-      "state" : {
-        "revision" : "45c388770e3475e10d39d5eb5e16e9ecc5e632ca",
-        "version" : "4.0.53"
-      }
-    },
-    {
-      "identity" : "cometchat-chat-uikit-ios-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cometchat-pro/cometchat-chat-uikit-ios-swift.git",
-      "state" : {
-        "revision" : "5c2a24b8f24cd76b287ae8ea04b35317fd8f0c81",
-        "version" : "4.3.17"
       }
     },
     {
@@ -161,6 +143,24 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "stream-chat-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/GetStream/stream-chat-swift.git",
+      "state" : {
+        "revision" : "c14c5a1598d94903bf610910cc7c12b16ee9fd96",
+        "version" : "4.62.0"
+      }
+    },
+    {
+      "identity" : "stream-chat-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getstream/stream-chat-swiftui",
+      "state" : {
+        "revision" : "4f92ec25926396c1fb092b2cd573aa5a5b800e9b",
+        "version" : "4.62.0"
       }
     },
     {

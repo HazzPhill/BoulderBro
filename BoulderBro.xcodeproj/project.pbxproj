@@ -106,8 +106,8 @@
 		EFD994252C7B7FC900B316BC /* ThemeColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */; };
 		EFD994312C7BD99400B316BC /* videosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994302C7BD99400B316BC /* videosView.swift */; };
 		EFD994332C7BDA7700B316BC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994322C7BDA7700B316BC /* Chat.swift */; };
-		EFD994362C7BDCAC00B316BC /* CometChatUIKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */; };
 		EFF137CE2C7CDAE1003B666C /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF137CD2C7CDAE1003B666C /* WorkoutManager.swift */; };
+		EFFDB0212C84C2C4007320DE /* StreamChatSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EFFDB0202C84C2C4007320DE /* StreamChatSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,13 +215,13 @@
 				EFA16F612C6D759A00D7301E /* FirebaseInstallations in Frameworks */,
 				EF1C61302C6B4C74000F29E2 /* HealthKitUI.framework in Frameworks */,
 				EFA16F6F2C6D759A00D7301E /* FirebaseVertexAI-Preview in Frameworks */,
+				EFFDB0212C84C2C4007320DE /* StreamChatSwiftUI in Frameworks */,
 				EFA16F472C6D759A00D7301E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				EFA16F5F2C6D759A00D7301E /* FirebaseInAppMessaging-Beta in Frameworks */,
 				EFC7D01E2C6EA6EC002D5F78 /* GoogleSignInSwift in Frameworks */,
 				EFA16F652C6D759A00D7301E /* FirebaseMLModelDownloader in Frameworks */,
 				EF1C612F2C6B4C74000F29E2 /* HealthKit.framework in Frameworks */,
 				EFA16F632C6D759A00D7301E /* FirebaseMessaging in Frameworks */,
-				EFD994362C7BDCAC00B316BC /* CometChatUIKitSwift in Frameworks */,
 				EFA16F6D2C6D759A00D7301E /* FirebaseStorageCombine-Community in Frameworks */,
 				EFA16F432C6D759A00D7301E /* FirebaseAnalytics in Frameworks */,
 				EFA16F6B2C6D759A00D7301E /* FirebaseStorage in Frameworks */,
@@ -347,6 +347,7 @@
 		EF1C60AD2C6A6FD1000F29E2 = {
 			isa = PBXGroup;
 			children = (
+				EFFDB01D2C84C207007320DE /* StreamChatTestMockServer */,
 				EF1C60B82C6A6FD1000F29E2 /* BoulderBro */,
 				EF1C60C92C6A6FD2000F29E2 /* BoulderBroTests */,
 				EF1C60D32C6A6FD2000F29E2 /* BoulderBroUITests */,
@@ -504,6 +505,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EFFDB01D2C84C207007320DE /* StreamChatTestMockServer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StreamChatTestMockServer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -547,7 +555,7 @@
 				EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */,
 				EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */,
 				EFD994112C7A01CB00B316BC /* Mantis */,
-				EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */,
+				EFFDB0202C84C2C4007320DE /* StreamChatSwiftUI */,
 			);
 			productName = BoulderBro;
 			productReference = EF1C60B62C6A6FD1000F29E2 /* BoulderBro.app */;
@@ -625,7 +633,7 @@
 				EF1C60F52C6A9011000F29E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EFC7D01A2C6EA6EC002D5F78 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */,
-				EFD994342C7BDCAC00B316BC /* XCRemoteSwiftPackageReference "cometchat-chat-uikit-ios-swift" */,
+				EFFDB01F2C84C2C4007320DE /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */,
 			);
 			productRefGroup = EF1C60B72C6A6FD1000F29E2 /* Products */;
 			projectDirPath = "";
@@ -928,7 +936,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -967,7 +975,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -975,10 +983,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -993,10 +1003,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Y2J8H2C3F;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Boulder.BoulderBroTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1107,12 +1119,12 @@
 				minimumVersion = 1.7.5;
 			};
 		};
-		EFD994342C7BDCAC00B316BC /* XCRemoteSwiftPackageReference "cometchat-chat-uikit-ios-swift" */ = {
+		EFFDB01F2C84C2C4007320DE /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cometchat-pro/cometchat-chat-uikit-ios-swift.git";
+			repositoryURL = "https://github.com/getstream/stream-chat-swiftui";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.17;
+				minimumVersion = 4.62.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1248,10 +1260,10 @@
 			package = EFD994102C7A01CB00B316BC /* XCRemoteSwiftPackageReference "Mantis" */;
 			productName = Mantis;
 		};
-		EFD994352C7BDCAC00B316BC /* CometChatUIKitSwift */ = {
+		EFFDB0202C84C2C4007320DE /* StreamChatSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EFD994342C7BDCAC00B316BC /* XCRemoteSwiftPackageReference "cometchat-chat-uikit-ios-swift" */;
-			productName = CometChatUIKitSwift;
+			package = EFFDB01F2C84C2C4007320DE /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */;
+			productName = StreamChatSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

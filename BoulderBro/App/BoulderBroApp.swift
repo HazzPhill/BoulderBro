@@ -7,44 +7,45 @@
 
 import SwiftUI
 import FirebaseCore
+import StreamChat
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    var chatClient: ChatClient!
+
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+
+        // Initialize Stream Chat client
+        let config = ChatClientConfig(apiKey: .init("8nqgrrymjefq")) // Replace with your actual API key
+        chatClient = ChatClient(config: config)
+
         return true
     }
 }
 
 @main
 struct BoulderBroApp: App {
-    
-    
     @StateObject var viewModel = AuthViewModel()
     @StateObject var colorThemeManager = ColorThemeManager()
-    @AppStorage("selectedThemeMode") private var themeMode: ThemeMode = .system // Store theme mode in AppStorage
+    @AppStorage("selectedThemeMode") private var themeMode: ThemeMode = .system
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-    init() {
-        applyThemeMode(themeMode) // Apply the theme mode when the app launches
-    }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
                 .environmentObject(colorThemeManager)
                 .onAppear {
-                    applyThemeMode(themeMode) // Ensure the theme mode is applied on the app's main view appearance
+                    applyThemeMode(themeMode)
                 }
+                .environment(\.chatClient, delegate.chatClient) // Use a custom environment key for ChatClient
         }
     }
-    
+
     private func applyThemeMode(_ mode: ThemeMode) {
-        // Store the selected theme mode in UserDefaults
         UserDefaults.standard.set(mode.rawValue, forKey: "selectedThemeMode")
-        
-        // Apply the theme mode
+
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
                 switch mode {
@@ -85,5 +86,17 @@ extension Color {
             blue: Double(b) / 255,
             opacity: Double(a) / 255
         )
+    }
+}
+
+// Create a custom environment key for ChatClient
+private struct ChatClientKey: EnvironmentKey {
+    static let defaultValue: ChatClient? = nil
+}
+
+extension EnvironmentValues {
+    var chatClient: ChatClient? {
+        get { self[ChatClientKey.self] }
+        set { self[ChatClientKey.self] = newValue }
     }
 }
