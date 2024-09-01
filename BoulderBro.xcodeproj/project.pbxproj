@@ -95,6 +95,8 @@
 		EFC7D01C2C6EA6EC002D5F78 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01B2C6EA6EC002D5F78 /* GoogleSignIn */; };
 		EFC7D01E2C6EA6EC002D5F78 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFC7D01D2C6EA6EC002D5F78 /* GoogleSignInSwift */; };
 		EFD67A772C821B0100889629 /* MinutesClimbedLeaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */; };
+		EFD67A7B2C849B3500889629 /* PrivacyAndSecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD67A7A2C849B3500889629 /* PrivacyAndSecurityView.swift */; };
+		EFD67A7F2C84A86100889629 /* CometChatConversationsWithMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD67A7E2C84A86100889629 /* CometChatConversationsWithMessagesView.swift */; };
 		EFD994122C7A01CB00B316BC /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = EFD994112C7A01CB00B316BC /* Mantis */; };
 		EFD994142C7A153900B316BC /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994132C7A153900B316BC /* Circles.swift */; };
 		EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD994192C7B357A00B316BC /* DeepInsightsView.swift */; };
@@ -189,6 +191,8 @@
 		EFC7CFE62C6E663F002D5F78 /* Kurdis-ExtraWideBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-ExtraWideBlack.otf"; sourceTree = "<group>"; };
 		EFC7CFEA2C6E6775002D5F78 /* Kurdis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kurdis-Regular.otf"; sourceTree = "<group>"; };
 		EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutesClimbedLeaderboard.swift; sourceTree = "<group>"; };
+		EFD67A7A2C849B3500889629 /* PrivacyAndSecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndSecurityView.swift; sourceTree = "<group>"; };
+		EFD67A7E2C84A86100889629 /* CometChatConversationsWithMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CometChatConversationsWithMessagesView.swift; sourceTree = "<group>"; };
 		EFD994132C7A153900B316BC /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		EFD994192C7B357A00B316BC /* DeepInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepInsightsView.swift; sourceTree = "<group>"; };
 		EFD9941B2C7B3E8A00B316BC /* SessionDurationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDurationChart.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				EFA7D8362C74EABC006E764E /* MyClimbsViewController.swift */,
 				EF6476142C7F654F00C8C9BA /* LogClimbView.swift */,
 				EF6476262C81FDCF00C8C9BA /* MailView.swift */,
+				EFD67A7E2C84A86100889629 /* CometChatConversationsWithMessagesView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */,
 				EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */,
 				EF6476382C820ACB00C8C9BA /* EditAccountView.swift */,
+				EFD67A7A2C849B3500889629 /* PrivacyAndSecurityView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -692,6 +698,7 @@
 				EF6476272C81FDCF00C8C9BA /* MailView.swift in Sources */,
 				EF64761F2C81258200C8C9BA /* Settings View.swift in Sources */,
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
+				EFD67A7B2C849B3500889629 /* PrivacyAndSecurityView.swift in Sources */,
 				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
 				EF6476252C81E76000C8C9BA /* HangTimerLeaderBoard.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
@@ -727,6 +734,7 @@
 				EFBA26E52C70A09200CD85F6 /* ProgressCircleView.swift in Sources */,
 				EF64762B2C81FE1400C8C9BA /* ReportBugView.swift in Sources */,
 				EFBA26F92C72785000CD85F6 /* HKWorkoutTypeActivityType+Ext.swift in Sources */,
+				EFD67A7F2C84A86100889629 /* CometChatConversationsWithMessagesView.swift in Sources */,
 				EFF137CE2C7CDAE1003B666C /* WorkoutManager.swift in Sources */,
 				EF64761B2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift in Sources */,
 				EF6476132C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift in Sources */,
@@ -913,7 +921,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -951,7 +960,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

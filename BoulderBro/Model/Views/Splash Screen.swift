@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SplashScreen: View {
+struct SplashScreenView: View {
     
     //FetchData
     @EnvironmentObject var viewModel: AuthViewModel
@@ -94,6 +94,6 @@ struct SplashScreen: View {
 }
 
 #Preview {
-    SplashScreen()
+    SplashScreenView()
 }
 

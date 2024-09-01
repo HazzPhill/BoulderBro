@@ -138,6 +138,32 @@ class AuthViewModel: ObservableObject {
             }
         }
     
+    func resetPassword(forEmail email: String) async {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            print("DEBUG: Password reset email sent successfully")
+        } catch {
+            print("DEBUG: Failed to send password reset email with error: \(error.localizedDescription)")
+        }
+    }
+
+    
+    func changePassword(currentPassword: String, newPassword: String) async throws {
+        guard let user = Auth.auth().currentUser, let email = user.email else { return }
+
+        // Re-authenticate the user to ensure they have the correct credentials
+        let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
+        do {
+            try await user.reauthenticate(with: credential)
+            try await user.updatePassword(to: newPassword)
+            print("DEBUG: Password updated successfully")
+        } catch {
+            print("DEBUG: Failed to update password with error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+
+    
     func fetchUser() async {
             guard let uid = Auth.auth().currentUser?.uid else { return }
             

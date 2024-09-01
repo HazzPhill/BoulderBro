@@ -20,6 +20,11 @@ struct SettingsView: View {
                     Text("Appearance")
                 }
                 .padding(.vertical, 8)
+                
+                NavigationLink(destination: PrivacyAndSecurityView()) {
+                    Text("Privacy & Security")
+                }
+                .padding(.vertical, 8)
             }
         }
         .listStyle(InsetGroupedListStyle())
