@@ -7,37 +7,18 @@
 
 import SwiftUI
 import FirebaseCore
-import CometChatUIKitSwift
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        
-        // Initialize CometChat UIKit with proper settings
-        let uikitSettings = UIKitSettings()
-            .set(appID: "262632aa520f3f63")  // Replace with your CometChat App ID
-            .set(authKey: "600288556ad28b846412ea0e12f09291d0ac58d7")  // Replace with your CometChat Auth Key
-            .set(region: "eu")  // Replace with your CometChat Region
-            .subscribePresenceForAllUsers()
-            .build()
-        
-        CometChatUIKit.init(uiKitSettings: uikitSettings) { result in
-            switch result {
-            case .success(let success):
-                debugPrint("CometChatUIKit initialization completed successfully: \(success)")
-            case .failure(let error):
-                debugPrint("CometChatUIKit initialization failed with exception: \(error.localizedDescription)")
-            }
-        }
-        
         return true
     }
 }
 
 @main
 struct BoulderBroApp: App {
+    
     
     @StateObject var viewModel = AuthViewModel()
     @StateObject var colorThemeManager = ColorThemeManager()
