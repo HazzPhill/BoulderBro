@@ -102,7 +102,7 @@ extension RegisterView: AuthenticationFormProtocol {
         && confirmPassword == password
         && !password.isEmpty
         && !fullname.isEmpty
-        && password.count > 9
+        && password.count > 6
     }
 }
 

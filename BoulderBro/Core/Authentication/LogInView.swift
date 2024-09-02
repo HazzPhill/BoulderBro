@@ -69,7 +69,7 @@ extension LogInView: AuthenticationFormProtocol {
         return !email.isEmpty
         && email.contains("@")
         && !password.isEmpty
-        && password.count > 9
+        && password.count > 6
     }
 }
 

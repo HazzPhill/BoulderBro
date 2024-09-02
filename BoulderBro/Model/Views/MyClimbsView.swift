@@ -83,24 +83,38 @@ struct MyClimbsView: View {
                                     .frame(height: 150)
                                     .padding(.bottom, 10) // Optional: Add some padding below the chart
                                 
-                                Text("HangTimer")
-                                    .font(.custom("Kurdis-ExtraWideBold", size: 20))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                HStack{
+                                    Text("Hang timer")
+                                        .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                    
+                                    Spacer()
+                                    
+                                    NavigationLink(destination:LeaderboardView()) {
+                                        Image(systemName: "chart.bar.doc.horizontal")
+                                            .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                            .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                            .padding()
+                                            .symbolEffect(.variableColor.iterative.reversing)
+                                    }
+                                    .background(colorThemeManager.currentThemeColor )
+                                    .clipShape(.circle)
+                                }
 
                                 
                                 HangTimer()
                                 
-                            
-                                NavigationLink(destination:LeaderboardView()) {
-                                    Text ("Show Leaderboard")
-                                        .font(.custom("Kurdis-ExtraWideBold", size: 16))
-                                        .foregroundStyle(Color.white)
-                                        .padding()
-                                }
-                                .background(Color.gray)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                                .frame(maxWidth: .infinity)
+                                Text("Rest Timer")
+                                    .font(.custom("Kurdis-ExtraWideBold", size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")))
+                                
+                                Text("Takes brakes of 2:30 betweens routes to maximise performance")
+                                    .font(.custom("Kurdis-Regular", size: 16))
+                                    .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#ffffff") : Color(hex: "#000000")).opacity(0.5))
+                                
+                                RestTimer()
 
                                 
                                 Text(" \(user.firstName)'s Climbs")

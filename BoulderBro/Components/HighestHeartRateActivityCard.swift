@@ -44,6 +44,8 @@ struct HighestHeartRateActivityCard: View {
                 } else {
                     let highestHeartRate = highestHeartRates.map { $0.heartRate }.max() ?? 0
                     Text("\(Int(highestHeartRate)) bpm")
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                         .font(.custom("Kurdis-ExtraWideBold", size: 20))
                         .foregroundStyle(colorThemeManager.currentThemeColor)
                         .padding()

@@ -21,7 +21,7 @@ struct ContentView: View {
                     case 3:
                         videosView()
                     case 4:
-                        CometChatConversationsWithMessagesView()
+                        Chat()
                     case 5:
                         ProfileView()
                     default:

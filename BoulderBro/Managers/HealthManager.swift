@@ -3,6 +3,135 @@ import HealthKit
 import SwiftUI
 import FirebaseFirestore
 
+
+
+// MARK: - Fetch Resting Heart Rate for Last 5 Climbing Workouts
+extension HealthManager {
+    func fetchRestingHeartRateForLastClimbingWorkouts(limit: Int = 5, completion: @escaping (Result<[(date: Date, restingHeartRate: Double)], Error>) -> Void) {
+        let workouts = HKSampleType.workoutType()
+        let predicate = HKQuery.predicateForSamples(withStart: nil, end: Date())
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { [weak self] _, result, error in
+            guard let workouts = result as? [HKWorkout], error == nil else {
+                completion(.failure(error ?? URLError(.badURL)))
+                return
+            }
+            
+            // Filter for climbing workouts and limit to the last `limit` workouts
+            let climbingWorkouts = workouts.filter { $0.workoutActivityType == .climbing }.prefix(limit)
+            
+            guard !climbingWorkouts.isEmpty else {
+                completion(.success([]))
+                return
+            }
+            
+            var restingHeartRates: [(date: Date, restingHeartRate: Double)] = []
+            let group = DispatchGroup()
+            
+            for workout in climbingWorkouts {
+                group.enter()
+                self?.fetchRestingHeartRate(for: workout) { result in
+                    switch result {
+                    case .success(let restingHeartRate):
+                        restingHeartRates.append((date: workout.startDate, restingHeartRate: restingHeartRate))
+                    case .failure(let error):
+                        print("Error fetching resting heart rate for workout: \(error)")
+                    }
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                let sortedHeartRates = restingHeartRates.sorted { $0.date < $1.date }
+                completion(.success(sortedHeartRates))
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+
+    private func fetchRestingHeartRate(for workout: HKWorkout, completion: @escaping (Result<Double, Error>) -> Void) {
+        let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        
+        let query = HKStatisticsQuery(quantityType: heartRateType, quantitySamplePredicate: predicate, options: .discreteMin) { _, result, error in
+            guard let result = result, let minQuantity = result.minimumQuantity() else {
+                completion(.failure(error ?? URLError(.badURL)))
+                return
+            }
+            let restingHeartRate = minQuantity.doubleValue(for: HKUnit(from: "count/min"))
+            completion(.success(restingHeartRate))
+        }
+        
+        healthStore.execute(query)
+    }
+}
+
+// MARK: - Fetch Lowest Heart Rate for Last 5 Climbing Workouts
+extension HealthManager {
+    func fetchLowestHeartRateForLastClimbingWorkouts(limit: Int = 5, completion: @escaping (Result<[(date: Date, heartRate: Double)], Error>) -> Void) {
+        let workouts = HKSampleType.workoutType()
+        let predicate = HKQuery.predicateForSamples(withStart: nil, end: Date())
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { [weak self] _, result, error in
+            guard let workouts = result as? [HKWorkout], error == nil else {
+                completion(.failure(error ?? URLError(.badURL)))
+                return
+            }
+            
+            // Filter for climbing workouts and limit to the last `limit` workouts
+            let climbingWorkouts = workouts.filter { $0.workoutActivityType == .climbing }.prefix(limit)
+            
+            guard !climbingWorkouts.isEmpty else {
+                completion(.success([]))
+                return
+            }
+            
+            var lowestHeartRates: [(date: Date, heartRate: Double)] = []
+            let group = DispatchGroup()
+            
+            for workout in climbingWorkouts {
+                group.enter()
+                self?.fetchLowestHeartRate(for: workout) { result in
+                    switch result {
+                    case .success(let lowestHeartRate):
+                        lowestHeartRates.append((date: workout.startDate, heartRate: lowestHeartRate))
+                    case .failure(let error):
+                        print("Error fetching lowest heart rate for workout: \(error)")
+                    }
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                let sortedHeartRates = lowestHeartRates.sorted { $0.date < $1.date }
+                completion(.success(sortedHeartRates))
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+
+    private func fetchLowestHeartRate(for workout: HKWorkout, completion: @escaping (Result<Double, Error>) -> Void) {
+        let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        
+        let query = HKStatisticsQuery(quantityType: heartRateType, quantitySamplePredicate: predicate, options: .discreteMin) { _, result, error in
+            guard let result = result, let minQuantity = result.minimumQuantity() else {
+                completion(.failure(error ?? URLError(.badURL)))
+                return
+            }
+            let lowestHeartRate = minQuantity.doubleValue(for: HKUnit(from: "count/min"))
+            completion(.success(lowestHeartRate))
+        }
+        
+        healthStore.execute(query)
+    }
+}
+
+
 // MARK: - Date Extension
 extension Date {
     static var startOfDay: Date {
@@ -220,6 +349,8 @@ class HealthManager {
         
         healthStore.execute(query)
     }
+    
+    
     
     // MARK: - Fetch Highest Heart Rate for Last 5 Climbing Workouts
     func fetchHighestHeartRateForLastClimbingWorkouts(limit: Int = 5, completion: @escaping (Result<[(date: Date, heartRate: Double)], Error>) -> Void) {

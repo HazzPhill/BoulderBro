@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
 import FirebaseStorage
+import StreamChat
+import StreamChatSwiftUI
 
 protocol AuthenticationFormProtocol {
     var formIsValid: Bool { get }
@@ -21,6 +23,7 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var profileImageUrl: URL? // Add this property
+    
     
     init() {
         self.userSession = Auth.auth().currentUser

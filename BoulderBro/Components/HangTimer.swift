@@ -15,7 +15,7 @@ struct HangTimer: View {
     @State private var timer: Timer?
     @State private var countdown: Int?
     @EnvironmentObject var colorThemeManager: ColorThemeManager // Access the theme color
-    @AppStorage("countdownLength") private var countdownLength: Int = 3 // Default countdown length
+    @AppStorage("hangTimerCountdownLength") private var hangTimerCountdownLength: Int = 3 // Default countdown length for HangTimer
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -132,7 +132,7 @@ struct HangTimer: View {
 
     // Function to start the countdown
     private func startCountdown() {
-        countdown = countdownLength // Start countdown based on user selection
+        countdown = hangTimerCountdownLength // Start countdown based on user selection for HangTimer
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if countdown == 0 {
                 countdown = nil

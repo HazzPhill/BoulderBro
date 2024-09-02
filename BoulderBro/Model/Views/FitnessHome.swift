@@ -130,16 +130,37 @@ struct FitnessHome: View {
                             CaloriesChart()
                         }
                         .padding(.horizontal)
-            
-                        NavigationLink(destination:MinutesClimbedLeaderboardView()) {
-                            Text ("Show Minutes Leaderboard")
-                                .font(.custom("Kurdis-ExtraWideBold", size: 16))
-                                .foregroundStyle(Color.white)
-                                .padding()
+                        
+                        VStack(alignment: .leading) {
+                            HStack{
+                                Text("Minutes climbed this week")
+                                    .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                
+                                Spacer()
+                                
+                                NavigationLink(destination:MinutesClimbedLeaderboardView()) {
+                                    Image(systemName: "timer")
+                                        .font(.custom("Kurdis-ExtraWideBold", size: 16))
+                                        .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                        .padding()
+                                    
+                                }
+                                .background(colorThemeManager.currentThemeColor )
+                                .clipShape(.circle)
+                                
+                            }
+                            Rectangle()
+                                .fill(Color(colorScheme == .dark ? Color(hex: "#333333") : .white))
+                                .cornerRadius(12)
+                                .overlay(
+                                    WeeklyClimbingChartView()
+                                        .padding()
+                                )
+                                .frame(height: 150) // Adjust the height as needed
+                                .padding(.bottom, 10) // Optional: Add some padding below the chart
                         }
-                        .background(Color.gray)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .frame(maxWidth: .infinity)
+                        .padding(.top)
+                        .padding(.horizontal)
                         
                         HStack {
                             Text("Recent Workouts")

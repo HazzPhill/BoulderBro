@@ -24,6 +24,10 @@
 		EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */; };
 		EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BA32C7906B60067329B /* CaloriesChart.swift */; };
 		EF359BAC2C79E7A90067329B /* MembershipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF359BAB2C79E7A90067329B /* MembershipCardView.swift */; };
+		EF3DDF592C85E53B00BDC61A /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DDF582C85E53B00BDC61A /* ChannelView.swift */; };
+		EF3DDF5B2C85E90C00BDC61A /* RestingHeartRateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DDF5A2C85E90C00BDC61A /* RestingHeartRateCard.swift */; };
+		EF3DDF5D2C85EB4200BDC61A /* LowestHearRateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DDF5C2C85EB4200BDC61A /* LowestHearRateCard.swift */; };
+		EF3DDF5F2C85F37E00BDC61A /* Rest Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DDF5E2C85F37E00BDC61A /* Rest Countdown.swift */; };
 		EF6476112C7E33C200C8C9BA /* AllClimbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476102C7E33C200C8C9BA /* AllClimbs.swift */; };
 		EF6476132C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476122C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift */; };
 		EF6476152C7F654F00C8C9BA /* LogClimbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6476142C7F654F00C8C9BA /* LogClimbView.swift */; };
@@ -149,6 +153,10 @@
 		EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalClimb.swift; sourceTree = "<group>"; };
 		EF359BA32C7906B60067329B /* CaloriesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesChart.swift; sourceTree = "<group>"; };
 		EF359BAB2C79E7A90067329B /* MembershipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCardView.swift; sourceTree = "<group>"; };
+		EF3DDF582C85E53B00BDC61A /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
+		EF3DDF5A2C85E90C00BDC61A /* RestingHeartRateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestingHeartRateCard.swift; sourceTree = "<group>"; };
+		EF3DDF5C2C85EB4200BDC61A /* LowestHearRateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowestHearRateCard.swift; sourceTree = "<group>"; };
+		EF3DDF5E2C85F37E00BDC61A /* Rest Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rest Countdown.swift"; sourceTree = "<group>"; };
 		EF6476102C7E33C200C8C9BA /* AllClimbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClimbs.swift; sourceTree = "<group>"; };
 		EF6476122C7F5B8E00C8C9BA /* WeeklyClimbingDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyClimbingDuration.swift; sourceTree = "<group>"; };
 		EF6476142C7F654F00C8C9BA /* LogClimbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogClimbView.swift; sourceTree = "<group>"; };
@@ -282,6 +290,9 @@
 				EF6476182C80C54800C8C9BA /* HighestHeartRateActivityCard.swift */,
 				EF64761A2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift */,
 				EF64761C2C80CE4E00C8C9BA /* HRVActivityCard.swift */,
+				EF3DDF5A2C85E90C00BDC61A /* RestingHeartRateCard.swift */,
+				EF3DDF5C2C85EB4200BDC61A /* LowestHearRateCard.swift */,
+				EF3DDF5E2C85F37E00BDC61A /* Rest Countdown.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -501,6 +512,7 @@
 				EF6476282C81FDF000C8C9BA /* ConactSupportView.swift */,
 				EF64762A2C81FE1400C8C9BA /* ReportBugView.swift */,
 				EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */,
+				EF3DDF582C85E53B00BDC61A /* ChannelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -689,6 +701,7 @@
 			files = (
 				EF1775D42C6EABCC00EEAEF7 /* LogInView.swift in Sources */,
 				EFBA26D22C6EBC6700CD85F6 /* ProfileView.swift in Sources */,
+				EF3DDF5B2C85E90C00BDC61A /* RestingHeartRateCard.swift in Sources */,
 				EF31152D2C74DD9C0078A8C0 /* PersonalClimb.swift in Sources */,
 				EF6476212C81291400C8C9BA /* GeneralSettingsView.swift in Sources */,
 				EFD67A772C821B0100889629 /* MinutesClimbedLeaderboard.swift in Sources */,
@@ -705,12 +718,14 @@
 				EFC7CFDC2C6E2F1E002D5F78 /* Home.swift in Sources */,
 				EFD67A7B2C849B3500889629 /* PrivacyAndSecurityView.swift in Sources */,
 				EF359BA42C7906B60067329B /* CaloriesChart.swift in Sources */,
+				EF3DDF5D2C85EB4200BDC61A /* LowestHearRateCard.swift in Sources */,
 				EF6476252C81E76000C8C9BA /* HangTimerLeaderBoard.swift in Sources */,
 				EF3115292C74D0CD0078A8C0 /* MyClimbsView.swift in Sources */,
 				EFD994332C7BDA7700B316BC /* Chat.swift in Sources */,
 				EF1C60E42C6A7005000F29E2 /* Splash Screen.swift in Sources */,
 				EFD9941E2C7B73A800B316BC /* HeartRateChart.swift in Sources */,
 				EF64761D2C80CE4E00C8C9BA /* HRVActivityCard.swift in Sources */,
+				EF3DDF5F2C85F37E00BDC61A /* Rest Countdown.swift in Sources */,
 				EF6476172C80C3CD00C8C9BA /* HeartRateActivityCard.swift in Sources */,
 				EFD994142C7A153900B316BC /* Circles.swift in Sources */,
 				EFD9941A2C7B357A00B316BC /* DeepInsightsView.swift in Sources */,
@@ -723,6 +738,7 @@
 				EFA7D8392C74ECE1006E764E /* ImagePicker.swift in Sources */,
 				EFBA26E12C7097A200CD85F6 /* FitnessHome.swift in Sources */,
 				EFD994232C7B7F7900B316BC /* ColorThemeManager.swift in Sources */,
+				EF3DDF592C85E53B00BDC61A /* ChannelView.swift in Sources */,
 				EF6476392C820ACB00C8C9BA /* EditAccountView.swift in Sources */,
 				EF31152B2C74D6240078A8C0 /* CurrentLevel.swift in Sources */,
 				EF6476192C80C54800C8C9BA /* HighestHeartRateActivityCard.swift in Sources */,

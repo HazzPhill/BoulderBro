@@ -44,6 +44,8 @@ struct HeartRateActivityCard: View {
                 } else {
                     let averageHeartRate = averageHeartRates.map { $0.heartRate }.reduce(0, +) / Double(averageHeartRates.count)
                     Text("\(Int(averageHeartRate)) bpm")
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                         .font(.custom("Kurdis-ExtraWideBold", size: 20))
                         .foregroundStyle(colorThemeManager.currentThemeColor)
                         .padding()

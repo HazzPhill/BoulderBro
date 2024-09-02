@@ -19,7 +19,7 @@ struct RecoveryTimeActivityCard: View {
                             .minimumScaleFactor(0.5)
                             .foregroundColor(.primary) // Adjusts automatically to light/dark mode
                         
-                        Text("Suggested Recovery Time")
+                        Text("Recovery Time")
                             .foregroundColor(.secondary) // Adjusts automatically to light/dark mode
                     }
                     
@@ -42,11 +42,15 @@ struct RecoveryTimeActivityCard: View {
                     // Display the recovery time in hours and minutes
                     if hours > 0 {
                         Text("\(hours) hrs \(minutes) mins")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                             .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .foregroundStyle(colorThemeManager.currentThemeColor)
                             .padding()
                     } else {
                         Text("\(minutes) mins")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                             .font(.custom("Kurdis-ExtraWideBold", size: 20))
                             .foregroundStyle(colorThemeManager.currentThemeColor)
                             .padding()

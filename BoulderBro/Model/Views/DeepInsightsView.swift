@@ -100,9 +100,15 @@ struct DeepInsightsView: View {
                             .fontWeight(.bold)
                             .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#d4d4d4") : Color(hex: "#6b6b6b")))
                             .padding(.bottom)
-
-                        HStack(spacing: 20) { // Added spacing
+                        
+                        HStack(spacing: 16) { // Added spacing
                             HeartRateActivityCard()
+                            Spacer()
+                            RestingHeartRateCard()
+                        }
+
+                        HStack(spacing: 16) { // Added spacing
+                            LowestHeartRateCard()
                             Spacer()
                             HighestHeartRateActivityCard()
                         }
@@ -120,7 +126,7 @@ struct DeepInsightsView: View {
                             .foregroundStyle(Color(colorScheme == .dark ? Color(hex: "#d4d4d4") : Color(hex: "#6b6b6b")))
                             .padding(.bottom)
 
-                        HStack(spacing: 20) { // Added spacing
+                        HStack(spacing: 16) { // Added spacing
                             RecoveryTimeActivityCard()
                             Spacer()
                             HRVActivityCard()
