@@ -277,22 +277,15 @@
 		EF1775CD2C6EAAF900EEAEF7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EF3DDF762C86570B00BDC61A /* Timers */,
+				EF3DDF752C8656F200BDC61A /* Activity Cards */,
 				EFD994212C7B7D8800B316BC /* Charts */,
 				EF1775CF2C6EAB3C00EEAEF7 /* Core */,
-				EFBA26E62C70B6D400CD85F6 /* ActivityCard.swift */,
 				EFBA26E82C70D6FC00CD85F6 /* WorkoutCard.swift */,
-				EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */,
 				EF31152A2C74D6240078A8C0 /* CurrentLevel.swift */,
 				EF31152C2C74DD9C0078A8C0 /* PersonalClimb.swift */,
 				EFBA26E42C70A09200CD85F6 /* ProgressCircleView.swift */,
 				EFD994132C7A153900B316BC /* Circles.swift */,
-				EF6476162C80C3CD00C8C9BA /* HeartRateActivityCard.swift */,
-				EF6476182C80C54800C8C9BA /* HighestHeartRateActivityCard.swift */,
-				EF64761A2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift */,
-				EF64761C2C80CE4E00C8C9BA /* HRVActivityCard.swift */,
-				EF3DDF5A2C85E90C00BDC61A /* RestingHeartRateCard.swift */,
-				EF3DDF5C2C85EB4200BDC61A /* LowestHearRateCard.swift */,
-				EF3DDF5E2C85F37E00BDC61A /* Rest Countdown.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,13 +337,9 @@
 		EF1775D22C6EABB500EEAEF7 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EF3DDF742C8656DD00BDC61A /* Settings */,
 				EFBA26D52C6EC13100CD85F6 /* User.swift */,
 				EFBA26D12C6EBC6700CD85F6 /* ProfileView.swift */,
-				EF64761E2C81258200C8C9BA /* Settings View.swift */,
-				EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */,
-				EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */,
-				EF6476382C820ACB00C8C9BA /* EditAccountView.swift */,
-				EFD67A7A2C849B3500889629 /* PrivacyAndSecurityView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -448,6 +437,82 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EF3DDF702C86565E00BDC61A /* Main Nav */ = {
+			isa = PBXGroup;
+			children = (
+				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
+				EFBA26E02C7097A200CD85F6 /* FitnessHome.swift */,
+				EFD994322C7BDA7700B316BC /* Chat.swift */,
+				EFD994302C7BD99400B316BC /* videosView.swift */,
+				EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */,
+			);
+			path = "Main Nav";
+			sourceTree = "<group>";
+		};
+		EF3DDF712C86568600BDC61A /* Setting Indi Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF359BAB2C79E7A90067329B /* MembershipCardView.swift */,
+				EF6476282C81FDF000C8C9BA /* ConactSupportView.swift */,
+				EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */,
+				EF64762A2C81FE1400C8C9BA /* ReportBugView.swift */,
+			);
+			path = "Setting Indi Views";
+			sourceTree = "<group>";
+		};
+		EF3DDF722C8656B200BDC61A /* Leaderboards */ = {
+			isa = PBXGroup;
+			children = (
+				EF6476242C81E76000C8C9BA /* HangTimerLeaderBoard.swift */,
+				EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */,
+			);
+			path = Leaderboards;
+			sourceTree = "<group>";
+		};
+		EF3DDF732C8656CE00BDC61A /* Secondary Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFD994192C7B357A00B316BC /* DeepInsightsView.swift */,
+				EF6476102C7E33C200C8C9BA /* AllClimbs.swift */,
+			);
+			path = "Secondary Views";
+			sourceTree = "<group>";
+		};
+		EF3DDF742C8656DD00BDC61A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EF64761E2C81258200C8C9BA /* Settings View.swift */,
+				EF6476202C81291400C8C9BA /* GeneralSettingsView.swift */,
+				EF6476222C81293300C8C9BA /* ApperanceSettingView.swift */,
+				EF6476382C820ACB00C8C9BA /* EditAccountView.swift */,
+				EFD67A7A2C849B3500889629 /* PrivacyAndSecurityView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		EF3DDF752C8656F200BDC61A /* Activity Cards */ = {
+			isa = PBXGroup;
+			children = (
+				EFBA26E62C70B6D400CD85F6 /* ActivityCard.swift */,
+				EF6476162C80C3CD00C8C9BA /* HeartRateActivityCard.swift */,
+				EF6476182C80C54800C8C9BA /* HighestHeartRateActivityCard.swift */,
+				EF64761A2C80C79E00C8C9BA /* RecoveryTimeActivityCard.swift */,
+				EF64761C2C80CE4E00C8C9BA /* HRVActivityCard.swift */,
+				EF3DDF5A2C85E90C00BDC61A /* RestingHeartRateCard.swift */,
+				EF3DDF5C2C85EB4200BDC61A /* LowestHearRateCard.swift */,
+			);
+			path = "Activity Cards";
+			sourceTree = "<group>";
+		};
+		EF3DDF762C86570B00BDC61A /* Timers */ = {
+			isa = PBXGroup;
+			children = (
+				EFBA26FA2C72A02B00CD85F6 /* HangTimer.swift */,
+				EF3DDF5E2C85F37E00BDC61A /* Rest Countdown.swift */,
+			);
+			path = Timers;
+			sourceTree = "<group>";
+		};
 		EFA16F382C6D735E00D7301E /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,20 +563,11 @@
 		EFD9942B2C7BD4B500B316BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EFC7CFDB2C6E2F1E002D5F78 /* Home.swift */,
-				EF3115282C74D0CD0078A8C0 /* MyClimbsView.swift */,
-				EFBA26E02C7097A200CD85F6 /* FitnessHome.swift */,
-				EF359BAB2C79E7A90067329B /* MembershipCardView.swift */,
+				EF3DDF732C8656CE00BDC61A /* Secondary Views */,
+				EF3DDF722C8656B200BDC61A /* Leaderboards */,
+				EF3DDF712C86568600BDC61A /* Setting Indi Views */,
+				EF3DDF702C86565E00BDC61A /* Main Nav */,
 				EF1C60E32C6A7005000F29E2 /* Splash Screen.swift */,
-				EFD994242C7B7FC900B316BC /* ThemeColorPickerView.swift */,
-				EFD994192C7B357A00B316BC /* DeepInsightsView.swift */,
-				EFD994302C7BD99400B316BC /* videosView.swift */,
-				EFD994322C7BDA7700B316BC /* Chat.swift */,
-				EF6476102C7E33C200C8C9BA /* AllClimbs.swift */,
-				EF6476242C81E76000C8C9BA /* HangTimerLeaderBoard.swift */,
-				EF6476282C81FDF000C8C9BA /* ConactSupportView.swift */,
-				EF64762A2C81FE1400C8C9BA /* ReportBugView.swift */,
-				EFD67A762C821B0100889629 /* MinutesClimbedLeaderboard.swift */,
 				EF3DDF582C85E53B00BDC61A /* ChannelView.swift */,
 			);
 			path = Views;
